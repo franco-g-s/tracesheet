@@ -243,6 +243,21 @@ page = 83
 pdf_page = 83
 
 [[line_items]]
+name = "non_current_lease_liabilities"
+value = "32"
+label = "Verbindlichkeiten aus Finanzleasing"
+page = 83
+pdf_page = 83
+
+[[line_items]]
+name = "current_lease_liabilities"
+value = "0"
+not_printed = true
+page = 83
+pdf_page = 83
+note = "The short-term part of the finance lease obligations is inside 'Kurzfristige Bankverbindlichkeiten und kurzfristiges Finanzleasing', as its label says, so it is counted once, in borrowings."
+
+[[line_items]]
 name = "non_current_borrowings"
 value = "12"
 label = "Langfristige Bankverbindlichkeiten"

@@ -227,6 +227,21 @@ page = 115
 pdf_page = 115
 
 [[line_items]]
+name = "non_current_lease_liabilities"
+value = "55.0"
+label = "Finance lease obligations"
+page = 115
+pdf_page = 115
+
+[[line_items]]
+name = "current_lease_liabilities"
+value = "0"
+not_printed = true
+page = 115
+pdf_page = 115
+note = "The short-term part of the finance lease obligations (CHF 11.1 million, note 34) is inside 'Bank and other interest-bearing liabilities', so it is counted once, in borrowings."
+
+[[line_items]]
 name = "non_current_borrowings"
 value = "64.0"
 label = "Bank liabilities"
