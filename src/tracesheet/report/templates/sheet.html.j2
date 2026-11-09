@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Tracesheet {{ page.code_version }}">
+<title>{{ page.title }}</title>
+<style>
+{{ style }}
+</style>
+</head>
+<body>
+{% macro figure(cell) -%}
+{%- if cell.source_ids -%}
+<a class="fig" href="#src-{{ cell.source_ids[0] }}">{{ cell.text }}</a>
+{%- if cell.source_ids|length > 1 %}<span class="refs">{% for sid in cell.source_ids[1:] %}<a href="#src-{{ sid }}">{{ numbers[sid] }}</a>{% endfor %}</span>{% endif -%}
+{%- elif cell.note -%}
+<abbr class="nm" tabindex="0" title="{{ cell.note }}">{{ cell.text }}</abbr>
+{%- else -%}
+{{ cell.text }}
+{%- endif -%}
+{%- endmacro %}
+{% macro rowhead(row) -%}
+<th scope="row" class="measure"><span class="label">{{ row.label }}</span><span class="formula" title="{{ row.formula }}">{{ row.formula }}</span></th>
+{%- endmacro %}
+
+<header class="masthead">
+  <div class="title">
+    <h1>{{ page.company.name }}</h1>
+    <p class="lede">Annual figures {{ span }}, from the reports published by {{ long_date(page.as_of) }}. Every number is computed from lines in the company&rsquo;s own reports<span class="screen-only">; select one to see which</span>.</p>
+  </div>
+  <section id="overview" class="overview" aria-labelledby="h-overview">
+    <h2 id="h-overview">Overview</h2>
+    <dl class="facts">
+      <div><dt>Listing</dt><dd>{{ page.company.listing.venue }}: {{ page.company.listing.ticker }}</dd></div>
+      <div><dt>ISIN</dt><dd>{{ page.company.listing.isin }}</dd></div>
+      <div><dt>Domicile</dt><dd>{{ domicile }}</dd></div>
+      <div><dt>Reports under</dt><dd>{{ standard }}</dd></div>
+      <div><dt>Fiscal year ends</dt><dd>{{ fiscal_year_end }}</dd></div>
+      <div><dt>Currency</dt><dd>{{ page.company.currency.value }}</dd></div>
+      <div><dt>Years covered</dt><dd>{{ span }}</dd></div>
+      <div><dt>Filings used</dt><dd>
+        {{ page.tie_out|length }}, {% if failing %}{{ failing|length }} failing a tie-out check{% else %}all tying out{% endif -%}
+      </dd></div>
+      <div><dt>Known as of</dt><dd>{{ long_date(page.as_of) }}</dd></div>
+      <div><dt>Built</dt><dd>{{ long_date(page.created_at) }}, Tracesheet {{ page.code_version }}</dd></div>
+    </dl>
+  </section>
+</header>
+
+<nav class="contents" aria-label="Sections">
+  <ol>
+    {% for table in page.tables %}
+    <li><a href="#{{ table.section.value }}">{{ table.title }}</a></li>
+    {% endfor %}
+    <li><a href="#multiples">Multiples</a></li>
+    <li><a href="#conventions">Conventions</a></li>
+    <li><a href="#sources">Sources</a></li>
+  </ol>
+  {% if older %}
+  <div class="span-toggle" role="group" aria-label="Years shown" hidden>
+    <button type="button" data-span="all" aria-pressed="true">All {{ page.years|length }} years</button>
+    <button type="button" data-span="recent" aria-pressed="false">Last {{ recent }} years</button>
+  </div>
+  {% endif %}
+</nav>
+
+<main>
+{% for table in page.tables %}
+<section id="{{ table.section.value }}" class="block" aria-labelledby="h-{{ table.section.value }}">
+  <h2 id="h-{{ table.section.value }}">{{ table.title }}</h2>
+  <div class="scroll">
+  <table class="grid">
+    <thead>
+      <tr><th scope="col" class="measure">Measure</th><th scope="col" class="unit">Unit</th>
+        {%- for year in table.years %}<th scope="col" class="yr{% if year in older %} older{% endif %}">{{ year }}</th>{% endfor %}</tr>
+    </thead>
+    <tbody>
+      {% for row in table.rows %}
+      {% if row.group %}
+      <tr class="subhead"><th scope="rowgroup" colspan="{{ table.years|length + 2 }}">{{ row.group }}</th></tr>
+      {% endif %}
+      <tr id="m-{{ row.key }}">{{ rowhead(row) }}<td class="unit">{{ row.unit }}</td>
+        {%- for cell in row.cells %}<td class="yr{% if table.years[loop.index0] in older %} older{% endif %}">{{ figure(cell) }}</td>{% endfor %}</tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  {% if loop.first and page.cagr %}
+  <h3>Compound annual growth to {{ page.cagr.end_year }}</h3>
+  <table class="grid compact">
+    <thead>
+      <tr><th scope="col" class="measure">Measure</th><th scope="col" class="unit">Unit</th>
+        {%- for span in page.cagr.spans %}<th scope="col" class="yr">{{ span }} years</th>{% endfor %}</tr>
+    </thead>
+    <tbody>
+      {% for row in page.cagr.rows %}
+      <tr id="cagr-{{ row.key }}">{{ rowhead(row) }}<td class="unit">{{ row.unit }}</td>
+        {%- for cell in row.cells %}<td class="yr">{{ figure(cell) }}</td>{% endfor %}</tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+</section>
+{% endfor %}
+
+<section id="multiples" class="block" aria-labelledby="h-multiples">
+  <h2 id="h-multiples">Valuation multiples</h2>
+  <div class="pair">
+  <p class="note">{{ page.multiples_note }}</p>
+  {% if page.multiples %}
+  <table class="grid compact multiples">
+    <thead>
+      <tr><th scope="col" class="measure">Measure</th><th scope="col" class="yr">Fiscal {{ page.multiples.years[0] }}</th></tr>
+    </thead>
+    <tbody>
+      {% for row in page.multiples.rows %}
+      <tr id="x-{{ row.key }}">{{ rowhead(row) }}<td class="yr">{{ figure(row.cells[0]) }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+  </div>
+</section>
+
+<section id="conventions" class="block" aria-labelledby="h-conventions">
+  <h2 id="h-conventions">Conventions</h2>
+  <dl class="conventions">
+    {% for topic, text in page.conventions %}
+    <div><dt>{{ topic }}</dt><dd>{{ text }}</dd></div>
+    {% endfor %}
+  </dl>
+</section>
+
+<section id="sources" class="block" aria-labelledby="h-sources">
+  <h2 id="h-sources">Sources</h2>
+  <p class="note">{{ page.sources|length }} report lines and observations, each quoted as printed. The number before each is how a figure with several sources refers to it.</p>
+  <div class="source-groups">
+  {% for group in groups %}
+  <div class="source-group">
+    <h3>
+      {%- if group.observed %}Observed: {{ group.document }}
+      {%- else %}Fiscal {{ group.fiscal_year }}<span class="doc">{{ group.document }}</span>{% endif -%}
+    </h3>
+    {% if group.sha256 %}<p class="hash">SHA-256 <code title="{{ group.sha256 }}">{{ group.sha256[:16] }}</code>, published {{ long_date(group.entries[0].dated) }}</p>{% endif %}
+    <table class="sources">
+      <tbody>
+        {% for entry in group.entries %}
+        <tr id="src-{{ entry.id }}" data-doc="{{ entry.document }}"{% if entry.page is not none %} data-page="{{ entry.page }}"{% endif %}{% if entry.fiscal_year %} data-fy="{{ entry.fiscal_year }}"{% endif %}>
+          <td class="n">{{ numbers[entry.id] }}</td>
+          <td class="pg">{% if entry.page is not none %}p.&nbsp;{{ entry.page }}{% endif %}</td>
+          <td class="q">
+            {%- if entry.observed %}{{ entry.line }}{% if entry.dated %}, {{ long_date(entry.dated) }}{% endif %}
+            {%- else %}{% if entry.quote %}&ldquo;{{ entry.quote }}&rdquo;{% else %}<span class="muted">no label recorded</span>{% endif %}
+            {%- if entry.not_printed %} <span class="muted">(not printed in the statement; counted as zero)</span>{% endif %}{% endif %}
+            {%- if entry.note %}<span class="src-note">{{ entry.note }}</span>{% endif -%}
+          </td>
+          <td class="li">{% if not entry.observed %}{{ entry.line|replace("_", " ") }}{% endif %}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endfor %}
+  </div>
+</section>
+</main>
+
+<footer class="colophon">
+  <p>Built with Tracesheet {{ page.code_version }} on {{ long_date(page.created_at) }}. The sheet describes; it does not judge. There are no thresholds, scores or verdicts on it.</p>
+</footer>
+
+<aside id="trail" class="trail" popover="manual" aria-labelledby="trail-title">
+  <div class="trail-head">
+    <p id="trail-title" class="trail-title"></p>
+    <button type="button" class="trail-close" aria-label="Close">&times;</button>
+  </div>
+  <p class="trail-value"></p>
+  <p class="trail-formula"></p>
+  <ol class="trail-list"></ol>
+</aside>
+
+<script>
+{{ script }}
+</script>
+</body>
+</html>
