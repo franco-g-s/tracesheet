@@ -58,6 +58,7 @@ ignore = [
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = ["PLR0913", "ARG"]
+"src/tracesheet/cli.py" = ["T201"]   # a command line talks through print
 "scripts/**" = ["T201"]   # a script's printed lines are its report
 # Formulas and figures are reader-facing text, typeset with true minus, multiplication and
 # dash signs.
