@@ -30,6 +30,7 @@ from tracesheet.model.market import (
 )
 from tracesheet.model.metrics import Metrics, MetricValue, NotMeaningful, YearMetrics
 from tracesheet.model.money import Currency, CurrencyMismatchError, Money, ShareCount
+from tracesheet.model.multiples import Multiples
 from tracesheet.model.normalized import Adjustment, AdjustmentKind, Normalized, PeriodFigures
 from tracesheet.model.relationships import RELATIONSHIPS, Relationship
 from tracesheet.model.traced import Filed, Observed, Traced, Transform
@@ -65,6 +66,7 @@ __all__ = [
     "Model",
     "Money",
     "MonthDay",
+    "Multiples",
     "Normalized",
     "NotMeaningful",
     "Observed",

@@ -1,0 +1,9 @@
+# Closing share prices, typed by hand. A sheet uses the company's latest close on or before
+# the day it is built. The close is written in quotes so it is read as an exact decimal.
+
+[[price]]
+company = "kuehne-nagel"
+date = 2026-10-22
+close = "224.10"
+currency = "CHF"
+source = "SIX Swiss Exchange close, retrieved via EODHD on 2026-10-23"
