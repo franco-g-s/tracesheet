@@ -213,14 +213,6 @@ page = 85
 pdf_page = 85
 
 [[line_items]]
-name = "goodwill_acquired"
-value = "112.9"
-label = "Addition through business combinations"
-page = 107
-pdf_page = 107
-note = "Goodwill column of note 26: G.L. Kayser 50.5, Cordes & Simon 50.5, other small acquisitions 11.9."
-
-[[line_items]]
 name = "other_intangible_assets"
 value = "288.1"
 label = "Other intangibles"
@@ -247,6 +239,21 @@ value = "84.6"
 label = "Bank and other interest bearing liabilities"
 page = 85
 pdf_page = 85
+
+[[line_items]]
+name = "non_current_lease_liabilities"
+value = "42.0"
+label = "Finance lease obligations"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "current_lease_liabilities"
+value = "0"
+not_printed = true
+page = 85
+pdf_page = 85
+note = "The short-term part of the finance lease obligations (CHF 9.7 million, note 35) is inside 'Bank and other interest-bearing liabilities', so it is counted once, in borrowings."
 
 [[line_items]]
 name = "non_current_borrowings"

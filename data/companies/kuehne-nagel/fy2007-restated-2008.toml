@@ -231,14 +231,6 @@ page = 83
 pdf_page = 83
 
 [[line_items]]
-name = "goodwill_acquired"
-value = "113"
-label = "Zugänge aus Erstkonsolidierung"
-page = 107
-pdf_page = 107
-note = "2007 column of note 27, goodwill column; the FY2007 report prints 112.9."
-
-[[line_items]]
 name = "other_intangible_assets"
 value = "288"
 label = "Andere immaterielle Vermögenswerte"
@@ -267,6 +259,21 @@ value = "85"
 label = "Kurzfristige Bankverbindlichkeiten und kurzfristiges Finanzleasing"
 page = 83
 pdf_page = 83
+
+[[line_items]]
+name = "non_current_lease_liabilities"
+value = "42"
+label = "Verbindlichkeiten aus Finanzleasing"
+page = 83
+pdf_page = 83
+
+[[line_items]]
+name = "current_lease_liabilities"
+value = "0"
+not_printed = true
+page = 83
+pdf_page = 83
+note = "The short-term part of the finance lease obligations is inside 'Kurzfristige Bankverbindlichkeiten und kurzfristiges Finanzleasing', as its label says, so it is counted once, in borrowings."
 
 [[line_items]]
 name = "non_current_borrowings"

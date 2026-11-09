@@ -213,14 +213,6 @@ page = 108
 pdf_page = 108
 
 [[line_items]]
-name = "goodwill_acquired"
-value = "36.6"
-label = "Additions through business combinations"
-page = 130
-pdf_page = 130
-note = "Goodwill column of note 25; its footnote attributes the figure to the Häring and Mönkemöller groups."
-
-[[line_items]]
 name = "other_intangible_assets"
 value = "70.0"
 label = "Other intangibles"
@@ -247,6 +239,21 @@ value = "327.6"
 label = "Bank and other interest bearing liabilities"
 page = 109
 pdf_page = 109
+
+[[line_items]]
+name = "non_current_lease_liabilities"
+value = "13.9"
+label = "Finance lease obligations"
+page = 109
+pdf_page = 109
+
+[[line_items]]
+name = "current_lease_liabilities"
+value = "0"
+not_printed = true
+page = 109
+pdf_page = 109
+note = "The short-term part of the finance lease obligations is inside 'Bank and other interest bearing liabilities' (with long-term loans due within 12 months, CHF 45.2 million together, note 31), so it is counted once, in borrowings."
 
 [[line_items]]
 name = "non_current_borrowings"

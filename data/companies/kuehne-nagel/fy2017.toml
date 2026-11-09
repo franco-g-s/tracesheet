@@ -206,14 +206,6 @@ page = 39
 pdf_page = 5
 
 [[line_items]]
-name = "goodwill_acquired"
-value = "64"
-label = "Additions through business combinations"
-page = 69
-pdf_page = 35
-note = "Goodwill column of note 27."
-
-[[line_items]]
 name = "other_intangible_assets"
 value = "96"
 label = "Other intangibles"
@@ -240,6 +232,29 @@ value = "14"
 label = "Bank and other interest-bearing liabilities"
 page = 40
 pdf_page = 6
+
+[[line_items]]
+name = "non_current_lease_liabilities"
+value = "4"
+label = "Finance lease obligations"
+page = 40
+pdf_page = 6
+
+[[line_items]]
+name = "current_lease_liabilities"
+value = "0"
+not_printed = true
+page = 40
+pdf_page = 6
+note = "The short-term part of the finance lease obligations (CHF 4 million, note 37) is inside 'Bank and other interest-bearing liabilities', so it is counted once, in borrowings."
+
+[[line_items]]
+name = "non_current_borrowings"
+value = "0"
+not_printed = true
+page = 40
+pdf_page = 6
+note = "The balance sheet prints no long-term bank liabilities this year."
 
 [[line_items]]
 name = "non_controlling_interests"

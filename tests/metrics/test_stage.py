@@ -1,6 +1,6 @@
 """The metrics stage: textbook measures from normalized figures, each traced or marked n/m."""
 
-from datetime import UTC, date, datetime
+from datetime import UTC, datetime
 from decimal import Decimal
 from pathlib import Path
 
@@ -18,7 +18,6 @@ from tracesheet.model import (
     Normalized,
     Observed,
     PeriodFigures,
-    PeriodKind,
     RecordId,
     RecordRef,
     ShareCount,
@@ -27,10 +26,10 @@ from tracesheet.model import (
     Unit,
 )
 from tracesheet.model.metrics import MetricValue, NotMeaningful
-from tracesheet.normalize import normalize
+from tracesheet.normalize import normalize, standardize
 from tracesheet.providers import HandLoaded
 
-from .conftest import FY2024, FY2025, MakeNormalized, leaf
+from .conftest import FY2024, FY2025, MakeNormalized
 
 L = LineItemName
 
@@ -264,46 +263,92 @@ def _no_leases(lines: dict[LineItemName, str]) -> dict[LineItemName, str]:
     )
 
 
-def test_leases_count_zero_before_ifrs_16_and_say_so(make: MakeNormalized) -> None:
-    metrics = compute_metrics(make({2017: _no_leases(FY2024), 2018: _no_leases(FY2025)}))
-    y = metrics.years[-1].values
-    # 2018: net debt = (200 + 100) + 0 - 250
-    assert value(y["net_debt"]) == Decimal(50)
-    roic = y["roic"]
-    assert isinstance(roic, Traced)
-    notes = [o for o in roic.sources() if isinstance(o, Observed) and "IFRS 16" in o.what]
-    assert len(notes) == 2  # one zero leaf per balance sheet averaged
-    assert all(o.what == "no lease liability recognised before IFRS 16" for o in notes)
-    assert all(o.source == "accounting standard" for o in notes)
-
-
-def test_a_year_that_began_before_ifrs_16_counts_leases_as_zero() -> None:
-    # A June year end: FY2019 began on 1 July 2018, before IFRS 16 took effect.
-    def block(start: date, end: date, lines: dict[LineItemName, str]) -> PeriodFigures:
-        figures = {name: leaf(name, text, end.year) for name, text in lines.items()}
-        return PeriodFigures(
-            period=FiscalPeriod(start=start, end=end, kind=PeriodKind.ANNUAL), figures=figures
-        )
-
-    n = Normalized(
-        company_id=CompanyId("acme"),
-        as_of=datetime(2026, 6, 30, tzinfo=UTC),
-        currency=Currency.CHF,
-        years=(
-            block(date(2018, 7, 1), date(2019, 6, 30), _no_leases(FY2025)),
-            block(date(2019, 7, 1), date(2020, 6, 30), _no_leases(FY2025)),
+def _not_printed(name: LineItemName, period: FiscalPeriod) -> Traced:
+    """A line the record declares not printed: a filed zero that carries its page."""
+    return Traced(
+        value=Money.parse("0", Currency.CHF),
+        unit=Unit.AMOUNT,
+        origin=Filed(
+            record=RecordRef(
+                id=RecordId(f"acme-fy{period.end.year}"),
+                company_id=CompanyId("acme"),
+                period=period,
+                filed_at=datetime(period.end.year + 1, 3, 9, tzinfo=UTC),
+            ),
+            line_item=name,
+            source=Source(provider="hand-loaded", reference="acme.pdf"),
+            page=40,
+            not_printed=True,
         ),
-        used=(),
     )
-    fy2019, fy2020 = (y.values for y in compute_metrics(n).years)
-    assert value(fy2019["net_debt"]) == Decimal(50)
-    assert reason(fy2020["net_debt"]) == "lease liabilities not filed"
+
+
+def _standardized(n: Normalized, **extra: dict[LineItemName, Traced]) -> Normalized:
+    """``n`` with each year run through standardization, as the normalize stage does, after
+    adding ``extra["fy<year>"]`` lines to that year."""
+    years = []
+    for block in n.years:
+        figures = {**block.figures, **extra.get(f"fy{block.period.end.year}", {})}
+        solved, _ = standardize(block.model_copy(update={"figures": figures}), "FY")
+        years.append(solved)
+    return n.model_copy(update={"years": tuple(years)})
+
+
+def test_leases_not_filed_are_not_meaningful_whatever_the_year(make: MakeNormalized) -> None:
+    # No lease line at all, in a year long before leases came onto balance sheets: nothing
+    # is assumed, the date included.
+    n = _standardized(make({2009: _no_leases(FY2024), 2010: _no_leases(FY2025)}))
+    for y in compute_metrics(n).years:
+        assert reason(y.values["net_debt"]) == "lease liabilities not filed"
+    assert reason(compute_metrics(n).years[-1].values["roic"]) == "lease liabilities not filed"
+
+
+def test_leases_declared_not_printed_count_as_zero(make: MakeNormalized) -> None:
+    base = make({2010: _no_leases(FY2025)})
+    period = base.years[0].period
+    halves = {
+        name: _not_printed(name, period)
+        for name in (L.NON_CURRENT_LEASE_LIABILITIES, L.CURRENT_LEASE_LIABILITIES)
+    }
+    n = _standardized(base, fy2010=halves)
+    net_debt = compute_metrics(n).years[-1].values["net_debt"]
+    # net debt: borrowings 200 and 100, leases none, less cash 250
+    assert value(net_debt) == Decimal(50)
+    assert isinstance(net_debt, Traced)
+    assert {h.origin for h in halves.values()} <= set(net_debt.sources())
 
 
 def test_leases_missing_after_ifrs_16_are_not_meaningful(make: MakeNormalized) -> None:
     y = compute_metrics(make({2024: FY2024, 2025: _no_leases(FY2025)})).years[-1].values
     assert reason(y["net_debt"]) == "lease liabilities not filed"
     assert reason(y["roic"]) == "lease liabilities not filed"
+
+
+@pytest.mark.parametrize(
+    "missing",
+    [
+        L.NON_CURRENT_BORROWINGS,
+        L.CURRENT_BORROWINGS,
+        L.NON_CURRENT_LEASE_LIABILITIES,
+        L.CURRENT_LEASE_LIABILITIES,
+    ],
+)
+def test_a_missing_half_of_debt_is_not_taken_as_none(
+    make: MakeNormalized, missing: LineItemName
+) -> None:
+    n = _standardized(make({2024: FY2024, 2025: _without(FY2025, missing)}))
+    y = compute_metrics(n).years[-1].values
+    assert isinstance(y["net_debt"], NotMeaningful)
+    assert isinstance(y["roic"], NotMeaningful)
+
+
+def test_a_half_declared_not_printed_completes_the_total(make: MakeNormalized) -> None:
+    base = make({2025: _without(FY2025, L.NON_CURRENT_BORROWINGS)})
+    zero = _not_printed(L.NON_CURRENT_BORROWINGS, base.years[0].period)
+    n = _standardized(base, fy2025={L.NON_CURRENT_BORROWINGS: zero})
+    y = compute_metrics(n).years[-1].values
+    # net debt: borrowings 100, leases 120 and 30, less cash 250
+    assert value(y["net_debt"]) == Decimal(0)
 
 
 # --- Compound annual growth over 5 and 10 years ---
@@ -361,18 +406,22 @@ def test_kuehne_nagel_every_year_from_2006_has_fcf_and_roic(kuehne_nagel: Normal
         for key in ("fcf", "roic"):
             assert isinstance(years[year][key], Traced), (year, key, years[year][key])
         assert value(years[year]["capex"]) >= 0, year
+    for year in range(2005, 2026):
+        assert isinstance(years[year]["net_debt"], Traced), (year, years[year]["net_debt"])
+
+
+def test_kuehne_nagel_counts_finance_leases_before_ifrs_16(kuehne_nagel: Normalized) -> None:
+    y2009 = next(y for y in compute_metrics(kuehne_nagel).years if y.fiscal_year == 2009)
+    # 2009, as restated in the 2010 report: borrowings 1 + 55, finance leases 107, cash 981
+    net_debt = y2009.values["net_debt"]
+    assert value(net_debt) == Decimal(-818_000_000)
+    assert isinstance(net_debt, Traced)
+    assert "non_current_lease_liabilities" in {
+        o.line_item for o in net_debt.sources() if isinstance(o, Filed)
+    }
 
 
 def test_kuehne_nagel_capex_adds_both_purchase_lines(kuehne_nagel: Normalized) -> None:
     y2025 = next(y for y in compute_metrics(kuehne_nagel).years if y.fiscal_year == 2025)
     # 2025: purchases of property, plant and equipment 232, of intangible assets 7 (CHF m)
     assert value(y2025.values["capex"]) == Decimal(239_000_000)
-
-
-def test_the_ifrs_16_leaf_is_the_same_on_every_run(make: MakeNormalized) -> None:
-    # The zero leaf is dated by the period end, so its traced id never moves between runs.
-    years = {2017: _no_leases(FY2024), 2018: _no_leases(FY2025)}
-    first = compute_metrics(make(years)).years[-1].values["roic"]
-    second = compute_metrics(make(years)).years[-1].values["roic"]
-    assert isinstance(first, Traced) and isinstance(second, Traced)
-    assert first.id == second.id

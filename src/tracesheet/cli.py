@@ -1,8 +1,9 @@
 """The command line: ``load`` a company's typed-in files, ``evaluate`` and store, or
 ``render`` the sheet without storing anything.
 
-Exit codes: 0 on success, 1 when a record fails to tie out (``load``), 2 on a usage error or
-an unknown company. Errors are one plain line on stderr, never a traceback.
+Exit codes: 0 on success; 1 when ``load`` finds a record that fails to tie out, or actions
+or records that normalization refuses; 2 on a usage error or an unknown or malformed
+company. Errors are one plain line, never a traceback.
 """
 
 import argparse
@@ -14,7 +15,8 @@ from pathlib import Path
 from typing import Protocol
 
 from tracesheet.evaluate import evaluate
-from tracesheet.model import Company, CompanyId, Evaluation, PriceObservation
+from tracesheet.model import Company, CompanyId, Evaluation, FinancialRecord, PriceObservation
+from tracesheet.normalize import NormalizationError, normalize
 from tracesheet.providers import (
     FetchError,
     HandLoaded,
@@ -130,8 +132,10 @@ def _known(args: argparse.Namespace) -> tuple[HandLoaded, CompanyId] | None:
     company = CompanyId(args.company)
     try:
         provider.company(company)
-    except HandLoadedError:
-        _note(f"tracesheet: no company {args.company!r} under {args.root}")
+    except HandLoadedError as error:
+        # A missing company and a malformed company.toml both land here; the error names
+        # the file and what is wrong with it.
+        _note(f"tracesheet: {error}")
         return None
     return provider, company
 
@@ -154,7 +158,29 @@ def _load(args: argparse.Namespace) -> int:
             print(f"FAILS   {record.id}: " + "; ".join(failures))
         else:
             print(f"{record.id}: ties out")
+    if not _actions_apply(provider, company, records):
+        failed = True
     return EXIT_TIE_OUT if failed else EXIT_OK
+
+
+def _actions_apply(
+    provider: HandLoaded, company: CompanyId, records: Sequence[FinancialRecord]
+) -> bool:
+    """Read the share-basis actions and normalize with them as of now, as ``evaluate``
+    would, so that a broken action or a record normalization refuses shows up at load
+    time. Prints one line either way and says whether it worked."""
+    try:
+        actions = provider.actions(company)
+        normalize(provider.company(company), records, datetime.now(UTC), actions=actions)
+    except HandLoadedError as error:
+        print(f"FAILS   actions: {error}")
+        return False
+    except NormalizationError as error:
+        print(f"FAILS   normalization: {error}")
+        return False
+    count = f"{len(actions)} action" + ("" if len(actions) == 1 else "s")
+    print(f"actions.toml: {count}, confirmed and applied")
+    return True
 
 
 def _run_evaluation(args: argparse.Namespace) -> Evaluation | None:

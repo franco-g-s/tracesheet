@@ -206,14 +206,6 @@ page = 115
 pdf_page = 115
 
 [[line_items]]
-name = "goodwill_acquired"
-value = "36.6"
-label = "Addition through business combinations"
-page = 135
-pdf_page = 135
-note = "2005 column of note 25, goodwill column."
-
-[[line_items]]
 name = "other_intangible_assets"
 value = "70.0"
 label = "Other intangibles"
@@ -242,6 +234,22 @@ label = "Bank and other interest bearing liabilities"
 page = 115
 pdf_page = 115
 note = "First filed as 327.6; restated in the Annual Report 2006, which reclassified certain comparatives (page 115)."
+
+[[line_items]]
+name = "non_current_lease_liabilities"
+value = "11.9"
+label = "Finance lease obligations"
+page = 115
+pdf_page = 115
+note = "First filed as 13.9; restated in the Annual Report 2006, which reclassified certain comparatives (page 115)."
+
+[[line_items]]
+name = "current_lease_liabilities"
+value = "0"
+not_printed = true
+page = 115
+pdf_page = 115
+note = "The short-term part of the finance lease obligations (CHF 2.0 million, note 34) is inside 'Bank and other interest-bearing liabilities', so it is counted once, in borrowings."
 
 [[line_items]]
 name = "non_current_borrowings"

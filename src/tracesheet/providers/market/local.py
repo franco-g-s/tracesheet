@@ -16,6 +16,7 @@ figure derived from it.
 
 import tomllib
 from datetime import UTC, date, datetime, time
+from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Annotated
 
@@ -93,13 +94,28 @@ class LocalPrices:
         except ValidationError as error:
             raise LocalPricesError(self.path, _describe(error)) from error
         seen: set[tuple[str, date]] = set()
-        for entry in entries:
+        for index, entry in enumerate(entries, start=1):
+            _check_close(self.path, index, entry)
             key = (entry.company, entry.date)
             if key in seen:
                 detail = f"two closes for {entry.company} on {entry.date.isoformat()}"
                 raise LocalPricesError(self.path, detail)
             seen.add(key)
         return entries
+
+
+def _check_close(path: Path, index: int, entry: _Entry) -> None:
+    """Refuse a close that is not a finite decimal number, naming the entry."""
+    try:
+        amount = Decimal(entry.close)
+    except InvalidOperation:
+        amount = None
+    if amount is None or not amount.is_finite():
+        detail = (
+            f"price {index} ({entry.company}, {entry.date.isoformat()}): close "
+            f'{entry.close!r} is not a number; write it like "224.10"'
+        )
+        raise LocalPricesError(path, detail)
 
 
 def _describe(error: ValidationError) -> str:

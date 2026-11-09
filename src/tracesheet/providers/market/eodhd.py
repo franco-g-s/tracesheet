@@ -10,6 +10,8 @@ reporting currency, since a listing records no trading currency of its own.
 
 import json
 import os
+from collections.abc import Iterator
+from contextlib import contextmanager
 from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
 from fractions import Fraction
@@ -48,24 +50,26 @@ class Eodhd:
 
     def prices(self, company: Company, since: date) -> tuple[PriceObservation, ...]:
         symbol = self.symbol(company)
-        rows = self._get(f"eod/{symbol}", {"from": since.isoformat(), "period": "d"})
+        path = f"eod/{symbol}"
+        rows = self._get(path, {"from": since.isoformat(), "period": "d"})
         fetched = datetime.now(tz=UTC)
-        observations = [
-            PriceObservation(
-                company_id=company.id,
-                listing=company.listing,
-                date=date.fromisoformat(str(row["date"])),
-                close=Money(amount=_decimal(row["close"]), currency=company.currency),
-                open=_money(row.get("open"), company),
-                high=_money(row.get("high"), company),
-                low=_money(row.get("low"), company),
-                volume=_optional_decimal(row.get("volume")),
-                vendor_adjusted_close=_money(row.get("adjusted_close"), company),
-                source=f"{self.name}:{symbol}",
-                retrieved_at=fetched,
-            )
-            for row in rows
-        ]
+        with _reading(path):
+            observations = [
+                PriceObservation(
+                    company_id=company.id,
+                    listing=company.listing,
+                    date=date.fromisoformat(str(row["date"])),
+                    close=Money(amount=_decimal(row["close"]), currency=company.currency),
+                    open=_money(row.get("open"), company),
+                    high=_money(row.get("high"), company),
+                    low=_money(row.get("low"), company),
+                    volume=_optional_decimal(row.get("volume")),
+                    vendor_adjusted_close=_money(row.get("adjusted_close"), company),
+                    source=f"{self.name}:{symbol}",
+                    retrieved_at=fetched,
+                )
+                for row in rows
+            ]
         observations.sort(key=lambda o: o.date)
         return tuple(observations)
 
@@ -87,38 +91,42 @@ class Eodhd:
         symbol = self.symbol(company)
         fetched = datetime.now(tz=UTC)
         actions: list[CorporateAction] = []
-        for row in self._get(f"div/{symbol}", {"from": since.isoformat()}):
-            actions.append(
-                CorporateAction(
-                    company_id=company.id,
-                    kind=ActionKind.DIVIDEND,
-                    ex_date=date.fromisoformat(str(row["date"])),
-                    record_date=_date(row.get("recordDate")),
-                    pay_date=_date(row.get("paymentDate")),
-                    amount=Money(
-                        amount=_decimal(row["value"]),
-                        currency=type(company.currency)(
-                            str(row.get("currency", company.currency.value)).upper()
+        dividends = self._get(f"div/{symbol}", {"from": since.isoformat()})
+        with _reading(f"div/{symbol}"):
+            for row in dividends:
+                actions.append(
+                    CorporateAction(
+                        company_id=company.id,
+                        kind=ActionKind.DIVIDEND,
+                        ex_date=date.fromisoformat(str(row["date"])),
+                        record_date=_date(row.get("recordDate")),
+                        pay_date=_date(row.get("paymentDate")),
+                        amount=Money(
+                            amount=_decimal(row["value"]),
+                            currency=type(company.currency)(
+                                str(row.get("currency", company.currency.value)).upper()
+                            ),
                         ),
-                    ),
-                    source=f"{self.name}:{symbol}",
-                    retrieved_at=fetched,
+                        source=f"{self.name}:{symbol}",
+                        retrieved_at=fetched,
+                    )
                 )
-            )
-        for row in self._get(f"splits/{symbol}", {"from": since.isoformat()}):
-            new, old = str(row["split"]).split("/")
-            ratio = Fraction(Decimal(new)) / Fraction(Decimal(old))
-            actions.append(
-                CorporateAction(
-                    company_id=company.id,
-                    kind=ActionKind.SPLIT if ratio > 1 else ActionKind.REVERSE_SPLIT,
-                    ex_date=date.fromisoformat(str(row["date"])),
-                    new_shares=ratio.numerator,
-                    old_shares=ratio.denominator,
-                    source=f"{self.name}:{symbol}",
-                    retrieved_at=fetched,
+        splits = self._get(f"splits/{symbol}", {"from": since.isoformat()})
+        with _reading(f"splits/{symbol}"):
+            for row in splits:
+                new, old = str(row["split"]).split("/")
+                ratio = Fraction(Decimal(new)) / Fraction(Decimal(old))
+                actions.append(
+                    CorporateAction(
+                        company_id=company.id,
+                        kind=ActionKind.SPLIT if ratio > 1 else ActionKind.REVERSE_SPLIT,
+                        ex_date=date.fromisoformat(str(row["date"])),
+                        new_shares=ratio.numerator,
+                        old_shares=ratio.denominator,
+                        source=f"{self.name}:{symbol}",
+                        retrieved_at=fetched,
+                    )
                 )
-            )
         actions.sort(key=lambda a: a.ex_date)
         return tuple(actions)
 
@@ -148,6 +156,17 @@ class Eodhd:
             msg = f"{path}: expected a list, got {type(data).__name__}"
             raise FetchError(msg)
         return [row for row in data if isinstance(row, dict)]
+
+
+@contextmanager
+def _reading(path: str) -> Iterator[None]:
+    """Turn a row EODHD served in an unexpected shape into a ``FetchError`` naming the
+    endpoint, so a caller falls back as it would for a failed request."""
+    try:
+        yield
+    except (KeyError, ValueError, TypeError, ArithmeticError) as error:
+        msg = f"{path}: a row cannot be read ({type(error).__name__}: {error})"
+        raise FetchError(msg) from error
 
 
 def _decimal(value: object) -> Decimal:

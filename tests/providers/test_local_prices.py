@@ -113,6 +113,15 @@ def test_an_unknown_currency_is_refused(tmp_path: Path, company: Company) -> Non
         LocalPrices(write(tmp_path, text)).latest_close(company, date(2026, 3, 20))
 
 
+@pytest.mark.parametrize("close", ["22,10", "CHF 22.10", "", "NaN", "Infinity"])
+def test_a_close_that_is_not_a_number_is_refused(
+    tmp_path: Path, company: Company, close: str
+) -> None:
+    text = PRICES.replace('close = "42.50"', f'close = "{close}"')
+    with pytest.raises(LocalPricesError, match=r"prices\.toml: price 2 \(acme, 2026-03-13\)"):
+        LocalPrices(write(tmp_path, text)).latest_close(company, date(2026, 3, 11))
+
+
 def test_two_closes_for_one_day_are_refused(tmp_path: Path, company: Company) -> None:
     text = PRICES + '\n[[price]]\ncompany = "acme"\ndate = 2026-03-13\nclose = "43.00"\n'
     text += 'currency = "CHF"\nsource = "a second opinion"\n'

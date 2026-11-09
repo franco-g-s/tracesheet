@@ -295,17 +295,18 @@ CONVENTIONS: tuple[tuple[str, str], ...] = (
     (
         "Invested capital",
         "Total equity + financial debt + lease liabilities − cash and equivalents. Financial "
-        "debt is the filed total, or else current plus non-current borrowings.",
+        "debt is the filed total, or else current plus non-current borrowings. Both halves "
+        "must be filed: a half the company has none of counts as zero only where the record "
+        "declares it not printed; a half simply missing gives n/m.",
     ),
     (
         "Lease liabilities",
-        "The filed total, or else current plus non-current lease liabilities. Before IFRS 16 "
-        "(periods beginning before 1 January 2019) leases were not on the balance sheet: where "
-        "none is filed, they count as zero, and the trail says so. That rule is applied to "
-        "every company whatever its accounting standard, so for a company reporting under "
-        "another standard, a missing lease line before 2019 also counts as zero. The first "
-        "IFRS 16 year averages an opening balance without leases with a closing balance that "
-        "has them.",
+        "The filed total, or else current plus non-current lease liabilities. A lease line "
+        "counts as zero only where the record declares it not printed, so the zero is filed "
+        "with its page; a lease line simply missing gives n/m, whatever the year. Before IFRS "
+        "16 (periods beginning before 1 January 2019) the balance sheet carried finance "
+        "leases only, and those are what such years show. The first IFRS 16 year averages an "
+        "opening balance with finance leases only against a closing balance with all leases.",
     ),
     (
         "Averages",
@@ -319,9 +320,12 @@ CONVENTIONS: tuple[tuple[str, str], ...] = (
     ),
     (
         "Shares",
-        "Per-share figures use the diluted weighted average for the year. Book value per "
-        "share and market capitalisation use year-end shares outstanding, net of treasury "
-        "shares. Every per-share figure and count is on one share basis across the years.",
+        "Per-share flow figures (diluted EPS and FCF per share) use the diluted weighted "
+        "average for the year. Book value per share is the exception: like market "
+        "capitalisation, it uses year-end shares outstanding, net of treasury shares, a "
+        "balance-sheet point in time, which keeps price-to-book consistent with market "
+        "capitalisation. Every per-share figure and count is on one share basis across the "
+        "years.",
     ),
     (
         "Dividends",

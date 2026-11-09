@@ -67,6 +67,69 @@ def test_load_reports_a_record_that_does_not_tie(
     assert "fy2025.toml" in capsys.readouterr().out
 
 
+def _copy_acme(acme_root: Path, tmp_path: Path, edit: dict[str, tuple[str, str]]) -> Path:
+    """A copy of the Acme root with ``edit[file] = (old, new)`` applied once per file."""
+    root = tmp_path / "companies"
+    (root / "acme").mkdir(parents=True)
+    for source in (acme_root / "acme").iterdir():
+        text = source.read_text(encoding="utf-8")
+        if source.name in edit:
+            old, new = edit[source.name]
+            assert old in text
+            text = text.replace(old, new, 1)
+        (root / "acme" / source.name).write_text(text, encoding="utf-8")
+    return root
+
+
+def test_load_checks_the_actions(acme_root: Path, capsys: pytest.CaptureFixture[str]) -> None:
+    assert main(["load", "acme", "--root", str(acme_root)]) == 0
+    assert "actions.toml: 1 action, confirmed and applied" in capsys.readouterr().out
+
+
+def test_load_reports_actions_that_cite_an_unknown_document(
+    acme_root: Path, tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    root = _copy_acme(acme_root, tmp_path, {"actions.toml": ('sha256 = "1657', 'sha256 = "0657')})
+    assert main(["load", "acme", "--root", str(root)]) == 1
+    captured = capsys.readouterr()
+    assert "FAILS" in captured.out and "actions.toml" in captured.out
+    assert "Traceback" not in captured.out + captured.err
+
+
+def test_load_reports_records_that_cannot_be_normalized(
+    acme_root: Path, tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    # A record in a currency the company does not report in, with no rates to convert it.
+    root = _copy_acme(
+        acme_root, tmp_path, {"fy2025.toml": ('currency = "CHF"', 'currency = "EUR"')}
+    )
+    assert main(["load", "acme", "--root", str(root)]) == 1
+    out = capsys.readouterr().out
+    assert "FAILS" in out and "EUR" in out
+
+
+def test_a_malformed_company_file_is_reported_as_it_is(
+    acme_root: Path, tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    root = _copy_acme(acme_root, tmp_path, {"company.toml": ('id = "acme"', 'id = "acne"')})
+    for command in ("load", "evaluate", "render"):
+        assert (
+            main(
+                [
+                    command,
+                    "acme",
+                    "--root",
+                    str(root),
+                    *(["--no-price"] if command != "load" else []),
+                ]
+            )
+            == 2
+        )
+    err = capsys.readouterr().err
+    assert "says id = 'acne'" in err
+    assert "no company" not in err
+
+
 def test_unknown_company_exits_2_with_a_plain_message(
     acme_root: Path, capsys: pytest.CaptureFixture[str]
 ) -> None:

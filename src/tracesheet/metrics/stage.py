@@ -13,7 +13,6 @@ clamped or imputed.
 
 from collections.abc import Callable, Mapping
 from dataclasses import dataclass
-from datetime import UTC, date, datetime, time
 from decimal import Decimal
 from functools import wraps
 
@@ -26,17 +25,12 @@ from tracesheet.model import (
     PeriodFigures,
     ShareCount,
     Traced,
-    Unit,
     readable_name,
 )
 from tracesheet.model.metrics import Metrics, MetricValue, NotMeaningful, YearMetrics
-from tracesheet.model.traced import growth_rate, mean, observed, percent_change
+from tracesheet.model.traced import growth_rate, mean, percent_change
 
 L = LineItemName
-
-IFRS_16_EFFECTIVE = date(2019, 1, 1)
-"""IFRS 16 put leases on the balance sheet for periods beginning on or after this date. A
-period that began earlier, with no lease line filed, recognised no lease liability."""
 
 
 class _Undefined(Exception):  # noqa: N818 - a control-flow signal, caught inside this module
@@ -106,7 +100,9 @@ def _financial_debt(_: Context, figures: PeriodFigures) -> Traced:
     raise _Undefined("financial debt not filed")
 
 
-def _lease_liabilities(ctx: Context, figures: PeriodFigures) -> Traced:
+def _lease_liabilities(_: Context, figures: PeriodFigures) -> Traced:
+    """The filed total, or both halves. A half the company has none of counts as zero only
+    when the record declares it not printed, which arrives as a filed zero with its page."""
     filed = figures.line(L.LEASE_LIABILITIES)
     if filed is not None:
         return filed
@@ -115,16 +111,6 @@ def _lease_liabilities(ctx: Context, figures: PeriodFigures) -> Traced:
     current = figures.line(L.CURRENT_LEASE_LIABILITIES)
     if non_current is not None and current is not None:
         return non_current + current
-    if non_current is None and current is None and figures.period.start < IFRS_16_EFFECTIVE:
-        return observed(
-            Money(amount=Decimal(0), currency=ctx.currency),
-            Unit.AMOUNT,
-            what="no lease liability recognised before IFRS 16",
-            source="accounting standard",
-            # The balance-sheet date, so the leaf, and every id above it, is the same on
-            # every run.
-            observed_at=datetime.combine(figures.period.end, time(), tzinfo=UTC),
-        )
     raise _Undefined("lease liabilities not filed")
 
 

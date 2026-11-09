@@ -29,8 +29,9 @@ class Relationship(Model):
     subtract: tuple[LineItemName, ...] = ()
     absent_means_none: bool = False
     """When solving for the total, a part the report does not print is taken as none, and
-    the calculation says so. True only for balance-sheet sums where an unprinted part means
-    the company has none of it — no long-term borrowings, no leases."""
+    the calculation says so. Never set on a sum a measure reads, such as debt or leases: there
+    a part the company has none of must be declared not printed in the record, so that the
+    zero is filed, with its page, rather than assumed."""
     derive: bool = True
     """False for a relationship that is a sound check but not a safe recipe."""
     note: str
@@ -88,13 +89,11 @@ RELATIONSHIPS: tuple[Relationship, ...] = (
     Relationship(
         total=L.LEASE_LIABILITIES,
         add=(L.NON_CURRENT_LEASE_LIABILITIES, L.CURRENT_LEASE_LIABILITIES),
-        absent_means_none=True,
         note="lease liabilities, long-term and short-term",
     ),
     Relationship(
         total=L.FINANCIAL_DEBT,
         add=(L.NON_CURRENT_BORROWINGS, L.CURRENT_BORROWINGS),
-        absent_means_none=True,
         note="borrowings, long-term and short-term, leases excluded",
     ),
     Relationship(

@@ -50,7 +50,7 @@ uv run tracesheet render kuehne-nagel   # writes examples/kuehne-nagel.html
 Other commands:
 
 ```sh
-uv run tracesheet load kuehne-nagel       # check every filing ties out
+uv run tracesheet load kuehne-nagel       # check every filing ties out and the actions apply
 uv run tracesheet evaluate kuehne-nagel   # store an immutable evaluation under data/evaluations/
 uv run tracesheet render kuehne-nagel --as-of 2015-12-31 --out kn-2015.html   # as it could have been read then
 ```
