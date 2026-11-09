@@ -29,6 +29,7 @@ from tracesheet.model.market import (
     SharesObservation,
 )
 from tracesheet.model.money import Currency, CurrencyMismatchError, Money, ShareCount
+from tracesheet.model.normalized import Adjustment, AdjustmentKind, Normalized, PeriodFigures
 from tracesheet.model.relationships import RELATIONSHIPS, Relationship
 from tracesheet.model.traced import Filed, Observed, Traced, Transform
 from tracesheet.model.units import ExchangeRate, ProvenanceError, Unit, UnitMismatchError
@@ -42,6 +43,8 @@ __all__ = [
     "STATEMENT",
     "ActionDocument",
     "ActionKind",
+    "Adjustment",
+    "AdjustmentKind",
     "AuditOpinion",
     "Company",
     "CompanyId",
@@ -59,7 +62,9 @@ __all__ = [
     "Model",
     "Money",
     "MonthDay",
+    "Normalized",
     "Observed",
+    "PeriodFigures",
     "PeriodKind",
     "PriceObservation",
     "ProvenanceError",
