@@ -62,7 +62,7 @@ ignore = [
 "scripts/**" = ["T201"]   # a script's printed lines are its report
 # Formulas and figures are reader-facing text, typeset with true minus, multiplication and
 # dash signs.
-"src/tracesheet/metrics/catalogue.py" = ["RUF001"]
+"src/tracesheet/metrics/{catalogue,docs}.py" = ["RUF001"]
 "src/tracesheet/report/*.py" = ["RUF001", "RUF002"]
 
 [tool.mypy]

@@ -336,8 +336,10 @@ CONVENTIONS: tuple[tuple[str, str], ...] = (
     ),
     (
         "Currency",
-        "Figures stay in the reporting currency. If the share price is in another currency, it "
-        "is converted at the ECB rate on the price date, and the rate is shown.",
+        "Figures stay in the reporting currency. No exchange rate is fetched: when the share "
+        "price is in another currency, the multiples are n/m (no exchange rate). A caller may "
+        "supply a rate from the price's currency into the reporting currency; the price is "
+        "then converted at it, and the rate is shown and sits in every multiple's trail.",
     ),
     (
         "Growth",
