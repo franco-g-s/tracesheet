@@ -206,6 +206,13 @@ CATALOGUE: tuple[MetricDef, ...] = (
         "The ordinary dividend for the fiscal year, as proposed",
     ),
     MetricDef(
+        "special_dps",
+        "Special dividend per share",
+        Section.SHAREHOLDERS,
+        Kind.PER_SHARE,
+        "An extraordinary dividend for the fiscal year, printed apart from the ordinary one",
+    ),
+    MetricDef(
         "payout_ratio",
         "Payout ratio",
         Section.SHAREHOLDERS,
@@ -266,8 +273,10 @@ CONVENTIONS: tuple[tuple[str, str], ...] = (
         "Capex",
         "Purchases of property, plant and equipment plus purchases of intangible assets, both "
         "from the cash-flow statement: the common analyst definition. Both are held as "
-        "positive outflows. Intangible purchases count as zero only where the report is "
-        "recorded as printing no such line; otherwise capex is n/m. Free cash flow = "
+        "positive outflows; a purchase line filed as negative gives n/m rather than being "
+        "flipped. Intangible purchases count as zero only where the report prints no such "
+        "line, or prints one line for both, which is then taken whole; otherwise capex is "
+        "n/m. Free cash flow = "
         "operating cash flow − capex, used consistently in FCF growth, conversion, per share "
         "and yield.",
     ),
@@ -291,9 +300,12 @@ CONVENTIONS: tuple[tuple[str, str], ...] = (
     (
         "Lease liabilities",
         "The filed total, or else current plus non-current lease liabilities. Before IFRS 16 "
-        "(fiscal years before 2019) leases were not on the balance sheet: where none is filed, "
-        "they count as zero, and the trail says so. The first IFRS 16 year therefore averages "
-        "an opening balance without leases with a closing balance that has them.",
+        "(periods beginning before 1 January 2019) leases were not on the balance sheet: where "
+        "none is filed, they count as zero, and the trail says so. That rule is applied to "
+        "every company whatever its accounting standard, so for a company reporting under "
+        "another standard, a missing lease line before 2019 also counts as zero. The first "
+        "IFRS 16 year averages an opening balance without leases with a closing balance that "
+        "has them.",
     ),
     (
         "Averages",
@@ -314,8 +326,8 @@ CONVENTIONS: tuple[tuple[str, str], ...] = (
     (
         "Dividends",
         "Dividend per share is the ordinary dividend for the fiscal year, as proposed. Special "
-        "dividends are shown separately. Payout ratio = ordinary dividend per share ÷ diluted "
-        "EPS. Buybacks are the cash-flow line.",
+        "dividends are shown separately, as special dividend per share. Payout ratio = "
+        "ordinary dividend per share ÷ diluted EPS. Buybacks are the cash-flow line.",
     ),
     (
         "EV",

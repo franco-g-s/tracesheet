@@ -28,16 +28,18 @@ L = LineItemName
 MakeNormalized = Callable[[dict[int, dict[LineItemName, str]]], Normalized]
 
 
-def leaf(name: LineItemName, text: str) -> Traced:
-    """An observed CHF leaf for one line, so the trail stands without a filing."""
+def leaf(name: LineItemName, text: str, year: int) -> Traced:
+    """An observed CHF leaf for one line of one year, so the trail stands without a filing.
+    ``what`` names the line and the year, so equal figures in two years stay two leaves."""
+    what = f"{name.value} FY{year}"
     when = datetime(2026, 1, 1, tzinfo=UTC)
     if name in COUNT_LINES:
         return observed(
-            ShareCount(count=Decimal(text)), Unit.COUNT, what=name, source="test", observed_at=when
+            ShareCount(count=Decimal(text)), Unit.COUNT, what=what, source="test", observed_at=when
         )
     unit = Unit.PER_SHARE if name in PER_SHARE_LINES else Unit.AMOUNT
     return observed(
-        Money.parse(text, Currency.CHF), unit, what=name, source="test", observed_at=when
+        Money.parse(text, Currency.CHF), unit, what=what, source="test", observed_at=when
     )
 
 
@@ -48,7 +50,7 @@ def make_normalized(years: dict[int, dict[LineItemName, str]]) -> Normalized:
             period=FiscalPeriod(
                 start=date(year, 1, 1), end=date(year, 12, 31), kind=PeriodKind.ANNUAL
             ),
-            figures={name: leaf(name, text) for name, text in lines.items()},
+            figures={name: leaf(name, text, year) for name, text in lines.items()},
         )
         for year, lines in sorted(years.items())
     )
@@ -100,6 +102,7 @@ FY2025: dict[LineItemName, str] = {
     L.NET_INCOME_ATTRIBUTABLE_TO_OWNERS: "115",
     L.EPS_DILUTED: "1.25",
     L.DIVIDEND_PER_SHARE: "0.50",
+    L.SPECIAL_DIVIDEND_PER_SHARE: "0.20",
     L.OPERATING_CASH_FLOW: "500",
     L.CAPITAL_EXPENDITURE: "120",
     L.INTANGIBLE_CAPITAL_EXPENDITURE: "30",

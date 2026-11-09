@@ -1,6 +1,6 @@
 """The metrics stage: textbook measures from normalized figures, each traced or marked n/m."""
 
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 from decimal import Decimal
 from pathlib import Path
 
@@ -12,11 +12,13 @@ from tracesheet.model import (
     CompanyId,
     Currency,
     Filed,
+    FiscalPeriod,
     LineItemName,
     Money,
     Normalized,
     Observed,
     PeriodFigures,
+    PeriodKind,
     RecordId,
     RecordRef,
     ShareCount,
@@ -28,7 +30,7 @@ from tracesheet.model.metrics import MetricValue, NotMeaningful
 from tracesheet.normalize import normalize
 from tracesheet.providers import HandLoaded
 
-from .conftest import FY2024, FY2025, MakeNormalized
+from .conftest import FY2024, FY2025, MakeNormalized, leaf
 
 L = LineItemName
 
@@ -72,11 +74,32 @@ def test_loss_year_tax_rate_is_not_meaningful(loss_year: Normalized) -> None:
     assert isinstance(compute_metrics(loss_year).years[-1].values["roic"], NotMeaningful)
 
 
-def test_every_value_traces_to_filed_or_observed(n2: Normalized) -> None:
+def _whats(v: MetricValue) -> set[str]:
+    assert isinstance(v, Traced), v
+    return {o.what for o in v.sources() if isinstance(o, Observed)}
+
+
+def test_no_constant_enters_a_trail(n2: Normalized) -> None:
+    # Every leaf under every value is one of the fixture's lines: nothing minted on the way.
     for y in compute_metrics(n2).years:
         for v in y.values.values():
-            if not isinstance(v, NotMeaningful):
+            if isinstance(v, Traced):
                 assert v.sources()
+                assert all(isinstance(o, Observed) and o.source == "test" for o in v.sources())
+
+
+def test_capex_traces_to_exactly_the_two_purchase_lines(n2: Normalized) -> None:
+    capex = compute_metrics(n2).years[-1].values["capex"]
+    assert _whats(capex) == {"capital_expenditure FY2025", "intangible_capital_expenditure FY2025"}
+
+
+def test_roic_traces_to_both_balance_sheets(n2: Normalized) -> None:
+    whats = _whats(compute_metrics(n2).years[-1].values["roic"])
+    for year in (2024, 2025):
+        assert f"total_equity FY{year}" in whats
+        assert f"cash_and_equivalents FY{year}" in whats
+    assert {"lease_liabilities FY2024", "financial_debt FY2024"} <= whats
+    assert {"non_current_borrowings FY2025", "current_lease_liabilities FY2025"} <= whats
 
 
 def test_catalogue_keys_unique_and_every_key_computed(n2: Normalized) -> None:
@@ -115,6 +138,7 @@ def test_every_catalogue_value_of_the_second_year(n2: Normalized) -> None:
         "equity_ratio": Decimal(1000) / Decimal(2200),
         "current_ratio": Decimal("1.25"),
         "dps": Decimal("0.50"),
+        "special_dps": Decimal("0.20"),
         "payout_ratio": Decimal("0.4"),
         "buybacks": Decimal(25),
         "diluted_share_change": Decimal("-0.04"),
@@ -174,6 +198,29 @@ def test_a_missing_input_says_which_line(make: MakeNormalized) -> None:
     assert reason(y["gross_margin"]) == "gross profit not filed"
 
 
+def test_special_dividend_absent_is_not_meaningful(make: MakeNormalized) -> None:
+    y = compute_metrics(make({2024: FY2024})).years[-1].values
+    assert reason(y["special_dps"]) == "special_dividend_per_share not filed"
+    no_dividend = _without(FY2024, L.DIVIDEND_PER_SHARE)
+    y = compute_metrics(make({2024: no_dividend})).years[-1].values
+    assert reason(y["special_dps"]) == "no dividend filed"
+
+
+@pytest.mark.parametrize(
+    ("line", "key", "words"),
+    [
+        (L.CAPITAL_EXPENDITURE, "capex", "capital expenditure"),
+        (L.INTANGIBLE_CAPITAL_EXPENDITURE, "fcf", "intangible capital expenditure"),
+        (L.SHARE_REPURCHASES, "buybacks", "share repurchases"),
+    ],
+)
+def test_a_negative_outflow_is_refused_not_flipped(
+    make: MakeNormalized, line: LineItemName, key: str, words: str
+) -> None:
+    y = compute_metrics(make({2025: {**FY2025, line: "-5"}})).years[-1].values
+    assert reason(y[key]) == f"{words} filed as negative; expected an outflow"
+
+
 def test_missing_intangible_purchases_are_not_assumed_zero(make: MakeNormalized) -> None:
     lines = _without(FY2025, L.INTANGIBLE_CAPITAL_EXPENDITURE)
     y = compute_metrics(make({2025: lines})).years[-1].values
@@ -228,6 +275,29 @@ def test_leases_count_zero_before_ifrs_16_and_say_so(make: MakeNormalized) -> No
     assert len(notes) == 2  # one zero leaf per balance sheet averaged
     assert all(o.what == "no lease liability recognised before IFRS 16" for o in notes)
     assert all(o.source == "accounting standard" for o in notes)
+
+
+def test_a_year_that_began_before_ifrs_16_counts_leases_as_zero() -> None:
+    # A June year end: FY2019 began on 1 July 2018, before IFRS 16 took effect.
+    def block(start: date, end: date, lines: dict[LineItemName, str]) -> PeriodFigures:
+        figures = {name: leaf(name, text, end.year) for name, text in lines.items()}
+        return PeriodFigures(
+            period=FiscalPeriod(start=start, end=end, kind=PeriodKind.ANNUAL), figures=figures
+        )
+
+    n = Normalized(
+        company_id=CompanyId("acme"),
+        as_of=datetime(2026, 6, 30, tzinfo=UTC),
+        currency=Currency.CHF,
+        years=(
+            block(date(2018, 7, 1), date(2019, 6, 30), _no_leases(FY2025)),
+            block(date(2019, 7, 1), date(2020, 6, 30), _no_leases(FY2025)),
+        ),
+        used=(),
+    )
+    fy2019, fy2020 = (y.values for y in compute_metrics(n).years)
+    assert value(fy2019["net_debt"]) == Decimal(50)
+    assert reason(fy2020["net_debt"]) == "lease liabilities not filed"
 
 
 def test_leases_missing_after_ifrs_16_are_not_meaningful(make: MakeNormalized) -> None:

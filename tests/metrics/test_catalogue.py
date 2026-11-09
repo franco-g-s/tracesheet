@@ -34,6 +34,7 @@ KEYS = [
     "equity_ratio",
     "current_ratio",
     "dps",
+    "special_dps",
     "payout_ratio",
     "buybacks",
     "diluted_share_change",

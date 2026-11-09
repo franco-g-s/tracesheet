@@ -13,7 +13,7 @@ clamped or imputed.
 
 from collections.abc import Callable, Mapping
 from dataclasses import dataclass
-from datetime import UTC, datetime, time
+from datetime import UTC, date, datetime, time
 from decimal import Decimal
 from functools import wraps
 
@@ -33,9 +33,9 @@ from tracesheet.model.traced import growth_rate, mean, observed, percent_change
 
 L = LineItemName
 
-IFRS_16_FIRST_YEAR = 2019
-"""IFRS 16 put leases on the balance sheet for periods beginning on or after 1 January 2019.
-A fiscal year before this one with no lease line filed recognised no lease liability."""
+IFRS_16_EFFECTIVE = date(2019, 1, 1)
+"""IFRS 16 put leases on the balance sheet for periods beginning on or after this date. A
+period that began earlier, with no lease line filed, recognised no lease liability."""
 
 
 class _Undefined(Exception):  # noqa: N818 - a control-flow signal, caught inside this module
@@ -97,6 +97,7 @@ def _financial_debt(_: Context, figures: PeriodFigures) -> Traced:
     filed = figures.line(L.FINANCIAL_DEBT)
     if filed is not None:
         return filed
+    # Normalization usually solves the total from the pair; this covers a series without it.
     non_current = figures.line(L.NON_CURRENT_BORROWINGS)
     current = figures.line(L.CURRENT_BORROWINGS)
     if non_current is not None and current is not None:
@@ -108,11 +109,12 @@ def _lease_liabilities(ctx: Context, figures: PeriodFigures) -> Traced:
     filed = figures.line(L.LEASE_LIABILITIES)
     if filed is not None:
         return filed
+    # Normalization usually solves the total from the pair; this covers a series without it.
     non_current = figures.line(L.NON_CURRENT_LEASE_LIABILITIES)
     current = figures.line(L.CURRENT_LEASE_LIABILITIES)
     if non_current is not None and current is not None:
         return non_current + current
-    if non_current is None and current is None and figures.fiscal_year < IFRS_16_FIRST_YEAR:
+    if non_current is None and current is None and figures.period.start < IFRS_16_EFFECTIVE:
         return observed(
             Money(amount=Decimal(0), currency=ctx.currency),
             Unit.AMOUNT,
@@ -145,13 +147,24 @@ def _total_assets(_: Context, figures: PeriodFigures) -> Traced:
     return _line(figures, L.TOTAL_ASSETS)
 
 
+def _outflow(figures: PeriodFigures, name: LineItemName, missing: str | None = None) -> Traced:
+    """A cash outflow, held as a positive magnitude. A negative one is refused rather than
+    flipped: it means the line was typed against the convention, and the page should be read."""
+    line = figures.line(name)
+    if line is None:
+        raise _Undefined(missing or f"{name.value.replace('_', ' ')} not filed")
+    if _magnitude(line) < 0:
+        raise _Undefined(f"{name.value.replace('_', ' ')} filed as negative; expected an outflow")
+    return line
+
+
 def _capex_at(figures: PeriodFigures) -> Traced:
-    """Both purchase lines, each held as a positive outflow. Intangible purchases count as
-    zero only when the record declares the line not printed: that arrives as a filed zero."""
-    intangible = figures.line(L.INTANGIBLE_CAPITAL_EXPENDITURE)
-    if intangible is None:
-        raise _Undefined("intangible purchases not filed")
-    return _line(figures, L.CAPITAL_EXPENDITURE) + intangible
+    """Both purchase lines, each a positive outflow. Intangible purchases count as zero only
+    when the record declares the line not printed: that arrives as a filed zero."""
+    intangible = _outflow(
+        figures, L.INTANGIBLE_CAPITAL_EXPENDITURE, missing="intangible purchases not filed"
+    )
+    return _outflow(figures, L.CAPITAL_EXPENDITURE) + intangible
 
 
 def _fcf_at(figures: PeriodFigures) -> Traced:
@@ -274,6 +287,21 @@ def _diluted_share_change(ctx: Context) -> Traced:
 
 
 @_measure
+def _special_dps(ctx: Context) -> Traced:
+    special = ctx.current.line(L.SPECIAL_DIVIDEND_PER_SHARE)
+    if special is not None:
+        return special
+    if ctx.current.line(L.DIVIDEND_PER_SHARE) is None:
+        raise _Undefined("no dividend filed")
+    raise _Undefined("special_dividend_per_share not filed")
+
+
+@_measure
+def _buybacks(ctx: Context) -> Traced:
+    return _outflow(ctx.current, L.SHARE_REPURCHASES)
+
+
+@_measure
 def _fcf_per_share(ctx: Context) -> Traced:
     shares = _line(ctx.current, L.SHARES_DILUTED)
     return _ratio(_fcf_at(ctx.current), shares, "diluted shares")
@@ -307,8 +335,9 @@ MEASURES: Mapping[str, Measure] = {
     "equity_ratio": _equity_ratio,
     "current_ratio": _current_ratio,
     "dps": _filed(L.DIVIDEND_PER_SHARE),
+    "special_dps": _special_dps,
     "payout_ratio": _payout_ratio,
-    "buybacks": _filed(L.SHARE_REPURCHASES),
+    "buybacks": _buybacks,
     "diluted_share_change": _diluted_share_change,
     "eps_diluted": _filed(L.EPS_DILUTED),
     "fcf_per_share": _fcf_per_share,
