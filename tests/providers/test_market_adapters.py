@@ -118,6 +118,38 @@ def test_a_body_that_is_not_a_list_is_refused(company: Company) -> None:
         Eodhd(fetcher, token="t").prices(company, date(2026, 3, 1))
 
 
+@pytest.mark.parametrize(
+    "row",
+    [
+        {"close": 41.0},  # no date
+        {"date": "2026-03-12"},  # no close
+        {"date": "12.03.2026", "close": 41.0},
+        {"date": "2026-03-12", "close": "n/a"},
+    ],
+)
+def test_a_malformed_price_row_is_a_fetch_error(company: Company, row: object) -> None:
+    fetcher = FakeFetcher({"/eod/": [row]})
+    with pytest.raises(FetchError, match="eod/"):
+        Eodhd(fetcher, token="t").prices(company, date(2026, 3, 1))
+
+
+@pytest.mark.parametrize(
+    ("dividends", "splits"),
+    [
+        ([{"date": "2025-05-06"}], []),  # no value
+        ([{"date": "2025-05-06", "value": 1.5, "currency": "XYZ"}], []),
+        ([], [{"date": "2025-06-02", "split": "2:1"}]),
+        ([], [{"date": "2025-06-02", "split": "2/0"}]),
+    ],
+)
+def test_a_malformed_action_row_is_a_fetch_error(
+    company: Company, dividends: object, splits: object
+) -> None:
+    fetcher = FakeFetcher({"/div/": dividends, "/splits/": splits})
+    with pytest.raises(FetchError, match=r"(div|splits)/"):
+        Eodhd(fetcher, token="t").corporate_actions(company, date(2025, 1, 1))
+
+
 def test_corporate_actions_are_dividends_and_splits(company: Company) -> None:
     fetcher = FakeFetcher(
         {
