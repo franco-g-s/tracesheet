@@ -29,9 +29,11 @@ from tracesheet.model import (
     Multiples,
     NotMeaningful,
     Observed,
+    ProvenanceError,
     Traced,
 )
 from tracesheet.multiples import MULTIPLE_KEYS
+from tracesheet.providers.documents import Document, DocumentKind
 from tracesheet.report import format as fmt
 from tracesheet.report.page import CagrTable, Cell, Page, Row, SourceEntry, Table
 
@@ -68,11 +70,26 @@ class SourceIdCollisionError(ValueError):
     """Two different leaves share the same shortened fingerprint."""
 
 
+_TITLES: Mapping[DocumentKind, str] = {
+    DocumentKind.ANNUAL_REPORT: "Annual report",
+    DocumentKind.HALF_YEAR_REPORT: "Half-year report",
+    DocumentKind.FINANCIAL_STATEMENTS: "Financial statements",
+    DocumentKind.STATBOOK: "Key figures",
+    DocumentKind.OFFICIAL_NOTICE: "Official notice",
+}
+
+
+def document_title(document: Document) -> str:
+    """What a reader would call the document: "Annual report 2025", "Half-year report 2025"."""
+    return f"{_TITLES[document.kind]} {document.period.fiscal_year}"
+
+
 class _Sources:
     """Collects every leaf under the page's figures, once each."""
 
-    def __init__(self) -> None:
+    def __init__(self, documents: Mapping[str, Document]) -> None:
         self.leaves: dict[str, Traced] = {}
+        self.documents = documents
 
     def ids(self, figure: Traced) -> tuple[str, ...]:
         found: list[str] = []
@@ -87,7 +104,7 @@ class _Sources:
         return tuple(found)
 
     def entries(self) -> tuple[SourceEntry, ...]:
-        entries = [_entry(short, leaf) for short, leaf in self.leaves.items()]
+        entries = [_entry(short, leaf, self.documents) for short, leaf in self.leaves.items()]
         filed = sorted(
             (e for e in entries if not e.observed),
             key=lambda e: (e.fiscal_year or 0, e.document, e.page or 0, e.line, e.id),
@@ -96,11 +113,17 @@ class _Sources:
         return (*filed, *observed)
 
 
-def build_page(evaluation: Evaluation) -> Page:
-    """Lay out one evaluation as a page. Reads the evaluation only; adds no figures."""
+def build_page(evaluation: Evaluation, documents: Mapping[str, Document] | None = None) -> Page:
+    """Lay out one evaluation as a page. Adds no figures.
+
+    ``documents`` maps a report's SHA-256 to its registry entry, as
+    ``tracesheet.providers.documents.documents_by_hash`` returns it. With it, every filed
+    source names the report it was read from and links to it; without it, a source names
+    the typed-in file the figure was entered in.
+    """
     company = evaluation.company
     currency = company.currency
-    sources = _Sources()
+    sources = _Sources(documents or {})
     years = tuple(y.fiscal_year for y in evaluation.metrics.years)
     by_year = [y.values for y in evaluation.metrics.years]
 
@@ -263,9 +286,11 @@ def _leaves(figure: Traced) -> Iterable[Traced]:
         yield from _leaves(node)
 
 
-def _entry(short: str, leaf: Traced) -> SourceEntry:
+def _entry(short: str, leaf: Traced, documents: Mapping[str, Document]) -> SourceEntry:
     origin = leaf.origin
     if isinstance(origin, Filed):
+        sha = origin.source.sha256
+        document = documents.get(sha) if sha is not None else None
         return SourceEntry(
             id=short,
             document=origin.source.reference,
@@ -273,12 +298,16 @@ def _entry(short: str, leaf: Traced) -> SourceEntry:
             quote=origin.label,
             line=origin.line_item.value,
             fiscal_year=origin.record.period.fiscal_year,
-            sha256=origin.source.sha256,
+            sha256=sha,
             dated=origin.record.filed_at.date(),
             note=origin.note,
             not_printed=bool(origin.not_printed),
+            title=None if document is None else document_title(document),
+            url=None if document is None else document.url,
         )
-    assert origin is not None
+    if not isinstance(origin, Observed):
+        msg = f"leaf {leaf.id} has no origin"
+        raise ProvenanceError(msg)
     return SourceEntry(
         id=short,
         document=origin.source,

@@ -274,7 +274,7 @@ def test_missing_shares_outstanding_carries_through() -> None:
 def test_missing_minorities_line_leaves_enterprise_value_nm() -> None:
     lines = without(L.NON_CONTROLLING_INTERESTS)
     m = run(lines)
-    assert reason(m.enterprise_value) == "non controlling interests not filed"
+    assert reason(m.enterprise_value) == "non-controlling interests not filed"
     assert isinstance(m.market_cap, Traced)
 
 

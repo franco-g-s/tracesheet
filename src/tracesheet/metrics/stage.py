@@ -27,6 +27,7 @@ from tracesheet.model import (
     ShareCount,
     Traced,
     Unit,
+    readable_name,
 )
 from tracesheet.model.metrics import Metrics, MetricValue, NotMeaningful, YearMetrics
 from tracesheet.model.traced import growth_rate, mean, observed, percent_change
@@ -72,7 +73,7 @@ def _magnitude(node: Traced) -> Decimal:
 def _line(figures: PeriodFigures, name: LineItemName) -> Traced:
     line = figures.line(name)
     if line is None:
-        raise _Undefined(f"{name.value.replace('_', ' ')} not filed")
+        raise _Undefined(f"{readable_name(name)} not filed")
     return line
 
 
@@ -152,9 +153,9 @@ def _outflow(figures: PeriodFigures, name: LineItemName, missing: str | None = N
     flipped: it means the line was typed against the convention, and the page should be read."""
     line = figures.line(name)
     if line is None:
-        raise _Undefined(missing or f"{name.value.replace('_', ' ')} not filed")
+        raise _Undefined(missing or f"{readable_name(name)} not filed")
     if _magnitude(line) < 0:
-        raise _Undefined(f"{name.value.replace('_', ' ')} filed as negative; expected an outflow")
+        raise _Undefined(f"{readable_name(name)} filed as negative; expected an outflow")
     return line
 
 
@@ -293,7 +294,7 @@ def _special_dps(ctx: Context) -> Traced:
         return special
     if ctx.current.line(L.DIVIDEND_PER_SHARE) is None:
         raise _Undefined("no dividend filed")
-    raise _Undefined("special_dividend_per_share not filed")
+    raise _Undefined(f"{readable_name(L.SPECIAL_DIVIDEND_PER_SHARE)} not filed")
 
 
 @_measure

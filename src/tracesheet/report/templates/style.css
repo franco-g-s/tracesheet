@@ -261,6 +261,23 @@ table { border-collapse: collapse; }
 
 .refs { display: none; }
 
+/* Without the script, a figure's further sources are listed under it by number. */
+.no-js .refs {
+  display: block;
+  margin-top: 2px;
+  font-size: 9px;
+  line-height: 1.25;
+  color: var(--muted);
+  white-space: normal;
+}
+
+.refs a { color: inherit; text-decoration: none; }
+.refs a + a::before { content: " "; }
+.no-js .grid .yr { white-space: normal; }
+
+.tie-note { display: block; margin-top: 6px; font: 12px/1.4 var(--sans); color: var(--muted); }
+.tie-list { margin: 2px 0 0; padding-left: 1.1em; font: 12px/1.4 var(--sans); }
+
 .nm {
   color: var(--muted);
   text-decoration: none;
@@ -297,10 +314,10 @@ table { border-collapse: collapse; }
 
 .source-group {
   break-inside: avoid;
-  margin-bottom: 8px;
+  margin-bottom: 28px;
 }
 
-#sources .source-group h3 { margin: 24px 0 2px; }
+#sources .source-group h3 { margin: 0 0 2px; padding-top: 4px; }
 
 .source-group .doc {
   margin-left: 10px;
@@ -450,6 +467,8 @@ table { border-collapse: collapse; }
   .grid tr, .sources tr, .conventions div { break-inside: avoid; }
   .grid tbody tr:hover td, .grid tbody tr:hover th { background: none; }
   .scroll { overflow: visible; }
+  .refs { display: block; font-size: 5pt; line-height: 1.2; color: var(--muted); }
+  .grid .yr { white-space: normal; }
   .sources { font-size: 8pt; }
   .colophon { padding: 12px 0 0; }
   a { color: inherit; text-decoration: none; }

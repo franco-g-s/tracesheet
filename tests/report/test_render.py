@@ -2,10 +2,13 @@
 
 import re
 from html.parser import HTMLParser
+from pathlib import Path
 
-from tracesheet.model import Evaluation
+from tracesheet.model import CompanyId, Evaluation
+from tracesheet.providers.documents import documents_by_hash
 from tracesheet.report.build import build_page
-from tracesheet.report.render import render
+from tracesheet.report.page import SourceEntry
+from tracesheet.report.render import group_sources, render
 
 VOID = frozenset(
     {
@@ -141,3 +144,59 @@ def test_older_years_are_marked_for_the_recent_view(acme_evaluation: Evaluation)
     # Only the year headers are checked here: Acme has two years of figures.
     assert 'class="yr older"' not in render(page)
     assert "Last 10 years" in render(padded)
+
+
+def test_the_tie_out_line_describes_rather_than_grades(acme_evaluation: Evaluation) -> None:
+    html = render(build_page(acme_evaluation))
+
+    assert "2 filings, each checked that the balance sheet balances" in html
+    assert not re.search(r"\b(failing|passed|tying out)\b", html)
+
+
+def test_tie_out_messages_are_listed_by_record(acme_evaluation: Evaluation) -> None:
+    page = build_page(acme_evaluation).model_copy(
+        update={"tie_out": (("fy2024", ()), ("fy2025", ("total assets differ by CHF 2 m",)))}
+    )
+    html = render(page)
+
+    assert "fy2025" in html
+    assert "total assets differ by CHF 2 m" in html
+    assert "failing" not in html
+
+
+def entry(sid: str, fiscal_year: int, document: str = "acme/fy2025.toml") -> SourceEntry:
+    return SourceEntry(
+        id=sid, document=document, page=1, quote="x", line="revenue", fiscal_year=fiscal_year
+    )
+
+
+def test_sources_group_by_document_and_fiscal_year() -> None:
+    groups = group_sources(
+        (entry("a", 2024), entry("b", 2025), entry("c", 2025), entry("d", 2025, "other"))
+    )
+
+    assert [(g.document, g.fiscal_year, len(g.entries)) for g in groups] == [
+        ("acme/fy2025.toml", 2024, 1),
+        ("acme/fy2025.toml", 2025, 2),
+        ("other", 2025, 1),
+    ]
+
+
+def test_with_documents_sources_show_the_report_title_and_link(
+    acme_evaluation: Evaluation, acme_root: Path
+) -> None:
+    documents = documents_by_hash(acme_root, CompanyId("acme"))
+    html = render(build_page(acme_evaluation, documents))
+
+    assert "Annual report 2025" in html
+    assert 'href="https://example.com/acme/annual-report-2025.pdf"' in html
+
+
+def test_all_source_refs_show_without_script_and_in_print(acme_evaluation: Evaluation) -> None:
+    html = render(build_page(acme_evaluation))
+
+    assert '<html lang="en" class="no-js">' in html
+    assert ".no-js .refs" in html
+    print_rules = html[html.index("@media print") :]
+    assert re.search(r"\.refs\s*\{[^}]*display:\s*block", print_rules)
+    assert 'classList.remove("no-js")' in html

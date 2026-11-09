@@ -188,3 +188,17 @@ def _entry_dict(doc: Document) -> dict[str, object]:
 def _extension(url: str) -> str:
     suffix = Path(urlparse(url).path).suffix.lower()
     return suffix if suffix in {".pdf", ".xlsx", ".xls", ".html", ".htm"} else ".bin"
+
+
+def documents_by_hash(root: Path, company: CompanyId) -> dict[str, Document]:
+    """Every fetched document of one company, keyed by its SHA-256.
+
+    A filed figure records the hash of the report it was read from, so this is how the
+    report's kind, period and address are found again from a figure's trail. Documents
+    never fetched have no hash and are left out.
+    """
+    return {
+        document.sha256: document
+        for document in DocumentRegistry(root).documents(company)
+        if document.sha256 is not None
+    }

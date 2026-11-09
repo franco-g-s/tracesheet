@@ -26,6 +26,7 @@ from tracesheet.model import (
     PriceObservation,
     Traced,
     Unit,
+    readable_name,
 )
 from tracesheet.model.units import ExchangeRate
 from tracesheet.provenance import convert, observed, total
@@ -120,7 +121,7 @@ def compute_multiples(
     def line(name: LineItemName) -> MetricValue:
         figure = latest.line(name)
         if figure is None:
-            return NotMeaningful(reason=f"{name.value.replace('_', ' ')} not filed")
+            return NotMeaningful(reason=f"{readable_name(name)} not filed")
         return figure
 
     shares = line(L.SHARES_OUTSTANDING)

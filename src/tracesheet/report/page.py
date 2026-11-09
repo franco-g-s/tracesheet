@@ -60,8 +60,10 @@ class SourceEntry(Model):
     For a filed figure: ``document`` is the typed-in filing it was read from (with the
     report's fingerprint in ``sha256``), ``page`` the printed page, ``quote`` the report's own
     label for the line, ``line`` the line item it was entered as, and ``dated`` the day the
-    report was published. For a market observation (``observed``): ``document`` names where
-    it was read, ``line`` what was observed, and ``dated`` the day it refers to.
+    report was published. ``title`` and ``url`` name and locate the report itself, when the
+    page was built with the document registry. For a market observation (``observed``):
+    ``document`` names where it was read, ``line`` what was observed, and ``dated`` the day
+    it refers to.
     """
 
     id: str
@@ -76,6 +78,10 @@ class SourceEntry(Model):
     note: str | None = None
     not_printed: bool = False
     """The statement prints no such line; the figure is a zero, with a page to check."""
+    title: str | None = None
+    """What a reader calls the report, such as "Annual report 2025", when it is known."""
+    url: str | None = None
+    """Where the report is published, when it is known."""
 
 
 class Page(Model):

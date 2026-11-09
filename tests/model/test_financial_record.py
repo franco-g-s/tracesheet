@@ -16,6 +16,7 @@ from tracesheet.model import (
     PeriodKind,
     RecordId,
     Source,
+    readable_name,
 )
 from tracesheet.provenance import Filed, Unit, trace
 
@@ -74,3 +75,18 @@ def test_a_record_filed_before_its_period_ends_is_refused() -> None:
 def test_every_line_has_a_statement_and_a_definition() -> None:
     assert set(STATEMENT) == set(LineItemName)
     assert set(DEFINITION) == set(LineItemName)
+
+
+@pytest.mark.parametrize(
+    ("name", "text"),
+    [
+        ("special_dividend_per_share", "special dividend per share"),
+        ("non_controlling_interests", "non-controlling interests"),
+        ("non_current_borrowings", "non-current borrowings"),
+        ("ebitda", "EBITDA"),
+        ("eps_diluted", "diluted EPS"),
+        ("revenue", "revenue"),
+    ],
+)
+def test_a_line_item_has_a_readable_name(name: str, text: str) -> None:
+    assert readable_name(LineItemName(name)) == text

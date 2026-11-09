@@ -2,11 +2,13 @@
 // 1. "Last 10 years" hides the older year columns. All years show by default and in print.
 // 2. Selecting a figure opens its trail: every report line and observation it was computed
 //    from, each linking to its entry in Sources. Without the script, a figure links to its
-//    first source.
+//    first source and the numbers of the others are shown beside it.
 (function () {
   "use strict";
 
   var body = document.body;
+  // With the script running, a figure's further sources are reached through its trail.
+  document.documentElement.classList.remove("no-js");
 
   // ---- Years shown ----
   var toggle = document.querySelector(".span-toggle");

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,7 +40,17 @@
       <div><dt>Currency</dt><dd>{{ page.company.currency.value }}</dd></div>
       <div><dt>Years covered</dt><dd>{{ span }}</dd></div>
       <div><dt>Filings used</dt><dd>
-        {{ page.tie_out|length }}, {% if failing %}{{ failing|length }} failing a tie-out check{% else %}all tying out{% endif -%}
+        {{ page.tie_out|length }} {{ "filing" if page.tie_out|length == 1 else "filings" }}, each checked that the balance sheet balances and subtotals add up.
+        {%- if failing %}
+        <span class="tie-note">Where the figures do not add up:</span>
+        <ul class="tie-list">
+          {% for record, messages in failing %}
+          {% for message in messages %}
+          <li>{{ record }}: {{ message }}</li>
+          {% endfor %}
+          {% endfor %}
+        </ul>
+        {%- endif -%}
       </dd></div>
       <div><dt>Known as of</dt><dd>{{ long_date(page.as_of) }}</dd></div>
       <div><dt>Built</dt><dd>{{ long_date(page.created_at) }}, Tracesheet {{ page.code_version }}</dd></div>
@@ -140,13 +150,14 @@
   <div class="source-group">
     <h3>
       {%- if group.observed %}Observed: {{ group.document }}
+      {%- elif group.title %}{% if group.url %}<a href="{{ group.url }}" rel="noopener">{{ group.title }}</a>{% else %}{{ group.title }}{% endif %}<span class="doc">fiscal {{ group.fiscal_year }} figures</span>
       {%- else %}Fiscal {{ group.fiscal_year }}<span class="doc">{{ group.document }}</span>{% endif -%}
     </h3>
-    {% if group.sha256 %}<p class="hash">SHA-256 <code title="{{ group.sha256 }}">{{ group.sha256[:16] }}</code>, published {{ long_date(group.entries[0].dated) }}</p>{% endif %}
+    {% if group.sha256 %}<p class="hash">Published {{ long_date(group.entries[0].dated) }}. SHA-256 <code title="{{ group.sha256 }}">{{ group.sha256[:16] }}</code>{% if group.title %}, typed in as {{ group.document }}{% endif %}.</p>{% endif %}
     <table class="sources">
       <tbody>
         {% for entry in group.entries %}
-        <tr id="src-{{ entry.id }}" data-doc="{{ entry.document }}"{% if entry.page is not none %} data-page="{{ entry.page }}"{% endif %}{% if entry.fiscal_year %} data-fy="{{ entry.fiscal_year }}"{% endif %}>
+        <tr id="src-{{ entry.id }}" data-doc="{{ entry.title or entry.document }}"{% if entry.page is not none %} data-page="{{ entry.page }}"{% endif %}{% if entry.fiscal_year %} data-fy="{{ entry.fiscal_year }}"{% endif %}>
           <td class="n">{{ numbers[entry.id] }}</td>
           <td class="pg">{% if entry.page is not none %}p.&nbsp;{{ entry.page }}{% endif %}</td>
           <td class="q">
@@ -155,7 +166,7 @@
             {%- if entry.not_printed %} <span class="muted">(not printed in the statement; counted as zero)</span>{% endif %}{% endif %}
             {%- if entry.note %}<span class="src-note">{{ entry.note }}</span>{% endif -%}
           </td>
-          <td class="li">{% if not entry.observed %}{{ entry.line|replace("_", " ") }}{% endif %}</td>
+          <td class="li">{% if not entry.observed %}{{ readable(entry.line) }}{% endif %}</td>
         </tr>
         {% endfor %}
       </tbody>

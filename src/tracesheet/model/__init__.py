@@ -18,6 +18,7 @@ from tracesheet.model.financial_record import (
     RecordRef,
     Source,
     Statement,
+    readable_name,
 )
 from tracesheet.model.ids import CompanyId, RecordId
 from tracesheet.model.market import (
@@ -92,4 +93,5 @@ __all__ = [
     "Unit",
     "UnitMismatchError",
     "YearMetrics",
+    "readable_name",
 ]

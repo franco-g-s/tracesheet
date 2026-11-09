@@ -1,12 +1,14 @@
 """Evaluation to page: section order, catalogue coverage, n/m notes and source links."""
 
 from collections import Counter
+from pathlib import Path
 
 import pytest
 
 from tracesheet.metrics.catalogue import CAGR_KEYS, CAGR_SPANS, CATALOGUE, CONVENTIONS, Section
-from tracesheet.model import Evaluation
+from tracesheet.model import CompanyId, Evaluation
 from tracesheet.multiples import MULTIPLE_KEYS
+from tracesheet.providers.documents import Document, documents_by_hash
 from tracesheet.report.build import build_page
 from tracesheet.report.page import Page
 
@@ -169,3 +171,32 @@ def test_the_page_records_how_it_was_made(acme_evaluation: Evaluation, field: st
     assert getattr(page, field)
     assert page.as_of == acme_evaluation.as_of.date()
     assert page.created_at == acme_evaluation.created_at.date()
+
+
+def acme_documents(acme_root: Path) -> dict[str, Document]:
+    return documents_by_hash(acme_root, CompanyId("acme"))
+
+
+def test_with_documents_a_source_names_the_report(
+    acme_evaluation: Evaluation, acme_root: Path
+) -> None:
+    page = build_page(acme_evaluation, acme_documents(acme_root))
+    revenue = next(s for s in page.sources if s.line == "revenue" and s.fiscal_year == 2025)
+
+    assert revenue.title == "Annual report 2025"
+    assert revenue.url == "https://example.com/acme/annual-report-2025.pdf"
+    assert revenue.page == 62
+    assert revenue.quote == "Net sales"
+    assert revenue.document == "acme/fy2025.toml"
+
+
+def test_without_documents_a_source_has_no_title(acme_evaluation: Evaluation) -> None:
+    page = build_page(acme_evaluation)
+
+    assert all(s.title is None and s.url is None for s in page.sources)
+
+
+def test_tie_out_is_carried_with_its_messages(acme_evaluation: Evaluation) -> None:
+    page = build_page(acme_evaluation)
+
+    assert page.tie_out == (("fy2024", ()), ("fy2025", ()))

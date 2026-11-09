@@ -398,6 +398,24 @@ class AuditOpinion(StrEnum):
     DISCLAIMER = "disclaimer"
 
 
+_READABLE_OVERRIDES: dict[str, str] = {
+    "ebit": "EBIT",
+    "ebitda": "EBITDA",
+    "eps_basic": "basic EPS",
+    "eps_diluted": "diluted EPS",
+}
+
+
+def readable_name(name: LineItemName) -> str:
+    """A line item's name as words for a reader: ``special_dividend_per_share`` becomes
+    "special dividend per share", ``non_controlling_interests`` "non-controlling interests".
+    """
+    override = _READABLE_OVERRIDES.get(name.value)
+    if override is not None:
+        return override
+    return re.sub(r"\bnon ", "non-", name.value.replace("_", " "))
+
+
 def _sha256(value: str) -> str:
     if not re.fullmatch(r"[0-9a-f]{64}", value):
         msg = f"{value!r} is not a lower-case hex SHA-256"

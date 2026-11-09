@@ -13,6 +13,7 @@ from tracesheet.providers.documents import (
     DocumentKind,
     DocumentRegistry,
     DocumentsError,
+    documents_by_hash,
 )
 from tracesheet.providers.fetch import USER_AGENT, Fetcher, FetchError, urllib_fetch
 
@@ -128,3 +129,11 @@ def test_user_agent_names_the_project() -> None:
 def test_fake_fetcher_satisfies_the_fetcher_type() -> None:
     fetcher: Fetcher = FakeFetcher(b"")
     assert fetcher("https://example.com", {}) == b""
+
+
+def test_documents_by_hash_maps_every_fetched_document(acme_root: Path) -> None:
+    mapping = documents_by_hash(acme_root, CompanyId("acme"))
+
+    assert mapping
+    assert all(sha == doc.sha256 for sha, doc in mapping.items())
+    assert {doc.period.fiscal_year for doc in mapping.values()} >= {2024, 2025}

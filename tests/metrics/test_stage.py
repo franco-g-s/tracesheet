@@ -200,7 +200,7 @@ def test_a_missing_input_says_which_line(make: MakeNormalized) -> None:
 
 def test_special_dividend_absent_is_not_meaningful(make: MakeNormalized) -> None:
     y = compute_metrics(make({2024: FY2024})).years[-1].values
-    assert reason(y["special_dps"]) == "special_dividend_per_share not filed"
+    assert reason(y["special_dps"]) == "special dividend per share not filed"
     no_dividend = _without(FY2024, L.DIVIDEND_PER_SHARE)
     y = compute_metrics(make({2024: no_dividend})).years[-1].values
     assert reason(y["special_dps"]) == "no dividend filed"

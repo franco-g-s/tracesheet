@@ -6,14 +6,14 @@ piece of text it is handed; only the package's own stylesheet and script go in u
 """
 
 import calendar
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from functools import cache
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader, StrictUndefined
 from markupsafe import Markup
 
-from tracesheet.model import ReportingStandard
+from tracesheet.model import LineItemName, ReportingStandard, readable_name
 from tracesheet.report.page import Page, SourceEntry
 
 TEMPLATES = Path(__file__).resolve().parent / "templates"
@@ -37,18 +37,20 @@ _COUNTRIES = {
 
 @dataclass(frozen=True)
 class SourceGroup:
-    """Consecutive Sources entries that come from one document."""
+    """Consecutive Sources entries that come from one document and one fiscal year."""
 
     document: str
     observed: bool
     fiscal_year: int | None
     sha256: str | None
+    title: str | None
+    url: str | None
     entries: tuple[SourceEntry, ...]
 
 
 @cache
 def _environment() -> Environment:
-    return Environment(
+    environment = Environment(
         loader=FileSystemLoader(TEMPLATES),
         autoescape=True,
         undefined=StrictUndefined,
@@ -56,6 +58,8 @@ def _environment() -> Environment:
         lstrip_blocks=True,
         keep_trailing_newline=True,
     )
+    environment.globals["readable"] = lambda line: readable_name(LineItemName(line))
+    return environment
 
 
 def render(page: Page) -> str:
@@ -71,8 +75,8 @@ def render(page: Page) -> str:
             older=older,
             recent=RECENT_YEARS,
             numbers=numbers,
-            groups=_groups(page.sources),
-            failing=[record for record, failures in page.tie_out if failures],
+            groups=group_sources(page.sources),
+            failing=[(record, failures) for record, failures in page.tie_out if failures],
             standard=_STANDARDS[page.company.reporting_standard],
             domicile=_COUNTRIES.get(page.company.domicile_country, page.company.domicile_country),
             fiscal_year_end=f"{fye.day} {calendar.month_name[fye.month]}",
@@ -92,22 +96,29 @@ def _span(years: tuple[int, ...]) -> str:
     return f"{years[0]}–{years[-1]}, {len(years)} fiscal years"
 
 
-def _groups(sources: tuple[SourceEntry, ...]) -> tuple[SourceGroup, ...]:
+def group_sources(sources: tuple[SourceEntry, ...]) -> tuple[SourceGroup, ...]:
+    """Consecutive entries from one document and one fiscal year, as one group.
+
+    The fiscal year is part of the key because one report can carry two years' figures: a
+    restated comparative sits in the following year's report, and must not be filed under
+    that report's own year.
+    """
     groups: list[SourceGroup] = []
     for entry in sources:
+        key = (entry.observed, entry.document, entry.fiscal_year)
         last = groups[-1] if groups else None
-        if last is not None and (last.document, last.observed) == (entry.document, entry.observed):
-            groups[-1] = SourceGroup(
-                last.document,
-                last.observed,
-                last.fiscal_year,
-                last.sha256,
-                (*last.entries, entry),
-            )
+        if last is not None and (last.observed, last.document, last.fiscal_year) == key:
+            groups[-1] = replace(last, entries=(*last.entries, entry))
         else:
             groups.append(
                 SourceGroup(
-                    entry.document, entry.observed, entry.fiscal_year, entry.sha256, (entry,)
+                    document=entry.document,
+                    observed=entry.observed,
+                    fiscal_year=entry.fiscal_year,
+                    sha256=entry.sha256,
+                    title=entry.title,
+                    url=entry.url,
+                    entries=(entry,),
                 )
             )
     return tuple(groups)
