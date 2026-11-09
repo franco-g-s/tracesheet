@@ -62,19 +62,19 @@ These are bug classes, not style preferences.
 
 ## Generated files
 
-Two committed files are generated, and the tests fail when they drift:
+Two committed files are generated:
 
 - **`docs/METRICS.md`** is built from `CATALOGUE`, `CAGR_KEYS`, `CAGR_SPANS` and
   `CONVENTIONS` in `src/tracesheet/metrics/catalogue.py`, and the multiples' definitions in
-  `src/tracesheet/report/build.py`. After changing any of them:
+  `src/tracesheet/report/build.py`. A test fails when it drifts. After changing any of them:
 
   ```sh
   uv run python -m tracesheet.metrics.docs > docs/METRICS.md
   ```
 
 - **`examples/kuehne-nagel.html`** is the rendered sample. After changing the sheet, a
-  measure, a convention or the Kühne+Nagel data, render it again with the fixed date the test
-  uses:
+  measure, a convention or the Kühne+Nagel data, render it again by hand; no test compares it, because
+  it records the build date and commit:
 
   ```sh
   uv run tracesheet render kuehne-nagel --as-of 2026-11-09

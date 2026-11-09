@@ -40,7 +40,7 @@ Everything downstream of the providers computes with `Traced`
   a company's report and carries the document, its SHA-256, the printed page, the report's
   own label and the publication date. `Observed` is a market fact, such as a closing price
   or an exchange rate, with what was observed, its source and its date.
-- a **derived value**, with a transform (add, subtract, multiply, divide, total, mean,
+- a **derived value**, with a transform (add, subtract, negate, multiply, divide, total, mean,
   percent change, growth rate, convert, cross rate) and its inputs.
 
 The validator re-applies the transform to the inputs whenever a derived value is built and

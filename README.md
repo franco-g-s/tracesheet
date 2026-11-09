@@ -36,7 +36,8 @@ number itself:
 
 ## Quick start
 
-Requires [uv](https://docs.astral.sh/uv/) and Python 3.12 or newer. No API key, no network.
+Requires [uv](https://docs.astral.sh/uv/) and Python 3.12 or newer. After `uv sync`, rendering
+needs no API key and no network.
 
 ```sh
 uv sync
@@ -48,7 +49,7 @@ Other commands:
 ```sh
 uv run tracesheet load kuehne-nagel       # check every filing ties out
 uv run tracesheet evaluate kuehne-nagel   # store an immutable evaluation under data/evaluations/
-uv run tracesheet render kuehne-nagel --as-of 2015-12-31   # the sheet as it could have been read then
+uv run tracesheet render kuehne-nagel --as-of 2015-12-31 --out kn-2015.html   # as it could have been read then
 ```
 
 The multiples use the latest close in `data/prices.toml`. With `TRACESHEET_EODHD_TOKEN` set,
