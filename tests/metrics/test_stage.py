@@ -206,6 +206,9 @@ def test_intangible_purchases_declared_not_printed_count_as_zero(make: MakeNorma
     y = compute_metrics(n).years[-1].values
     assert value(y["capex"]) == Decimal(120)
     assert value(y["fcf"]) == Decimal(380)
+    capex = y["capex"]
+    assert isinstance(capex, Traced)
+    assert not_printed.origin in capex.sources()  # the zero is in the trail, with its page
 
 
 def _no_leases(lines: dict[LineItemName, str]) -> dict[LineItemName, str]:
