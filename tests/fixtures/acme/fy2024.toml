@@ -1,0 +1,129 @@
+# Acme Industrie AG, fiscal 2024: fictional figures, invented for the tests.
+# The balance sheet balances and every subtotal sums, so the tie-out checks pass.
+
+company = "acme"
+period = { start = 2024-01-01, end = 2024-12-31, kind = "annual" }
+filed_at = 2025-03-10T07:00:00+01:00
+currency = "CHF"
+figures_in = "millions"
+source = { document = "Acme Annual Report 2024", url = "https://example.com/acme/annual-report-2024.pdf", sha256 = "2964e4cd8ea99140a554cd5b660a9324f284c603b62b489d98d211e49c9ce1a1" }
+
+[[line_items]]
+name = "revenue"
+value = "820.0"
+label = "Net sales"
+page = 62
+
+[[line_items]]
+name = "cost_of_sales"
+value = "492.0"
+label = "Cost of goods sold"
+page = 62
+note = "printed as a deduction; held as a positive magnitude"
+
+[[line_items]]
+name = "gross_profit"
+value = "328.0"
+label = "Gross profit"
+page = 62
+
+[[line_items]]
+name = "ebit"
+value = "98.4"
+label = "Operating result (EBIT)"
+page = 62
+
+[[line_items]]
+name = "profit_before_tax"
+value = "94.2"
+label = "Profit before income taxes"
+page = 62
+
+[[line_items]]
+name = "income_tax_expense"
+value = "18.8"
+label = "Income taxes"
+page = 62
+note = "printed as a deduction; held as a positive magnitude"
+
+[[line_items]]
+name = "net_income"
+value = "75.4"
+label = "Net profit for the year"
+page = 62
+
+[[line_items]]
+name = "net_income_attributable_to_owners"
+value = "75.4"
+label = "Attributable to shareholders of Acme Industrie AG"
+page = 62
+
+[[line_items]]
+name = "eps_diluted"
+value = "7.54"
+label = "Diluted earnings per share (CHF)"
+page = 62
+figures_in = "units"
+
+[[line_items]]
+name = "shares_diluted"
+value = "10000000"
+label = "Weighted average number of shares, diluted"
+page = 97
+figures_in = "units"
+
+[[line_items]]
+name = "cash_and_equivalents"
+value = "64.2"
+label = "Cash and cash equivalents"
+page = 63
+
+[[line_items]]
+name = "current_assets"
+value = "310.5"
+label = "Total current assets"
+page = 63
+
+[[line_items]]
+name = "total_assets"
+value = "905.0"
+label = "Total assets"
+page = 63
+
+[[line_items]]
+name = "current_liabilities"
+value = "188.7"
+label = "Total current liabilities"
+page = 63
+
+[[line_items]]
+name = "total_liabilities"
+value = "412.3"
+label = "Total liabilities"
+page = 63
+
+[[line_items]]
+name = "total_equity"
+value = "492.7"
+label = "Total equity"
+page = 63
+
+[[line_items]]
+name = "operating_cash_flow"
+value = "112.6"
+label = "Net cash from operating activities"
+page = 65
+
+[[line_items]]
+name = "capital_expenditure"
+value = "41.3"
+label = "Purchase of property, plant and equipment"
+page = 65
+note = "printed as a deduction; held as a positive magnitude"
+
+[[line_items]]
+name = "dividends_paid"
+value = "28.0"
+label = "Dividends paid to shareholders"
+page = 65
+note = "printed as a deduction; held as a positive magnitude"

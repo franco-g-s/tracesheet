@@ -1,0 +1,11 @@
+# Acme: share-basis actions, each confirmed against the issuer's own (fictional) document.
+
+[[actions]]
+kind = "split"
+share_class = "registered"
+effective = 2025-06-02
+new_shares = 2
+old_shares = 1
+source = { document = "Acme Annual Report 2025", sha256 = "1657ca1ab2dfcb7155f66b4427bfbf05e6dc514ec9402706e3e6f213ff3e8267", page = 88, pdf_page = 90 }
+quote = "On 2 June 2025 the registered shares of Acme Industrie AG were split in the ratio 1:2; shareholders received two new registered shares for each share held."
+note = "The first trading day on the new basis is stated on the same page."

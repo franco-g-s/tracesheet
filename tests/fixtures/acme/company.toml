@@ -1,0 +1,10 @@
+# Acme Industrie AG: a fictional company, invented for the tests. Its ISIN is made up and
+# carries a valid check digit; it belongs to no real security.
+
+id = "acme"
+name = "Acme Industrie AG"
+listing = { venue = "SIX", ticker = "ACME", isin = "CH0999999995" }
+currency = "CHF"
+reporting_standard = "ifrs"
+domicile_country = "CH"
+fiscal_year_end = { month = 12, day = 31 }

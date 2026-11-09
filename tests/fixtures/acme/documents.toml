@@ -1,0 +1,19 @@
+# The two (fictional) annual reports the Acme records were typed from. The URLs point at a
+# reserved example domain; each sha256 is the hash of the one-line stand-in text
+# "Acme Annual Report <year> (fictional)", so a test can play the part of the download.
+
+[[documents]]
+period = { start = 2024-01-01, end = 2024-12-31, kind = "annual" }
+kind = "annual_report"
+url = "https://example.com/acme/annual-report-2024.pdf"
+language = "en"
+sha256 = "2964e4cd8ea99140a554cd5b660a9324f284c603b62b489d98d211e49c9ce1a1"
+fetched_at = 2026-01-15T09:00:00+00:00
+
+[[documents]]
+period = { start = 2025-01-01, end = 2025-12-31, kind = "annual" }
+kind = "annual_report"
+url = "https://example.com/acme/annual-report-2025.pdf"
+language = "en"
+sha256 = "1657ca1ab2dfcb7155f66b4427bfbf05e6dc514ec9402706e3e6f213ff3e8267"
+fetched_at = 2026-03-20T09:00:00+00:00
