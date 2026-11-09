@@ -11,7 +11,7 @@ A zero or negative denominator, or a missing input, gives ``NotMeaningful`` with
 A negative numerator is a result, not an error: negative free cash flow is a negative yield.
 """
 
-from collections.abc import Mapping, Sequence
+from collections.abc import Mapping
 from datetime import UTC, datetime, time
 from decimal import Decimal
 
@@ -27,7 +27,7 @@ from tracesheet.model import (
     Traced,
     Unit,
 )
-from tracesheet.normalize.rates import YearRates, find_rates
+from tracesheet.model.units import ExchangeRate
 from tracesheet.provenance import convert, observed, total
 
 L = LineItemName
@@ -83,14 +83,14 @@ def compute_multiples(
     normalized: Normalized,
     metrics: Metrics,
     price: PriceObservation | None,
-    rates: Sequence[YearRates] = (),
+    rate: Traced | None = None,
 ) -> Multiples | None:
     """The multiples for one close, or ``None`` when there is no price or no annual period.
 
-    A price in another currency than the reporting one is converted at the closing rate of
-    the ``YearRates`` for the price date's calendar year; the caller supplies the rate on
-    the price date there. Without such a rate every figure that needs the price is
-    "no exchange rate".
+    ``rate`` is the ECB reference rate on the price date, an observed exchange-rate leaf
+    from the price's currency into the reporting currency. It is used only when the two
+    currencies differ; then, without it, every figure that needs the price is
+    "no exchange rate". A rate for another pair is refused as a programming error.
     """
     if price is None or not normalized.years:
         return None
@@ -101,10 +101,10 @@ def compute_multiples(
         raise ValueError(msg)
     leaf = _price_leaf(price)
 
-    rate: Traced | None = None
-    if price.close.currency is not normalized.currency:
-        found = find_rates(rates, price.close.currency, normalized.currency, price.date.year)
-        if found is None:
+    if price.close.currency is normalized.currency:
+        rate = None
+    else:
+        if rate is None:
             undefined = NotMeaningful(reason=NO_RATE)
             return Multiples(
                 price=leaf,
@@ -114,7 +114,7 @@ def compute_multiples(
                 enterprise_value=undefined,
                 values=dict.fromkeys(MULTIPLE_KEYS, undefined),
             )
-        rate = found.closing
+        _check_pair(rate, price, normalized)
     per_share = leaf if rate is None else convert(leaf, rate)
 
     def line(name: LineItemName) -> MetricValue:
@@ -147,6 +147,16 @@ def compute_multiples(
         enterprise_value=enterprise_value,
         values=values,
     )
+
+
+def _check_pair(rate: Traced, price: PriceObservation, normalized: Normalized) -> None:
+    pair = rate.value
+    if not isinstance(pair, ExchangeRate) or (pair.base, pair.quote) != (
+        price.close.currency,
+        normalized.currency,
+    ):
+        msg = f"the rate must convert {price.close.currency} into {normalized.currency}, not {pair}"
+        raise ValueError(msg)
 
 
 def _enterprise_value(

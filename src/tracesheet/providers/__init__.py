@@ -7,7 +7,7 @@ from tracesheet.providers.documents import (
     DocumentRegistry,
     DocumentsError,
 )
-from tracesheet.providers.fetch import Fetcher, FetchError, urllib_fetch
+from tracesheet.providers.fetch import Fetcher, FetchError, redact, urllib_fetch
 from tracesheet.providers.hand_loaded import FiguresIn, HandLoaded, HandLoadedError
 from tracesheet.providers.protocol import Provider
 from tracesheet.providers.reconcile import reconcile
@@ -26,5 +26,6 @@ __all__ = [
     "Provider",
     "emit_toml",
     "reconcile",
+    "redact",
     "urllib_fetch",
 ]

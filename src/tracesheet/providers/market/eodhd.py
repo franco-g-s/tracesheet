@@ -4,7 +4,8 @@ Optional: used only when ``TRACESHEET_EODHD_TOKEN`` is set, and the token is nev
 anywhere. EODHD's terms allow private, non-commercial use on one account and no
 redistribution, which is why fetched prices stay in the gitignored cache. JSON is parsed
 with every number as a ``Decimal``: a vendor float never becomes a Python float. Every
-figure is a claim about a day, sourced and dated.
+figure is a claim about a day, sourced and dated. Closes are stamped with the company's
+reporting currency, since a listing records no trading currency of its own.
 """
 
 import json
@@ -23,7 +24,7 @@ from tracesheet.model import (
     PriceObservation,
     SharesObservation,
 )
-from tracesheet.providers.fetch import Fetcher, FetchError
+from tracesheet.providers.fetch import Fetcher, FetchError, redact
 
 BASE = "https://eodhd.com/api"
 TOKEN_VARIABLE = "TRACESHEET_EODHD_TOKEN"
@@ -132,7 +133,12 @@ class Eodhd:
     def _get(self, path: str, params: dict[str, str]) -> list[dict[str, Any]]:
         assert self._token is not None
         query = urlencode({**params, "fmt": "json", "api_token": self._token})
-        body = self._fetch(f"{BASE}/{path}?{query}", {})
+        try:
+            body = self._fetch(f"{BASE}/{path}?{query}", {})
+        except FetchError as error:
+            # The URL carries the token; never let it reach a message or a traceback.
+            msg = redact(str(error)).replace(self._token, "***")
+            raise FetchError(msg) from None
         try:
             data = json.loads(body, parse_float=Decimal, parse_int=Decimal)
         except json.JSONDecodeError as error:

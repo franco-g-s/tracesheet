@@ -22,7 +22,7 @@ from tracesheet.model import (
     Money,
     PriceObservation,
 )
-from tracesheet.providers import FetchError, HandLoaded
+from tracesheet.providers import FetchError, HandLoaded, redact, urllib_fetch
 from tracesheet.providers.market import (
     TOKEN_VARIABLE,
     CacheError,
@@ -178,3 +178,47 @@ def test_cache_refuses_a_changed_close(tmp_path: Path) -> None:
     cache.append_prices([observation("42.15")])
     with pytest.raises(CacheError, match="2026-03-13"):
         cache.append_prices([observation("99.00")])
+
+
+# --- The token never reaches an error message ---
+
+
+def test_a_failed_fetch_does_not_leak_the_token(company: Company) -> None:
+    def failing(url: str, headers: Mapping[str, str]) -> bytes:
+        raise FetchError(f"{url}: HTTP Error 401: Unauthorized")
+
+    with pytest.raises(FetchError) as caught:
+        Eodhd(failing, token="s3cret-token").prices(company, date(2026, 3, 1))
+    assert "s3cret-token" not in str(caught.value)
+    assert "api_token=***" in str(caught.value)
+    assert caught.value.__cause__ is None
+    assert caught.value.__suppress_context__
+
+
+def test_a_token_echoed_outside_the_query_is_still_redacted(company: Company) -> None:
+    def echoing(url: str, headers: Mapping[str, str]) -> bytes:
+        raise FetchError("server said: bad key s3cret-token")
+
+    with pytest.raises(FetchError) as caught:
+        Eodhd(echoing, token="s3cret-token").prices(company, date(2026, 3, 1))
+    assert "s3cret-token" not in str(caught.value)
+
+
+@pytest.mark.parametrize(
+    ("text", "expected"),
+    [
+        ("https://x.test/a?api_token=abc&fmt=json", "https://x.test/a?api_token=***&fmt=json"),
+        ("https://x.test/a?fmt=json&token=abc", "https://x.test/a?fmt=json&token=***"),
+        ("https://x.test/a?KEY=abc#frag", "https://x.test/a?KEY=***#frag"),
+        ("https://x.test/a?api_key=abc: boom", "https://x.test/a?api_key=*** boom"),
+        ("https://x.test/a?monkey=abc", "https://x.test/a?monkey=abc"),
+    ],
+)
+def test_redact(text: str, expected: str) -> None:
+    assert redact(text) == expected
+
+
+def test_urllib_fetch_redacts_a_refused_url() -> None:
+    with pytest.raises(FetchError) as caught:
+        urllib_fetch("http://x.test/a?api_token=s3cret-token", {})
+    assert "s3cret-token" not in str(caught.value)

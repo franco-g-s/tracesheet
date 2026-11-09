@@ -29,7 +29,6 @@ from tracesheet.model import (
     Unit,
 )
 from tracesheet.multiples.stage import MULTIPLE_KEYS, compute_multiples
-from tracesheet.normalize import YearRates
 from tracesheet.provenance import observed
 
 L = LineItemName
@@ -108,11 +107,11 @@ def price(close: str = "200", currency: Currency = Currency.CHF) -> PriceObserva
 def run(
     lines: dict[LineItemName, str] | None = None,
     observation: PriceObservation | None = None,
-    rates: tuple[YearRates, ...] = (),
+    rate: Traced | None = None,
 ) -> Multiples:
     normalized = make_normalized({2025: LATEST if lines is None else lines})
     result = compute_multiples(
-        normalized, compute_metrics(normalized), observation or price(), rates
+        normalized, compute_metrics(normalized), observation or price(), rate
     )
     assert result is not None
     return result
@@ -131,17 +130,15 @@ def reason(v: MetricValue) -> str:
     return v.reason
 
 
-def usd_rates(fiscal_year: int = 2026, base: Currency = Currency.USD) -> YearRates:
-    def rate(what: str) -> Traced:
-        return observed(
-            ExchangeRate(rate=Decimal("0.80"), base=base, quote=Currency.CHF),
-            Unit.EXCHANGE_RATE,
-            what=what,
-            source="ECB reference rate",
-            observed_at=WHEN,
-        )
-
-    return YearRates(fiscal_year=fiscal_year, average=rate("average"), closing=rate("closing"))
+def usd_rate(base: Currency = Currency.USD) -> Traced:
+    """0.80 CHF per USD, observed on the price date."""
+    return observed(
+        ExchangeRate(rate=Decimal("0.80"), base=base, quote=Currency.CHF),
+        Unit.EXCHANGE_RATE,
+        what=f"ECB reference rate CHF/{base.value}",
+        source="ECB reference rate",
+        observed_at=datetime(2026, 3, 13, 14, 15, tzinfo=UTC),
+    )
 
 
 # --- Known answers ---
@@ -293,27 +290,33 @@ def test_missing_numerator_metric_carries_its_reason() -> None:
 
 def test_foreign_price_converts_at_the_supplied_rate() -> None:
     # USD 250 at 0.80 CHF per USD is CHF 200: the same answers as a CHF 200 close.
-    m = run(observation=price("250", Currency.USD), rates=(usd_rates(),))
+    m = run(observation=price("250", Currency.USD), rate=usd_rate())
     assert m.price.value == Money.parse("250", Currency.USD)
-    assert m.exchange_rate is not None
-    assert m.exchange_rate.value == ExchangeRate(
-        rate=Decimal("0.80"), base=Currency.USD, quote=Currency.CHF
-    )
+    assert m.exchange_rate == usd_rate()
     assert amount(m.market_cap) == Decimal(20000)
+    assert amount(m.enterprise_value) == Decimal(22500)
     assert amount(m.values["pe"]) == Decimal(20)
     pe = m.values["pe"]
     assert isinstance(pe, Traced)
-    assert any(isinstance(o, Observed) and o.what == "closing" for o in pe.sources())
+    assert any(
+        isinstance(o, Observed) and o.what == "ECB reference rate CHF/USD" for o in pe.sources()
+    )
 
 
-@pytest.mark.parametrize(
-    "rates",
-    [(), (usd_rates(fiscal_year=2025),), (usd_rates(base=Currency.EUR),)],
-    ids=["none", "wrong-year", "wrong-pair"],
-)
-def test_foreign_price_without_a_rate_is_not_meaningful(rates: tuple[YearRates, ...]) -> None:
-    m = run(observation=price("250", Currency.USD), rates=rates)
+def test_foreign_price_without_a_rate_is_not_meaningful() -> None:
+    m = run(observation=price("250", Currency.USD))
     assert m.exchange_rate is None
     assert reason(m.market_cap) == "no exchange rate"
     assert reason(m.enterprise_value) == "no exchange rate"
     assert all(reason(v) == "no exchange rate" for v in m.values.values())
+
+
+def test_a_rate_for_another_pair_is_refused() -> None:
+    with pytest.raises(ValueError, match="USD into CHF"):
+        run(observation=price("250", Currency.USD), rate=usd_rate(base=Currency.EUR))
+
+
+def test_a_rate_is_ignored_when_the_currencies_agree() -> None:
+    m = run(rate=usd_rate())
+    assert m.exchange_rate is None
+    assert amount(m.values["pe"]) == Decimal(20)
