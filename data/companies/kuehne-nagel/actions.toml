@@ -1,0 +1,11 @@
+# kuehne-nagel — share-basis actions, each confirmed against the issuer's own report.
+
+[[actions]]
+kind = "split"
+share_class = "registered"
+effective = 2006-05-02                # the AGM date; the report prints no first trading day
+new_shares = 5
+old_shares = 1
+source = { document = "Annual Report 2006", sha256 = "f03faa9f06b263e85c3f221bdd9a37b8e9ab5165da7a6da07010500258406588", page = 139, pdf_page = 139 }
+quote = "During the Annual General Meeting on May 2, 2006, the shareholders approved a 1:5 split of the registered shares"
+note = "The Annual Report 2006 prints no first trading day on the new basis, so the AGM date stands in; its share table dates the split column 'May 02, 2006' (page 139)."

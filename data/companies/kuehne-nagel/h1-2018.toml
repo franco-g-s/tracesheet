@@ -1,0 +1,234 @@
+# kuehne-nagel — h1-2018
+
+company = "kuehne-nagel"
+period = { start = 2018-01-01, end = 2018-06-30, kind = "half_year" }
+filed_at = 2018-07-16T17:11:51+02:00
+currency = "CHF"
+figures_in = "millions"
+source = { document = "half year report 2018", url = "https://a.storyblok.com/f/331466/x/2d0abe5653/2q_18_condensed_consolidated_interim_financial_statements__unaudited_.pdf", sha256 = "31f03818f4febf6e48cc6113c46de203a3f2d1db7450e93eb2f03a042ac35f96" }
+
+[[line_items]]
+name = "revenue"
+value = "10066"
+label = "Net turnover"
+page = 1
+pdf_page = 3
+
+[[line_items]]
+name = "gross_profit"
+value = "3806"
+label = "Gross profit"
+page = 1
+pdf_page = 3
+
+[[line_items]]
+name = "personnel_expenses"
+value = "2327"
+label = "Personnel expenses"
+page = 1
+pdf_page = 3
+
+[[line_items]]
+name = "other_operating_income"
+value = "18"
+label = "Other operating income/expenses, net"
+page = 1
+pdf_page = 3
+
+[[line_items]]
+name = "ebitda"
+value = "608"
+label = "EBITDA"
+page = 1
+pdf_page = 3
+
+[[line_items]]
+name = "ebit"
+value = "501"
+label = "EBIT"
+page = 1
+pdf_page = 3
+
+[[line_items]]
+name = "interest_income"
+value = "5"
+label = "Financial income"
+page = 1
+pdf_page = 3
+
+[[line_items]]
+name = "interest_expense"
+value = "2"
+label = "Financial expenses"
+page = 1
+pdf_page = 3
+
+[[line_items]]
+name = "profit_before_tax"
+value = "506"
+label = "Earnings before tax (EBT)"
+page = 1
+pdf_page = 3
+
+[[line_items]]
+name = "income_tax_expense"
+value = "116"
+label = "Income tax"
+page = 1
+pdf_page = 3
+
+[[line_items]]
+name = "net_income"
+value = "390"
+label = "Earnings for the period"
+page = 1
+pdf_page = 3
+
+[[line_items]]
+name = "net_income_attributable_to_owners"
+value = "389"
+label = "Equity holders of the parent company"
+page = 1
+pdf_page = 3
+
+[[line_items]]
+name = "net_income_attributable_to_minorities"
+value = "1"
+label = "Non-controlling interests"
+page = 1
+pdf_page = 3
+
+[[line_items]]
+name = "eps_basic"
+value = "3.25"
+label = "Basic earnings per share"
+page = 1
+pdf_page = 3
+figures_in = "units"
+
+[[line_items]]
+name = "eps_diluted"
+value = "3.24"
+label = "Diluted earnings per share"
+page = 1
+pdf_page = 3
+figures_in = "units"
+
+[[line_items]]
+name = "operating_cash_flow"
+value = "207"
+label = "Total cash flow from operating activities"
+page = 7
+pdf_page = 9
+
+[[line_items]]
+name = "capital_expenditure"
+value = "115"
+label = "– Property, plant and equipment"
+page = 7
+pdf_page = 9
+
+[[line_items]]
+name = "acquisitions"
+value = "21"
+label = "Acquisition of subsidiaries, net of cash acquired"
+page = 7
+pdf_page = 9
+
+[[line_items]]
+name = "dividends_paid"
+value = "688"
+label = "Dividend paid to equity holders of parent company"
+page = 7
+pdf_page = 9
+
+[[line_items]]
+name = "share_repurchases"
+value = "12"
+label = "Purchase of treasury shares"
+page = 7
+pdf_page = 9
+
+[[line_items]]
+name = "share_issuance"
+value = "0"
+label = "Disposal of treasury shares"
+page = 7
+pdf_page = 9
+
+[[line_items]]
+name = "cash_and_equivalents"
+value = "522"
+label = "Cash and cash equivalents"
+page = 3
+pdf_page = 5
+
+[[line_items]]
+name = "trade_receivables"
+value = "3820"
+label = "Trade receivables"
+page = 3
+pdf_page = 5
+
+[[line_items]]
+name = "current_assets"
+value = "5315"
+label = "Current assets"
+page = 3
+pdf_page = 5
+
+[[line_items]]
+name = "goodwill"
+value = "840"
+label = "Goodwill"
+page = 3
+pdf_page = 5
+
+[[line_items]]
+name = "other_intangible_assets"
+value = "87"
+label = "Other intangibles"
+page = 3
+pdf_page = 5
+
+[[line_items]]
+name = "total_assets"
+value = "7710"
+label = "Total assets"
+page = 3
+pdf_page = 5
+
+[[line_items]]
+name = "current_liabilities"
+value = "5150"
+label = "Current liabilities"
+page = 4
+pdf_page = 6
+
+[[line_items]]
+name = "current_borrowings"
+value = "417"
+label = "Bank and other interest-bearing liabilities"
+page = 4
+pdf_page = 6
+
+[[line_items]]
+name = "non_controlling_interests"
+value = "6"
+label = "Non-controlling interests"
+page = 4
+pdf_page = 6
+
+[[line_items]]
+name = "total_equity"
+value = "1984"
+label = "Equity"
+page = 4
+pdf_page = 6
+
+[[line_items]]
+name = "total_liabilities_and_equity"
+value = "7710"
+label = "Total liabilities and equity"
+page = 4
+pdf_page = 6

@@ -1,0 +1,284 @@
+# kuehne-nagel — h1-2007-restated-2008
+# H1 2007 as the H1 2008 report shows it: flows from the 'January – June 2007' column, the balance sheet from 'June 30, 2007'.
+# H1 2008 p.4: '* Since January 1, 2008, the Group recognises all actuarial gains and losses arising from defined benefit plans
+# immediately in equity. This change in accounting policy was recognised retrospectively and comparatives have been restated.
+# Refer to note 5.4.' The same change as Geschäftsbericht 2008 p.82: 'Seit dem 1. Januar 2008 bucht die Gruppe alle
+# versicherungsmathematischen Gewinne und Verluste aus leistungsorientierten Vorsorgeplänen direkt im Eigenkapital.'
+
+company = "kuehne-nagel"
+period = { start = 2007-01-01, end = 2007-06-30, kind = "half_year" }
+filed_at = 2008-07-18T12:02:15+02:00
+currency = "CHF"
+figures_in = "millions"
+source = { document = "half year report 2008 (comparative column)", url = "https://a.storyblok.com/f/331466/x/869b55910f/company-investor-relations-half-year-2008-english.pdf", sha256 = "01d66797225dbeb84baa9478725eea4a9a562ca716a27662cddc6efc99528129" }
+restates = "h1-2007"
+
+[[line_items]]
+name = "revenue"
+value = "8134"
+label = "Net invoiced turnover"
+page = 4
+pdf_page = 3
+
+[[line_items]]
+name = "cost_of_sales"
+value = "5218"
+label = "Net expenses for services from third parties"
+page = 4
+pdf_page = 3
+
+[[line_items]]
+name = "gross_profit"
+value = "2916"
+label = "Gross profit"
+page = 4
+pdf_page = 3
+note = "First filed as 2915.5; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "personnel_expenses"
+value = "1655"
+label = "Personnel expenses"
+page = 4
+pdf_page = 3
+note = "First filed as 1659.1; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "other_operating_expenses"
+value = "792"
+label = "Selling, general and administrative expenses"
+page = 4
+pdf_page = 3
+
+[[line_items]]
+name = "other_operating_income"
+value = "3"
+label = "Other operating income, net"
+page = 4
+pdf_page = 3
+note = "First filed as 3.5; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "ebitda"
+value = "472"
+label = "EBITDA"
+page = 4
+pdf_page = 3
+note = "First filed as 467.9; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "ebit"
+value = "350"
+label = "EBIT"
+page = 4
+pdf_page = 3
+note = "First filed as 345.9; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "interest_income"
+value = "12"
+label = "Financial income"
+page = 4
+pdf_page = 3
+
+[[line_items]]
+name = "interest_expense"
+value = "7"
+label = "Financial expenses"
+page = 4
+pdf_page = 3
+note = "First filed as 7.7; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "profit_before_tax"
+value = "358"
+label = "Earnings before tax (EBT)"
+page = 4
+pdf_page = 3
+note = "First filed as 353.5; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "income_tax_expense"
+value = "88"
+label = "Income tax"
+page = 4
+pdf_page = 3
+note = "First filed as 86.8; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "net_income"
+value = "270"
+label = "Earnings for the period"
+page = 4
+pdf_page = 3
+note = "First filed as 266.7; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "net_income_attributable_to_owners"
+value = "269"
+label = "Equity holders of the parent company"
+page = 4
+pdf_page = 3
+note = "First filed as 265.4; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "net_income_attributable_to_minorities"
+value = "1"
+label = "Minority interest"
+page = 4
+pdf_page = 3
+
+[[line_items]]
+name = "eps_basic"
+value = "2.28"
+label = "Basic earnings per share"
+page = 4
+pdf_page = 3
+figures_in = "units"
+note = "First filed as 2.260; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "eps_diluted"
+value = "2.26"
+label = "Diluted earnings per share"
+page = 4
+pdf_page = 3
+figures_in = "units"
+note = "First filed as 2.246; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "operating_cash_flow"
+value = "284"
+label = "Total cash flow from operating activities"
+page = 7
+pdf_page = 6
+
+[[line_items]]
+name = "capital_expenditure"
+value = "116"
+label = "– Property, plant and equipment"
+page = 7
+pdf_page = 6
+note = "Not in the record as first filed; taken from the comparative column restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "acquisitions"
+value = "18"
+label = "Acquisition of subsidiaries, net of cash acquired"
+page = 7
+pdf_page = 6
+note = "Not in the record as first filed; taken from the comparative column restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "dividends_paid"
+value = "177"
+label = "Dividend paid to shareholders of the company"
+page = 7
+pdf_page = 6
+
+[[line_items]]
+name = "share_repurchases"
+value = "0"
+label = "Purchase of treasury shares"
+page = 7
+pdf_page = 6
+note = "Not in the record as first filed; taken from the comparative column restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "share_issuance"
+value = "3"
+label = "Disposal of treasury shares"
+page = 7
+pdf_page = 6
+note = "Not in the record as first filed; taken from the comparative column restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "cash_and_equivalents"
+value = "827"
+label = "Cash and cash equivalents"
+page = 5
+pdf_page = 4
+note = "First filed as 826.5; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "trade_receivables"
+value = "2363"
+label = "Trade receivables"
+page = 5
+pdf_page = 4
+
+[[line_items]]
+name = "current_assets"
+value = "3895"
+label = "Current assets"
+page = 5
+pdf_page = 4
+note = "First filed as 3893.8; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "goodwill"
+value = "630"
+label = "Goodwill"
+page = 5
+pdf_page = 4
+
+[[line_items]]
+name = "other_intangible_assets"
+value = "325"
+label = "Other intangibles"
+page = 5
+pdf_page = 4
+
+[[line_items]]
+name = "total_assets"
+value = "6272"
+label = "Total assets"
+page = 5
+pdf_page = 4
+note = "First filed as 6267.8; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "current_liabilities"
+value = "3528"
+label = "Current liabilities"
+page = 5
+pdf_page = 4
+
+[[line_items]]
+name = "current_borrowings"
+value = "327"
+label = "Bank and other interest bearing liabilities"
+page = 5
+pdf_page = 4
+note = "First filed as 326.5; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "non_current_borrowings"
+value = "91"
+label = "Bank liabilities"
+page = 5
+pdf_page = 4
+note = "First filed as 90.5; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "non_controlling_interests"
+value = "7"
+label = "Minority interest"
+page = 5
+pdf_page = 4
+
+[[line_items]]
+name = "total_equity"
+value = "2128"
+label = "Total equity"
+page = 5
+pdf_page = 4
+note = "First filed as 2131.8; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "total_liabilities_and_equity"
+value = "6272"
+label = "Total liabilities and equity"
+page = 5
+pdf_page = 4
+note = "First filed as 6267.8; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."

@@ -1,0 +1,417 @@
+# kuehne-nagel — fy2019
+
+company = "kuehne-nagel"
+period = { start = 2019-01-01, end = 2019-12-31, kind = "annual" }
+filed_at = 2020-02-26T18:44:14+01:00
+currency = "CHF"
+figures_in = "millions"
+source = { document = "financial statements 2019", url = "https://a.storyblok.com/f/331466/x/b4424949b7/fy_2019_consolidated_financial_statements.pdf", sha256 = "d174f7339dd061cf43658500a2c359cda4bb0fae16e393c760f4f85ca02301df" }
+
+[[line_items]]
+name = "revenue"
+value = "21094"
+label = "Net turnover"
+page = 41
+pdf_page = 3
+
+[[line_items]]
+name = "cost_of_sales"
+value = "13113"
+label = "Net expenses for services from third parties"
+page = 41
+pdf_page = 3
+
+[[line_items]]
+name = "gross_profit"
+value = "7981"
+label = "Gross profit"
+page = 41
+pdf_page = 3
+
+[[line_items]]
+name = "personnel_expenses"
+value = "4877"
+label = "Personnel expenses"
+page = 41
+pdf_page = 3
+
+[[line_items]]
+name = "other_operating_expenses"
+value = "1372"
+label = "Selling, general and administrative expenses"
+page = 41
+pdf_page = 3
+
+[[line_items]]
+name = "other_operating_income"
+value = "97"
+label = "Other operating income/expenses, net"
+page = 41
+pdf_page = 3
+
+[[line_items]]
+name = "ebitda"
+value = "1829"
+label = "EBITDA"
+page = 41
+pdf_page = 3
+
+[[line_items]]
+name = "ebit"
+value = "1061"
+label = "EBIT"
+page = 41
+pdf_page = 3
+
+[[line_items]]
+name = "interest_income"
+value = "11"
+label = "Financial income"
+page = 41
+pdf_page = 3
+
+[[line_items]]
+name = "interest_expense"
+value = "29"
+label = "Financial expenses"
+page = 41
+pdf_page = 3
+
+[[line_items]]
+name = "profit_before_tax"
+value = "1047"
+label = "Earnings before tax (EBT)"
+page = 41
+pdf_page = 3
+
+[[line_items]]
+name = "income_tax_expense"
+value = "247"
+label = "Income tax"
+page = 41
+pdf_page = 3
+
+[[line_items]]
+name = "net_income"
+value = "800"
+label = "Earnings for the year"
+page = 41
+pdf_page = 3
+
+[[line_items]]
+name = "net_income_attributable_to_owners"
+value = "798"
+label = "Equity holders of the parent company"
+page = 41
+pdf_page = 3
+
+[[line_items]]
+name = "net_income_attributable_to_minorities"
+value = "2"
+label = "Non-controlling interests"
+page = 41
+pdf_page = 3
+
+[[line_items]]
+name = "eps_basic"
+value = "6.67"
+label = "Basic earnings per share"
+page = 41
+pdf_page = 3
+figures_in = "units"
+
+[[line_items]]
+name = "eps_diluted"
+value = "6.66"
+label = "Diluted earnings per share"
+page = 41
+pdf_page = 3
+figures_in = "units"
+
+[[line_items]]
+name = "operating_cash_flow"
+value = "1721"
+label = "Total cash flow from operating activities"
+page = 47
+pdf_page = 9
+
+[[line_items]]
+name = "capital_expenditure"
+value = "320"
+label = "— Property, plant and equipment"
+page = 48
+pdf_page = 10
+
+[[line_items]]
+name = "acquisitions"
+value = "37"
+label = "Acquisition of subsidiaries, net of cash acquired"
+page = 48
+pdf_page = 10
+
+[[line_items]]
+name = "divestments"
+value = "1"
+label = "Disposal of subsidiaries and associates"
+page = 48
+pdf_page = 10
+note = "The line covers subsidiaries and associates together; the associates' share is not printed apart."
+
+[[line_items]]
+name = "dividends_paid"
+value = "718"
+label = "Dividend paid to equity holders of parent company"
+page = 48
+pdf_page = 10
+
+[[line_items]]
+name = "share_repurchases"
+value = "0"
+label = "Purchase of treasury shares"
+page = 48
+pdf_page = 10
+
+[[line_items]]
+name = "cash_and_equivalents"
+value = "910"
+label = "Cash and cash equivalents"
+page = 43
+pdf_page = 5
+
+[[line_items]]
+name = "trade_receivables"
+value = "3601"
+label = "Trade receivables"
+page = 43
+pdf_page = 5
+
+[[line_items]]
+name = "current_assets"
+value = "5204"
+label = "Current assets"
+page = 43
+pdf_page = 5
+
+[[line_items]]
+name = "goodwill"
+value = "1220"
+label = "Goodwill"
+page = 43
+pdf_page = 5
+
+[[line_items]]
+name = "goodwill_acquired"
+value = "75"
+label = "Additions through business combinations"
+page = 76
+pdf_page = 38
+note = "Goodwill column of note 28."
+
+[[line_items]]
+name = "other_intangible_assets"
+value = "185"
+label = "Other intangibles"
+page = 43
+pdf_page = 5
+
+[[line_items]]
+name = "total_assets"
+value = "9825"
+label = "Total assets"
+page = 43
+pdf_page = 5
+
+[[line_items]]
+name = "current_liabilities"
+value = "4929"
+label = "Current liabilities"
+page = 44
+pdf_page = 6
+
+[[line_items]]
+name = "current_borrowings"
+value = "12"
+label = "Bank and other interest-bearing liabilities"
+page = 44
+pdf_page = 6
+
+[[line_items]]
+name = "non_current_borrowings"
+value = "400"
+label = "Borrowings"
+page = 44
+pdf_page = 6
+
+[[line_items]]
+name = "current_lease_liabilities"
+value = "510"
+label = "Current lease liabilities"
+page = 44
+pdf_page = 6
+
+[[line_items]]
+name = "non_current_lease_liabilities"
+value = "1432"
+label = "Non-current lease liabilities"
+page = 44
+pdf_page = 6
+
+[[line_items]]
+name = "non_controlling_interests"
+value = "6"
+label = "Non-controlling interests"
+page = 44
+pdf_page = 6
+
+[[line_items]]
+name = "total_equity"
+value = "2322"
+label = "Equity"
+page = 44
+pdf_page = 6
+
+[[line_items]]
+name = "total_liabilities_and_equity"
+value = "9825"
+label = "Total liabilities and equity"
+page = 44
+pdf_page = 6
+
+[[line_items]]
+name = "dividend_per_share"
+value = "4.00"
+label = "Proposed dividend payment, per share"
+page = 82
+pdf_page = 44
+figures_in = "units"
+note = "Printed as the row '2020 4.00 479', dated by year of payment."
+
+[[line_items]]
+name = "shares_outstanding"
+value = "119793800"
+label = "Entitled to voting rights and dividends"
+page = 82
+pdf_page = 44
+figures_in = "units"
+
+[[line_items]]
+name = "shares_diluted"
+value = "119945161"
+label = "Adjusted weighted number of ordinary shares applicable to diluted earnings per share"
+page = 71
+pdf_page = 33
+figures_in = "units"
+
+[[line_items]]
+name = "shares_basic"
+value = "119764337"
+label = "Weighted average number of ordinary shares outstanding during the year"
+page = 71
+pdf_page = 33
+figures_in = "units"
+
+[[line_items]]
+name = "intangible_capital_expenditure"
+value = "10"
+label = "— Other intangibles"
+page = 48
+pdf_page = 10
+
+[[line_items]]
+name = "disposals_of_fixed_assets"
+value = "245"
+label = "Disposal of property, plant and equipment"
+page = 48
+pdf_page = 10
+
+[[line_items]]
+name = "investing_cash_flow"
+value = "-143"
+label = "Total cash flow from investing activities"
+page = 48
+pdf_page = 10
+note = "Includes 'Settlement of deferred/contingent considerations from business combinations –29'."
+
+[[line_items]]
+name = "borrowings_raised"
+value = "470"
+label = "Proceeds from borrowings and other interest-bearing liabilities"
+page = 48
+pdf_page = 10
+
+[[line_items]]
+name = "borrowings_repaid"
+value = "405"
+label = "Repayment of other interest-bearing liabilities"
+page = 48
+pdf_page = 10
+
+[[line_items]]
+name = "lease_repayments"
+value = "475"
+label = "Repayment of lease liabilities"
+page = 48
+pdf_page = 10
+
+[[line_items]]
+name = "share_issuance"
+value = "0"
+not_printed = true
+page = 48
+pdf_page = 10
+
+[[line_items]]
+name = "dividends_to_minorities"
+value = "2"
+label = "Dividend paid to non-controlling interests"
+page = 48
+pdf_page = 10
+
+[[line_items]]
+name = "acquisition_of_minorities"
+value = "0"
+not_printed = true
+page = 48
+pdf_page = 10
+
+[[line_items]]
+name = "financing_cash_flow"
+value = "-1158"
+label = "Total cash flow from financing activities"
+page = 48
+pdf_page = 10
+
+[[line_items]]
+name = "fx_effect_on_cash"
+value = "-4"
+label = "Exchange difference on cash and cash equivalents"
+page = 48
+pdf_page = 10
+
+[[line_items]]
+name = "change_in_cash"
+value = "416"
+label = "Increase/(decrease) in cash and cash equivalents"
+page = 48
+pdf_page = 10
+
+[[line_items]]
+name = "capital_repayments_paid"
+value = "0"
+not_printed = true
+page = 48
+pdf_page = 10
+
+[[line_items]]
+name = "interest_paid_outside_operating"
+value = "11"
+label = "Interest paid on borrowings and other interest-bearing liabilities"
+page = 48
+pdf_page = 10
+
+[[line_items]]
+name = "lease_interest_paid_outside_operating"
+value = "17"
+label = "Interest paid on lease liabilities"
+page = 48
+pdf_page = 10

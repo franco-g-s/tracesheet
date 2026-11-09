@@ -1,0 +1,255 @@
+# kuehne-nagel — h1-2008
+
+company = "kuehne-nagel"
+period = { start = 2008-01-01, end = 2008-06-30, kind = "half_year" }
+filed_at = 2008-07-18T12:02:15+02:00
+currency = "CHF"
+figures_in = "millions"
+source = { document = "half year report 2008", url = "https://a.storyblok.com/f/331466/x/869b55910f/company-investor-relations-half-year-2008-english.pdf", sha256 = "01d66797225dbeb84baa9478725eea4a9a562ca716a27662cddc6efc99528129" }
+
+[[line_items]]
+name = "revenue"
+value = "8931"
+label = "Net invoiced turnover"
+page = 4
+pdf_page = 3
+
+[[line_items]]
+name = "cost_of_sales"
+value = "5792"
+label = "Net expenses for services from third parties"
+page = 4
+pdf_page = 3
+
+[[line_items]]
+name = "gross_profit"
+value = "3139"
+label = "Gross profit"
+page = 4
+pdf_page = 3
+
+[[line_items]]
+name = "personnel_expenses"
+value = "1751"
+label = "Personnel expenses"
+page = 4
+pdf_page = 3
+
+[[line_items]]
+name = "other_operating_expenses"
+value = "860"
+label = "Selling, general and administrative expenses"
+page = 4
+pdf_page = 3
+
+[[line_items]]
+name = "other_operating_income"
+value = "2"
+label = "Other operating income, net"
+page = 4
+pdf_page = 3
+
+[[line_items]]
+name = "ebitda"
+value = "530"
+label = "EBITDA"
+page = 4
+pdf_page = 3
+
+[[line_items]]
+name = "ebit"
+value = "394"
+label = "EBIT"
+page = 4
+pdf_page = 3
+
+[[line_items]]
+name = "interest_income"
+value = "14"
+label = "Financial income"
+page = 4
+pdf_page = 3
+
+[[line_items]]
+name = "interest_expense"
+value = "9"
+label = "Financial expenses"
+page = 4
+pdf_page = 3
+
+[[line_items]]
+name = "profit_before_tax"
+value = "403"
+label = "Earnings before tax (EBT)"
+page = 4
+pdf_page = 3
+
+[[line_items]]
+name = "income_tax_expense"
+value = "93"
+label = "Income tax"
+page = 4
+pdf_page = 3
+
+[[line_items]]
+name = "net_income"
+value = "310"
+label = "Earnings for the period"
+page = 4
+pdf_page = 3
+
+[[line_items]]
+name = "net_income_attributable_to_owners"
+value = "308"
+label = "Equity holders of the parent company"
+page = 4
+pdf_page = 3
+
+[[line_items]]
+name = "net_income_attributable_to_minorities"
+value = "2"
+label = "Minority interest"
+page = 4
+pdf_page = 3
+
+[[line_items]]
+name = "eps_basic"
+value = "2.62"
+label = "Basic earnings per share"
+page = 4
+pdf_page = 3
+figures_in = "units"
+
+[[line_items]]
+name = "eps_diluted"
+value = "2.61"
+label = "Diluted earnings per share"
+page = 4
+pdf_page = 3
+figures_in = "units"
+
+[[line_items]]
+name = "operating_cash_flow"
+value = "256"
+label = "Total cash flow from operating activities"
+page = 7
+pdf_page = 6
+
+[[line_items]]
+name = "capital_expenditure"
+value = "108"
+label = "– Property, plant and equipment"
+page = 7
+pdf_page = 6
+
+[[line_items]]
+name = "acquisitions"
+value = "6"
+label = "Acquisition of subsidiaries, net of cash acquired"
+page = 7
+pdf_page = 6
+
+[[line_items]]
+name = "dividends_paid"
+value = "224"
+label = "Dividend paid to shareholders of the company"
+page = 7
+pdf_page = 6
+
+[[line_items]]
+name = "share_repurchases"
+value = "29"
+label = "Purchase of treasury shares"
+page = 7
+pdf_page = 6
+
+[[line_items]]
+name = "share_issuance"
+value = "9"
+label = "Disposal of treasury shares"
+page = 7
+pdf_page = 6
+
+[[line_items]]
+name = "cash_and_equivalents"
+value = "966"
+label = "Cash and cash equivalents"
+page = 5
+pdf_page = 4
+
+[[line_items]]
+name = "trade_receivables"
+value = "2477"
+label = "Trade receivables"
+page = 5
+pdf_page = 4
+
+[[line_items]]
+name = "current_assets"
+value = "4180"
+label = "Current assets"
+page = 5
+pdf_page = 4
+
+[[line_items]]
+name = "goodwill"
+value = "601"
+label = "Goodwill"
+page = 5
+pdf_page = 4
+
+[[line_items]]
+name = "other_intangible_assets"
+value = "252"
+label = "Other intangibles"
+page = 5
+pdf_page = 4
+
+[[line_items]]
+name = "total_assets"
+value = "6180"
+label = "Total assets"
+page = 5
+pdf_page = 4
+
+[[line_items]]
+name = "current_liabilities"
+value = "3328"
+label = "Current liabilities"
+page = 5
+pdf_page = 4
+
+[[line_items]]
+name = "current_borrowings"
+value = "69"
+label = "Bank and other interest bearing liabilities"
+page = 5
+pdf_page = 4
+
+[[line_items]]
+name = "non_current_borrowings"
+value = "75"
+label = "Bank liabilities"
+page = 5
+pdf_page = 4
+
+[[line_items]]
+name = "non_controlling_interests"
+value = "10"
+label = "Minority interest"
+page = 5
+pdf_page = 4
+
+[[line_items]]
+name = "total_equity"
+value = "2303"
+label = "Total equity"
+page = 5
+pdf_page = 4
+
+[[line_items]]
+name = "total_liabilities_and_equity"
+value = "6180"
+label = "Total liabilities and equity"
+page = 5
+pdf_page = 4

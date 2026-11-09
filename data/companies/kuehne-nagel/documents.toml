@@ -1,0 +1,571 @@
+
+[[documents]]
+period = { start = 2004-01-01, end = 2004-12-31, kind = "annual" }
+kind = "annual_report"
+url = "https://a.storyblok.com/f/331466/x/989e4efd52/company-investor-relations-annual-report-2004-english.pdf"
+language = "en"
+sha256 = "ab21deae54fd9e754e1fef26ef46f4152d974361a9d48ed350ff7e69dd47eca7"
+fetched_at = 2026-09-24T15:30:08.108784+00:00
+
+[[documents]]
+period = { start = 2005-01-01, end = 2005-06-30, kind = "half_year" }
+kind = "half_year_report"
+url = "https://a.storyblok.com/f/331466/x/338fe252ff/company-investor-relations-half-year-2005-english.pdf"
+language = "en"
+sha256 = "f4ce910249a25beea9b2e16b8c1e6f303711afa640dd2efff4aeea93d030e388"
+fetched_at = 2026-09-24T15:30:09.222499+00:00
+
+[[documents]]
+period = { start = 2005-01-01, end = 2005-12-31, kind = "annual" }
+kind = "annual_report"
+url = "https://a.storyblok.com/f/331466/x/8cac34f702/company-investor-relations-annual-report-2005-english.pdf"
+language = "en"
+sha256 = "9cc0910f6a35f8fb0e5b4d907743fbe0836e402ea64bf60fea6ae9395f8b286f"
+fetched_at = 2026-09-24T15:30:10.824083+00:00
+
+[[documents]]
+period = { start = 2006-01-01, end = 2006-12-31, kind = "annual" }
+kind = "annual_report"
+url = "https://a.storyblok.com/f/331466/x/b259c2784e/company-investor-relations-annual-report-2006-english.pdf"
+language = "en"
+sha256 = "f03faa9f06b263e85c3f221bdd9a37b8e9ab5165da7a6da07010500258406588"
+fetched_at = 2026-09-24T15:30:13.258161+00:00
+
+[[documents]]
+period = { start = 2007-01-01, end = 2007-06-30, kind = "half_year" }
+kind = "half_year_report"
+url = "https://a.storyblok.com/f/331466/x/b419398dbc/company-investor-relations-half-year-2007-english.pdf"
+language = "en"
+sha256 = "7a2994aa08f314ea1ee5f1cba4efb2d8551950008fb50e786db85d1c418539a2"
+fetched_at = 2026-09-24T15:30:14.430116+00:00
+note = "The investor-relations link for the H1 2006 report (https://a.storyblok.com/f/331466/x/4222eef563/company-kuehne-nagel-consolidated-financial-statements-half-year-2006.pdf) serves this same file: its title page reads Half Year 2007. No H1 2006 report has been found, so there is no H1 2006 record."
+
+[[documents]]
+period = { start = 2007-01-01, end = 2007-12-31, kind = "annual" }
+kind = "annual_report"
+url = "https://a.storyblok.com/f/331466/x/8019d50e65/company-investor-relations-annual-report-2007-english.pdf"
+language = "en"
+sha256 = "9c3455530697cec73fb060c0198325dc2dd3eabe1feea09e9a720cdbeedeb109"
+fetched_at = 2026-09-24T15:30:15.917881+00:00
+
+[[documents]]
+period = { start = 2008-01-01, end = 2008-06-30, kind = "half_year" }
+kind = "half_year_report"
+url = "https://a.storyblok.com/f/331466/x/869b55910f/company-investor-relations-half-year-2008-english.pdf"
+language = "en"
+sha256 = "01d66797225dbeb84baa9478725eea4a9a562ca716a27662cddc6efc99528129"
+fetched_at = 2026-09-24T15:30:16.503859+00:00
+
+[[documents]]
+period = { start = 2008-01-01, end = 2008-12-31, kind = "annual" }
+kind = "annual_report"
+url = "https://a.storyblok.com/f/331466/x/cba462f839/company-investor-relations-annual-report-2008-german.pdf"
+language = "de"
+sha256 = "e3fa423059bfe9b21c5a2c3794ddaaad8070f648264c14752573a2306f74a24d"
+fetched_at = 2026-09-24T15:30:18.142740+00:00
+note = "The page's 'Annual report 2008 English' link serves the H1 2008 interim statements, so the German report is the annual document for FY2008."
+
+[[documents]]
+period = { start = 2009-01-01, end = 2009-06-30, kind = "half_year" }
+kind = "half_year_report"
+url = "https://a.storyblok.com/f/331466/x/8dd0a37af9/company-investor-relations-half-year-2009-english.pdf"
+language = "en"
+sha256 = "f735f38471ffc9db1193238376131396af50def3d24156e1b5c241a52783cdf3"
+fetched_at = 2026-09-24T15:30:19.519817+00:00
+
+[[documents]]
+period = { start = 2009-01-01, end = 2009-12-31, kind = "annual" }
+kind = "annual_report"
+url = "https://a.storyblok.com/f/331466/x/2ee2ab43da/company-investor-relations-annual-report-2009-english.pdf"
+language = "en"
+sha256 = "edcf405bb785e1b82f3cc16f6ede37143d1d962f2f7a928f9d96cfb84f9708d9"
+fetched_at = 2026-09-24T15:30:21.145844+00:00
+
+[[documents]]
+period = { start = 2010-01-01, end = 2010-06-30, kind = "half_year" }
+kind = "half_year_report"
+url = "https://a.storyblok.com/f/331466/x/c564f69dca/company-investor-relations-analyst-six-month-results-2010-statement.pdf"
+language = "en"
+sha256 = "0c488671137def6d27b9d4d0253bf35654e6b5cd54de271b9052f77937046bf6"
+fetched_at = 2026-09-24T15:30:22.351006+00:00
+note = "The investor-relations page offers no interim statements PDF for H1 2010; this results statement is the H1 2010 document."
+
+[[documents]]
+period = { start = 2010-01-01, end = 2010-12-31, kind = "annual" }
+kind = "annual_report"
+url = "https://a.storyblok.com/f/331466/x/3ec8dcef6f/company-investor-relations-annual-report-2010-english.pdf"
+language = "en"
+sha256 = "dcb576ff8422f45ce772ddc984de787cdf66fa4a8f790075580f906b6905b845"
+fetched_at = 2026-09-24T15:30:22.977393+00:00
+
+[[documents]]
+period = { start = 2011-01-01, end = 2011-06-30, kind = "half_year" }
+kind = "half_year_report"
+url = "https://a.storyblok.com/f/331466/x/971eba91bd/2011_interimfinancialstatement.pdf"
+language = "en"
+sha256 = "fc1e51db29abf1c8949df1a717c19bc702d143d823b896fdbf6525c8a920451a"
+fetched_at = 2026-09-24T15:30:24.394565+00:00
+
+[[documents]]
+period = { start = 2011-01-01, end = 2011-12-31, kind = "annual" }
+kind = "annual_report"
+url = "https://a.storyblok.com/f/331466/x/e71708d96d/2011-annual-report-en.pdf"
+language = "en"
+sha256 = "8a13facfb3c8d36683e26d11d9172bd2c35ad4800df4de2d6e8b84b1a1618baa"
+fetched_at = 2026-09-24T15:30:26.095860+00:00
+
+[[documents]]
+period = { start = 2011-01-01, end = 2011-12-31, kind = "annual" }
+kind = "financial_statements"
+url = "https://a.storyblok.com/f/331466/x/ea4b9dd428/consolidated_financial_statements_2011__2_.pdf"
+language = "en"
+sha256 = "c77a574a7a4ec84eedce4dd7986507ae5a7f6270257adff13a237e9a0eb7e7ea"
+fetched_at = 2026-09-24T15:30:27.408362+00:00
+
+[[documents]]
+period = { start = 2012-01-01, end = 2012-06-30, kind = "half_year" }
+kind = "half_year_report"
+url = "https://a.storyblok.com/f/331466/x/a478132c5d/q2_2012_condensed_consolidated_interim_financial_statements_unaudit.pdf"
+language = "en"
+sha256 = "1a8fc4eef562a8cb0159e37b164236bf511f4d49353b7dfd89f8232d8d476228"
+fetched_at = 2026-09-24T15:30:28.815736+00:00
+
+[[documents]]
+period = { start = 2012-01-01, end = 2012-12-31, kind = "annual" }
+kind = "annual_report"
+url = "https://a.storyblok.com/f/331466/x/80400536ab/2012-annual-report-en.pdf"
+language = "en"
+sha256 = "fa1960204b14f1601304ffe6559d12e9ad9fee547a3b174d4b0de7bb9bd05740"
+fetched_at = 2026-09-24T15:30:30.415822+00:00
+
+[[documents]]
+period = { start = 2012-01-01, end = 2012-12-31, kind = "annual" }
+kind = "financial_statements"
+url = "https://a.storyblok.com/f/331466/x/a557c4f121/consolidated_financial_statements_2012.pdf"
+language = "en"
+sha256 = "4c0ac75d22699ddcb8d4447eded3ff0a529f5966f0a2141f972dad4c2eb8fc30"
+fetched_at = 2026-09-24T15:30:31.772115+00:00
+
+[[documents]]
+period = { start = 2013-01-01, end = 2013-06-30, kind = "half_year" }
+kind = "half_year_report"
+url = "https://a.storyblok.com/f/331466/x/4c90914f49/2013_half-year_financial_statements_.pdf"
+language = "en"
+sha256 = "d20a5d2762f08534301d4512317836f2d2517802556338ff475058da4111b3e2"
+fetched_at = 2026-09-24T15:30:33.248407+00:00
+
+[[documents]]
+period = { start = 2013-01-01, end = 2013-12-31, kind = "annual" }
+kind = "annual_report"
+url = "https://a.storyblok.com/f/331466/x/9b12d7bf6c/kngb_uk_2013.pdf"
+language = "en"
+sha256 = "a900b74ab0f66f089ce35139dace2a881b08c7f06fde07742cb5b3ddf6c89504"
+fetched_at = 2026-09-24T15:30:34.839517+00:00
+
+[[documents]]
+period = { start = 2013-01-01, end = 2013-12-31, kind = "annual" }
+kind = "financial_statements"
+url = "https://a.storyblok.com/f/331466/x/1082a73d3c/consolidated_financial_statements_2013.pdf"
+language = "en"
+sha256 = "16b960538eb917004b9776254390c6a10b7a2acaf211ac4efe3812523f4927ca"
+fetched_at = 2026-09-24T15:30:36.031664+00:00
+
+[[documents]]
+period = { start = 2014-01-01, end = 2014-06-30, kind = "half_year" }
+kind = "half_year_report"
+url = "https://a.storyblok.com/f/331466/x/93edb1e34d/condensed_consolidated_interim_fs_hy2014__unaudited_.pdf"
+language = "en"
+sha256 = "8f3abd35ef79c043aaa4eb59271c22a8cbcd26d162ac6aed7ae365a09b684c1d"
+fetched_at = 2026-09-24T15:30:37.346310+00:00
+
+[[documents]]
+period = { start = 2014-01-01, end = 2014-12-31, kind = "annual" }
+kind = "annual_report"
+url = "https://a.storyblok.com/f/331466/x/d8e25287e3/annual_report_2014_english.pdf"
+language = "en"
+sha256 = "8108cdc18e1ccd6a3953eae4d9b90ad50af8739104195bcbcc72a305a3785977"
+fetched_at = 2026-09-24T15:30:39.037722+00:00
+
+[[documents]]
+period = { start = 2014-01-01, end = 2014-12-31, kind = "annual" }
+kind = "financial_statements"
+url = "https://a.storyblok.com/f/331466/x/041ff02471/consolidated_financial_statements_2014.pdf"
+language = "en"
+sha256 = "770bce06990a500db867bb6520d28dd7890ad85b480af213bcd78349d2de11c8"
+fetched_at = 2026-09-24T15:30:40.496609+00:00
+
+[[documents]]
+period = { start = 2015-01-01, end = 2015-06-30, kind = "half_year" }
+kind = "half_year_report"
+url = "https://a.storyblok.com/f/331466/x/27abe0d00b/condensed_consolidated_interim_financial_statements_q22015_unaudited.pdf"
+language = "en"
+sha256 = "fc3d4ea036c0d436f35af15fb7058fedd6f70feaff1a1a32f018f9a7ec7774be"
+fetched_at = 2026-09-24T15:30:41.878649+00:00
+
+[[documents]]
+period = { start = 2015-01-01, end = 2015-12-31, kind = "annual" }
+kind = "annual_report"
+url = "https://a.storyblok.com/f/331466/x/aa9097cba0/annual_report_2015_-_english.pdf"
+language = "en"
+sha256 = "c022332d24702a981abcfb1fc4714ef4b5cc9fcba619c6604689b091dacd61ec"
+fetched_at = 2026-09-24T15:30:42.506494+00:00
+
+[[documents]]
+period = { start = 2016-01-01, end = 2016-06-30, kind = "half_year" }
+kind = "half_year_report"
+url = "https://a.storyblok.com/f/331466/x/d976597050/hy_2016_-_condensed_consolidated_interim_statement.pdf"
+language = "en"
+sha256 = "6f578d6ca247014e0cb848ea3358d39650e4a32ebbcda676dccc6a76ff5c32d7"
+fetched_at = 2026-09-24T15:30:43.860730+00:00
+
+[[documents]]
+period = { start = 2016-01-01, end = 2016-12-31, kind = "annual" }
+kind = "annual_report"
+url = "https://a.storyblok.com/f/331466/x/cb06d5233a/kngb_annualreport.pdf"
+language = "en"
+sha256 = "c1f58237f081b12746c523589b00c80e5f19a77321745eab0b41ba0b4a91e55c"
+fetched_at = 2026-09-24T15:30:45.471333+00:00
+
+[[documents]]
+period = { start = 2016-01-01, end = 2016-12-31, kind = "annual" }
+kind = "financial_statements"
+url = "https://a.storyblok.com/f/331466/x/84085581e6/fy_2016_-_consolidated_financial_statements.pdf"
+language = "en"
+sha256 = "6b27aeb8f405f7227dd81fb67005118526b0e36e921c83c1b22507a947cfa290"
+fetched_at = 2026-09-24T15:30:46.619116+00:00
+
+[[documents]]
+period = { start = 2017-01-01, end = 2017-06-30, kind = "half_year" }
+kind = "half_year_report"
+url = "https://a.storyblok.com/f/331466/x/e30c45bddf/1h_2017_-_consolidated_financial_statements.pdf"
+language = "en"
+sha256 = "b72ef90d1521322797c282ef17062aafd915c783ea8855e592929dad0d3e310f"
+fetched_at = 2026-09-24T15:30:48.010039+00:00
+
+[[documents]]
+period = { start = 2017-01-01, end = 2017-12-31, kind = "annual" }
+kind = "annual_report"
+url = "https://a.storyblok.com/f/331466/x/030f4787a7/annualreport_2017_english.pdf"
+language = "en"
+sha256 = "f71de672140e33afe9ff61e7563c48c83c3c0448cd9241df88d9f40667722a3c"
+fetched_at = 2026-09-24T15:30:48.588123+00:00
+
+[[documents]]
+period = { start = 2017-01-01, end = 2017-12-31, kind = "annual" }
+kind = "financial_statements"
+url = "https://a.storyblok.com/f/331466/x/36ba438ede/fy_2017_consolidated_financial_statements.pdf"
+language = "en"
+sha256 = "94cd179ee107ed3651ff7f0c76eb2c14c6c3c26c5c71405e435aaef0522b5c3d"
+fetched_at = 2026-09-24T15:30:49.167137+00:00
+
+[[documents]]
+period = { start = 2018-01-01, end = 2018-06-30, kind = "half_year" }
+kind = "half_year_report"
+url = "https://a.storyblok.com/f/331466/x/2d0abe5653/2q_18_condensed_consolidated_interim_financial_statements__unaudited_.pdf"
+language = "en"
+sha256 = "31f03818f4febf6e48cc6113c46de203a3f2d1db7450e93eb2f03a042ac35f96"
+fetched_at = 2026-09-24T15:30:50.523878+00:00
+
+[[documents]]
+period = { start = 2018-01-01, end = 2018-12-31, kind = "annual" }
+kind = "annual_report"
+url = "https://a.storyblok.com/f/331466/x/5e12ca9530/annualreport_2018_english.pdf"
+language = "en"
+sha256 = "abbe7215083a8a5c28a36475ba107d8e93c2f18e3522f50ffee88c56ddd15377"
+fetched_at = 2026-09-24T15:30:51.814012+00:00
+
+[[documents]]
+period = { start = 2018-01-01, end = 2018-12-31, kind = "annual" }
+kind = "financial_statements"
+url = "https://a.storyblok.com/f/331466/x/e40156800b/fy_2018_consolidated_financial_statements.pdf"
+language = "en"
+sha256 = "1a82eaa0fba46f1df7e5d7c379818a5dfddd4fdedeba755a2d66432906e4543e"
+fetched_at = 2026-09-24T15:30:53.256599+00:00
+
+[[documents]]
+period = { start = 2019-01-01, end = 2019-06-30, kind = "half_year" }
+kind = "half_year_report"
+url = "https://a.storyblok.com/f/331466/x/1a25253e47/h1_2019_condensed_consolidated_interim_financial_statements_unaudited.pdf"
+language = "en"
+sha256 = "bebbcc821f064374aad3ed60ba3c1a39d0b8ae2ab6af613b164ce51eac2e9247"
+fetched_at = 2026-09-24T15:30:53.852816+00:00
+
+[[documents]]
+period = { start = 2019-01-01, end = 2019-12-31, kind = "annual" }
+kind = "annual_report"
+url = "https://a.storyblok.com/f/331466/x/98b505eb49/company-investor-relations-annual-report-2019.pdf"
+language = "en"
+sha256 = "102ffb71239579a708e39b67f9c4ad4d547ec89ca1d93ef4b10b7f5515fd1f91"
+fetched_at = 2026-09-24T15:30:54.449536+00:00
+
+[[documents]]
+period = { start = 2019-01-01, end = 2019-12-31, kind = "annual" }
+kind = "financial_statements"
+url = "https://a.storyblok.com/f/331466/x/b4424949b7/fy_2019_consolidated_financial_statements.pdf"
+language = "en"
+sha256 = "d174f7339dd061cf43658500a2c359cda4bb0fae16e393c760f4f85ca02301df"
+fetched_at = 2026-09-24T15:30:55.737320+00:00
+
+[[documents]]
+period = { start = 2019-01-01, end = 2019-12-31, kind = "annual" }
+kind = "statbook"
+url = "https://a.storyblok.com/f/331466/x/62ee1074d7/q42019_kuehne_nagel_statbooks-1.xlsx"
+language = "en"
+sha256 = "1bd7fc978dba5b0c08bd41596608fa8878c01661546bab8a7d3c87d8f7f8feff"
+fetched_at = 2026-09-24T15:30:56.929558+00:00
+
+[[documents]]
+period = { start = 2020-01-01, end = 2020-06-30, kind = "half_year" }
+kind = "half_year_report"
+url = "https://a.storyblok.com/f/331466/x/5484635781/condensed-consolidated-interim-financial-statements-q2-2020.pdf"
+language = "en"
+sha256 = "3cb2f7a166cbc436f05c9ae5684fa3ce2e2353713cb0c3ce1ed666284bfff7cf"
+fetched_at = 2026-09-24T15:30:58.231054+00:00
+
+[[documents]]
+period = { start = 2020-01-01, end = 2020-06-30, kind = "half_year" }
+kind = "statbook"
+url = "https://a.storyblok.com/f/331466/x/e3fc051257/q22020_kuehne-nagel_statbooks.xlsx"
+language = "en"
+sha256 = "413927145b31ba968f8aa18a6baabda7f063a2da00fed47f9ece432659346e92"
+fetched_at = 2026-09-24T15:30:59.433747+00:00
+
+[[documents]]
+period = { start = 2020-01-01, end = 2020-12-31, kind = "annual" }
+kind = "annual_report"
+url = "https://a.storyblok.com/f/331466/x/727dbafd06/annual_report_2020.pdf"
+language = "en"
+sha256 = "db699749647cb9f393fd13cf59b19519b4d72c5e8df6081866e911ee01ebb32b"
+fetched_at = 2026-09-24T15:31:00.025594+00:00
+
+[[documents]]
+period = { start = 2020-01-01, end = 2020-12-31, kind = "annual" }
+kind = "financial_statements"
+url = "https://a.storyblok.com/f/331466/x/d785a4f522/fy20-consolidated_financial_statements.pdf"
+language = "en"
+sha256 = "17ad38ce30ea03dc484b5403b50a003c7e00d2671d03fb273a3fafef6a782071"
+fetched_at = 2026-09-24T15:31:01.431549+00:00
+
+[[documents]]
+period = { start = 2020-01-01, end = 2020-12-31, kind = "annual" }
+kind = "statbook"
+url = "https://a.storyblok.com/f/331466/x/434ac85c33/fy20-kuehne-nagel_statbooks.xlsx"
+language = "en"
+sha256 = "941dce6918872bc129ee7b0a50f465dcac573675a74bae6a53fcb3e794702621"
+fetched_at = 2026-09-24T15:31:02.538223+00:00
+
+[[documents]]
+period = { start = 2021-01-01, end = 2021-06-30, kind = "half_year" }
+kind = "half_year_report"
+url = "https://a.storyblok.com/f/331466/x/06cd0ed7fe/q221-condensed-consolidated_interim-financial_statements.pdf"
+language = "en"
+sha256 = "5f4b40301f95f6e69714ad68107634bd35e3d3d63116cf0a709fafc59116b76e"
+fetched_at = 2026-09-24T15:31:03.844106+00:00
+
+[[documents]]
+period = { start = 2021-01-01, end = 2021-06-30, kind = "half_year" }
+kind = "statbook"
+url = "https://a.storyblok.com/f/331466/x/89b39984d0/q221-kuehne-nagel_statbooks.xlsx"
+language = "en"
+sha256 = "f1890110f7dbd82cf362d89cc631f89032829b8071b8bd39003d8602b0ad4bf9"
+fetched_at = 2026-09-24T15:31:04.956081+00:00
+
+[[documents]]
+period = { start = 2021-01-01, end = 2021-12-31, kind = "annual" }
+kind = "annual_report"
+url = "https://a.storyblok.com/f/331466/x/a5825ea776/annual_report_2021-3.pdf"
+language = "en"
+sha256 = "58d7be22af087a4fbd90849f1bc5f82a94e6e929dc6ad42166c02b31c5d62d49"
+fetched_at = 2026-09-24T15:31:05.558439+00:00
+
+[[documents]]
+period = { start = 2021-01-01, end = 2021-12-31, kind = "annual" }
+kind = "financial_statements"
+url = "https://a.storyblok.com/f/331466/x/f09b8edbd8/fy21-condensed-consolidated_financial_statements-1.pdf"
+language = "en"
+sha256 = "81693dca7c6809945183558ddaecc34854a0fae1e5d499ca085c874eca7a7933"
+fetched_at = 2026-09-24T15:31:06.856883+00:00
+
+[[documents]]
+period = { start = 2021-01-01, end = 2021-12-31, kind = "annual" }
+kind = "statbook"
+url = "https://a.storyblok.com/f/331466/x/fb847367c3/q42021_kuehne-nagel_statbooks.xlsx"
+language = "en"
+sha256 = "20df4fc22d9d2d55951290d3b2ac9dbb15a105f12da2d4a76c06d708bbb4837f"
+fetched_at = 2026-09-24T15:31:08.040219+00:00
+
+[[documents]]
+period = { start = 2022-01-01, end = 2022-06-30, kind = "half_year" }
+kind = "half_year_report"
+url = "https://a.storyblok.com/f/331466/x/d74ff12bae/q2_2022_condensed-consolidated-interim-financial-statements_unaudited.pdf"
+language = "en"
+sha256 = "e1df57b8e3ec27671c10381fa325a456958e3a026a7b016df502fa0d6bf7f6ad"
+fetched_at = 2026-09-24T15:31:08.616025+00:00
+
+[[documents]]
+period = { start = 2022-01-01, end = 2022-06-30, kind = "half_year" }
+kind = "statbook"
+url = "https://a.storyblok.com/f/331466/x/b66cd176b7/q22022_kuehne-nagel_statbooks.xlsx"
+language = "en"
+sha256 = "8529e64f086070e0d73a4182722c40e380829ad324f9e4a6337efe73f40f8243"
+fetched_at = 2026-09-24T15:31:09.775406+00:00
+
+[[documents]]
+period = { start = 2022-01-01, end = 2022-12-31, kind = "annual" }
+kind = "annual_report"
+url = "https://a.storyblok.com/f/331466/x/39384e0cec/2022_ar.pdf"
+language = "en"
+sha256 = "b24334449162430ea33d0d61cfd10dec0fb0c328b908a1eccbe42acb59468c44"
+fetched_at = 2026-09-24T15:31:10.378301+00:00
+
+[[documents]]
+period = { start = 2022-01-01, end = 2022-12-31, kind = "annual" }
+kind = "financial_statements"
+url = "https://a.storyblok.com/f/331466/x/a16b2df8bd/fy22-consolidated_financial_statements.pdf"
+language = "en"
+sha256 = "1e1364351a26767a7ffb0473ceb9314f123ca34e0cf39a428dedb7ebe3374883"
+fetched_at = 2026-09-24T15:31:11.704896+00:00
+
+[[documents]]
+period = { start = 2022-01-01, end = 2022-12-31, kind = "annual" }
+kind = "statbook"
+url = "https://a.storyblok.com/f/331466/x/89bd885674/q42022_kuehne-nagel_statbooks.xlsx"
+language = "en"
+sha256 = "56b3bdd943be3128e92f71c22e81bc23ee2586881b270ab9d4f6b02ee6dc7fbd"
+fetched_at = 2026-09-24T15:31:12.790512+00:00
+
+[[documents]]
+period = { start = 2023-01-01, end = 2023-06-30, kind = "half_year" }
+kind = "half_year_report"
+url = "https://a.storyblok.com/f/331466/x/312db0acd8/q2_2023_condensed-consolidated-interim-fs_unaudited.pdf"
+language = "en"
+sha256 = "a3b370ab2a0dadaebeb7bfec93fff08d36329c805c101f97538d0b23b3c55bd9"
+fetched_at = 2026-09-24T15:31:13.387976+00:00
+
+[[documents]]
+period = { start = 2023-01-01, end = 2023-06-30, kind = "half_year" }
+kind = "statbook"
+url = "https://a.storyblok.com/f/331466/x/78d270d35a/q2-2023_kuehne-nagel_statbooks.xlsx"
+language = "en"
+sha256 = "f54562e450ed4fff03592f03f61947d9724185eec54a4438bfebc3ea116f0011"
+fetched_at = 2026-09-24T15:31:14.597451+00:00
+
+[[documents]]
+period = { start = 2023-01-01, end = 2023-12-31, kind = "annual" }
+kind = "annual_report"
+url = "https://a.storyblok.com/f/331466/x/ce602f197e/annual_report_2023.pdf"
+language = "en"
+sha256 = "31a63e7718366105654b42c9c38b2fb2d81805899f0be4edf5bfa2085cd71f64"
+fetched_at = 2026-09-24T15:31:15.200952+00:00
+
+[[documents]]
+period = { start = 2023-01-01, end = 2023-12-31, kind = "annual" }
+kind = "financial_statements"
+url = "https://a.storyblok.com/f/331466/x/4df230de3a/consolidated_financial_statements_2023.pdf"
+language = "en"
+sha256 = "290ae397e59af916aa6b0b37fd5cfb0dd5b69b722e5207b394e2406f6dace5b0"
+fetched_at = 2026-09-24T15:31:15.799387+00:00
+
+[[documents]]
+period = { start = 2023-01-01, end = 2023-12-31, kind = "annual" }
+kind = "statbook"
+url = "https://a.storyblok.com/f/331466/x/6247184ef0/q4-2023_kuehne-nagel_statbooks.xlsx"
+language = "en"
+sha256 = "69a500efead124396d958c9f10d6f0edbb3cf093055e56c8eaa0ebe53fc14e7b"
+fetched_at = 2026-09-24T15:31:16.389082+00:00
+
+[[documents]]
+period = { start = 2024-01-01, end = 2024-06-30, kind = "half_year" }
+kind = "half_year_report"
+url = "https://a.storyblok.com/f/331466/x/826f47169e/q2_2024_condensed-consolidated-interim-fs_unaudited.pdf"
+language = "en"
+sha256 = "54626269354541eee979cf5ed4534aeafa8cf1992f8c9d5b79074cf9e1105383"
+fetched_at = 2026-09-24T15:31:17.665642+00:00
+
+[[documents]]
+period = { start = 2024-01-01, end = 2024-06-30, kind = "half_year" }
+kind = "statbook"
+url = "https://a.storyblok.com/f/331466/x/6117de19ea/q2_2024_kuehne-nagel_statbooks.xlsx"
+language = "en"
+sha256 = "fc90b563c384cac1e587ce22d726151b8782081c0c77b9021a4c2a9bf7e6026e"
+fetched_at = 2026-09-24T15:31:18.787770+00:00
+
+[[documents]]
+period = { start = 2024-01-01, end = 2024-12-31, kind = "annual" }
+kind = "annual_report"
+url = "https://a.storyblok.com/f/331466/x/52cabfc6da/annual_report_2024.pdf"
+language = "en"
+sha256 = "3f008db4fed3a16792e02136ab95aa3f232483d933b6415dcadeaf223785c65b"
+fetched_at = 2026-09-24T15:31:19.379757+00:00
+
+[[documents]]
+period = { start = 2024-01-01, end = 2024-12-31, kind = "annual" }
+kind = "financial_statements"
+url = "https://a.storyblok.com/f/331466/x/c7dc5f39d5/consolidated_financial_statements_2024.pdf"
+language = "en"
+sha256 = "55d31d5824a52e7ddd6f117dd3e1b50a1f21b5bbe271464c83a386dba8db58bf"
+fetched_at = 2026-09-24T15:31:20.760399+00:00
+
+[[documents]]
+period = { start = 2024-01-01, end = 2024-12-31, kind = "annual" }
+kind = "statbook"
+url = "https://a.storyblok.com/f/331466/x/8744a8c316/q4-2024_kuehne-nagel_statbooks.xlsx"
+language = "en"
+sha256 = "c901241b20b0fbf51c09892938ea8b8b03309fed75064f418a2a8dddeaddf54f"
+fetched_at = 2026-09-24T15:31:21.929232+00:00
+
+[[documents]]
+period = { start = 2025-01-01, end = 2025-06-30, kind = "half_year" }
+kind = "half_year_report"
+url = "https://a.storyblok.com/f/331466/x/33e53efe85/q2-2025-condensed-consolidated-interim-fs-unaudited.pdf"
+language = "en"
+sha256 = "325e2b495da001aca0450241b92f0c46981c7201f28359e7cdf6b4737bd666e4"
+fetched_at = 2026-09-24T15:31:22.508721+00:00
+
+[[documents]]
+period = { start = 2025-01-01, end = 2025-06-30, kind = "half_year" }
+kind = "statbook"
+url = "https://a.storyblok.com/f/331466/x/4714ec8806/q2-2025-kuehne-nagel-statbooks.xlsx"
+language = "en"
+sha256 = "86d9a851f818d251bd4a57d97c08be629c54153b9efe5e8fa2fe42dde1ae1139"
+fetched_at = 2026-09-24T15:31:23.715413+00:00
+
+[[documents]]
+period = { start = 2025-01-01, end = 2025-12-31, kind = "annual" }
+kind = "annual_report"
+url = "https://a.storyblok.com/f/331466/x/469305b121/kn_2025_annual-report.pdf"
+language = "en"
+sha256 = "b723aa7c569414cf7f82c0d97b63b50b605a67cb3bd92e558c93b386066c6047"
+fetched_at = 2026-09-24T15:31:24.298149+00:00
+
+[[documents]]
+period = { start = 2025-01-01, end = 2025-12-31, kind = "annual" }
+kind = "financial_statements"
+url = "https://a.storyblok.com/f/331466/x/2fa31c0666/kn_2025_ar_consolidated_financial_statement.pdf"
+language = "en"
+sha256 = "e1e9e5a4a2fc8a0d22ef23e3e46880aeec788e409dd7963b3310f53b868493ff"
+fetched_at = 2026-09-24T15:31:24.873870+00:00
+
+[[documents]]
+period = { start = 2025-01-01, end = 2025-12-31, kind = "annual" }
+kind = "statbook"
+url = "https://a.storyblok.com/f/331466/x/19f2112ac7/q4-2025_kuehne-nagel_statbooks.xlsx"
+language = "en"
+sha256 = "91c964c12e868e0dffc9977ad29d528e6a3513905b08a7c5a9fb661a6f0b2814"
+fetched_at = 2026-09-24T15:31:25.455472+00:00
+
+[[documents]]
+period = { start = 2026-01-01, end = 2026-06-30, kind = "half_year" }
+kind = "half_year_report"
+url = "https://a.storyblok.com/f/331466/x/d70835d04c/q2_2026_condensed-consolidated-interim-fs_unaudited.pdf"
+language = "en"
+sha256 = "1b97fb1251bcffbd70737b2097d03e6994c91bb7537cdb49b86009e19c71a429"
+fetched_at = 2026-09-24T15:31:26.013948+00:00
+
+[[documents]]
+period = { start = 2026-01-01, end = 2026-06-30, kind = "half_year" }
+kind = "statbook"
+url = "https://a.storyblok.com/f/331466/x/4b8a4d6916/q2-2026_kuehne-nagel_statbooks.xlsx"
+language = "en"
+sha256 = "24980bef3d3192d30e237e1a775a566ceebc8c88dab6e8623d26581f2d5cff59"
+fetched_at = 2026-09-24T15:31:27.204596+00:00

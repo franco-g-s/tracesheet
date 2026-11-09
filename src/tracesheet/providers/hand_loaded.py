@@ -1,11 +1,11 @@
 """Typed-in figures: numbers read from annual reports and written into TOML files.
 
 One directory per company holds ``company.toml`` (who the company is), ``documents.toml``
-(what it published), ``labels.toml`` (its own wording for each line), an optional
-``actions.toml`` (share-basis actions confirmed against its documents) and one file per
-filing. Every mistake the loader can detect is refused with the file and, where there is
-one, the line item named. Unknown keys are refused too, so a misspelt or stray field fails
-loudly instead of being ignored.
+(what it published), an optional ``actions.toml`` (share-basis actions confirmed against its
+documents) and one file per filing; any other ``.toml`` file is read as a filing. Every
+mistake the loader can detect is refused with the file and, where there is one, the line
+item named. Unknown keys are refused too, so a misspelt or stray field fails loudly instead
+of being ignored.
 """
 
 import tomllib
@@ -55,10 +55,9 @@ from tracesheet.providers.reconcile import reconcile
 
 COMPANY_FILE = "company.toml"
 ACTIONS_FILE = "actions.toml"
-LABELS_FILE = "labels.toml"
-RESERVED_FILES = frozenset({COMPANY_FILE, DOCUMENTS_FILE, LABELS_FILE, ACTIONS_FILE})
+RESERVED_FILES = frozenset({COMPANY_FILE, DOCUMENTS_FILE, ACTIONS_FILE})
 """Files in a company directory that are not filings: who the company is, what it
-published, its wording for each line, and its confirmed share-basis actions."""
+published, and its confirmed share-basis actions."""
 
 
 class FiguresIn(StrEnum):

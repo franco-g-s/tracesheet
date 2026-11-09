@@ -1,0 +1,11 @@
+# Kühne + Nagel International AG, a freight forwarder. Its income statement reports net
+# turnover less net expenses for services from third parties as gross profit; the records
+# keep the report's own wording for every line.
+
+id = "kuehne-nagel"
+name = "Kühne + Nagel International AG"
+listing = { venue = "SIX", ticker = "KNIN", isin = "CH0025238863" }
+currency = "CHF"
+reporting_standard = "ifrs"
+domicile_country = "CH"
+fiscal_year_end = { month = 12, day = 31 }

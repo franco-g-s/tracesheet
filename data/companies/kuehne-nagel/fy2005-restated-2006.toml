@@ -1,0 +1,424 @@
+# kuehne-nagel — fy2005-restated-2006
+# FY2005 as the FY2006 annual report shows it in its comparative column.
+# Annual Report 2006 p.115: '* Certain comparatives were reclassified to conform to the current period's presentation.'
+# p.114: '* Basic and diluted earnings per share were recalculated due to a share split in 2006, see further note 23.'
+# p.139: 'During the Annual General Meeting on May 2, 2006, the shareholders approved a 1:5 split of the registered shares'.
+
+company = "kuehne-nagel"
+period = { start = 2005-01-01, end = 2005-12-31, kind = "annual" }
+filed_at = 2007-03-19T11:46:09+01:00
+currency = "CHF"
+figures_in = "millions"
+source = { document = "annual report 2006 (comparative column)", url = "https://a.storyblok.com/f/331466/x/b259c2784e/company-investor-relations-annual-report-2006-english.pdf", sha256 = "f03faa9f06b263e85c3f221bdd9a37b8e9ab5165da7a6da07010500258406588" }
+restates = "fy2005"
+
+[[line_items]]
+name = "revenue"
+value = "11093.6"
+label = "Net invoiced turnover"
+page = 114
+pdf_page = 114
+
+[[line_items]]
+name = "cost_of_sales"
+value = "8324.6"
+label = "Net expenses for services from third parties"
+page = 114
+pdf_page = 114
+
+[[line_items]]
+name = "gross_profit"
+value = "2769.0"
+label = "Gross profit"
+page = 114
+pdf_page = 114
+
+[[line_items]]
+name = "personnel_expenses"
+value = "1499.9"
+label = "Personnel expenses"
+page = 114
+pdf_page = 114
+
+[[line_items]]
+name = "other_operating_expenses"
+value = "721.7"
+label = "Selling, general and administrative expenses"
+page = 114
+pdf_page = 114
+
+[[line_items]]
+name = "other_operating_income"
+value = "14.1"
+label = "Other operating income, net"
+page = 114
+pdf_page = 114
+
+[[line_items]]
+name = "ebitda"
+value = "561.5"
+label = "EBITDA"
+page = 114
+pdf_page = 114
+
+[[line_items]]
+name = "ebit"
+value = "429.1"
+label = "EBIT"
+page = 114
+pdf_page = 114
+
+[[line_items]]
+name = "interest_income"
+value = "23.4"
+label = "Financial income"
+page = 114
+pdf_page = 114
+
+[[line_items]]
+name = "interest_expense"
+value = "17.5"
+label = "Financial expenses"
+page = 114
+pdf_page = 114
+
+[[line_items]]
+name = "profit_before_tax"
+value = "445.9"
+label = "EBT"
+page = 114
+pdf_page = 114
+
+[[line_items]]
+name = "income_tax_expense"
+value = "127.5"
+label = "Income tax"
+page = 114
+pdf_page = 114
+
+[[line_items]]
+name = "net_income"
+value = "318.4"
+label = "Earnings for the year"
+page = 114
+pdf_page = 114
+
+[[line_items]]
+name = "net_income_attributable_to_owners"
+value = "315.0"
+label = "Equity holders of the parent"
+page = 114
+pdf_page = 114
+
+[[line_items]]
+name = "net_income_attributable_to_minorities"
+value = "3.4"
+label = "Minority interest"
+page = 114
+pdf_page = 114
+
+[[line_items]]
+name = "eps_basic"
+value = "2.87"
+label = "Basic earnings per share"
+page = 114
+pdf_page = 114
+figures_in = "units"
+note = "First filed as 14.35; restated in the Annual Report 2006 on the basis of the 1:5 share split of May 2006."
+
+[[line_items]]
+name = "eps_diluted"
+value = "2.85"
+label = "Diluted earnings per share"
+page = 114
+pdf_page = 114
+figures_in = "units"
+note = "First filed as 14.26; restated in the Annual Report 2006 on the basis of the 1:5 share split of May 2006."
+
+[[line_items]]
+name = "operating_cash_flow"
+value = "411.4"
+label = "Total cash flow from operating activities"
+page = 117
+pdf_page = 117
+
+[[line_items]]
+name = "capital_expenditure"
+value = "187.2"
+label = "– Property, plant and equipment"
+page = 117
+pdf_page = 117
+
+[[line_items]]
+name = "acquisitions"
+value = "84.3"
+label = "Acquisition of subsidiaries, net of cash acquired"
+page = 117
+pdf_page = 117
+
+[[line_items]]
+name = "divestments"
+value = "0"
+not_printed = true
+page = 117
+pdf_page = 117
+
+[[line_items]]
+name = "dividends_paid"
+value = "97.5"
+label = "Dividend paid to shareholders of the company"
+page = 117
+pdf_page = 117
+
+[[line_items]]
+name = "share_issuance"
+value = "514.9"
+label = "Disposal of treasury shares"
+page = 117
+pdf_page = 117
+
+[[line_items]]
+name = "cash_and_equivalents"
+value = "1197.9"
+label = "Cash and cash equivalents"
+page = 115
+pdf_page = 115
+
+[[line_items]]
+name = "trade_receivables"
+value = "1641.9"
+label = "Trade receivables"
+page = 115
+pdf_page = 115
+
+[[line_items]]
+name = "current_assets"
+value = "3228.3"
+label = "Current assets"
+page = 115
+pdf_page = 115
+
+[[line_items]]
+name = "goodwill"
+value = "133.6"
+label = "Goodwill"
+page = 115
+pdf_page = 115
+
+[[line_items]]
+name = "goodwill_acquired"
+value = "36.6"
+label = "Addition through business combinations"
+page = 135
+pdf_page = 135
+note = "2005 column of note 25, goodwill column."
+
+[[line_items]]
+name = "other_intangible_assets"
+value = "70.0"
+label = "Other intangibles"
+page = 115
+pdf_page = 115
+
+[[line_items]]
+name = "total_assets"
+value = "4221.4"
+label = "Total assets"
+page = 115
+pdf_page = 115
+
+[[line_items]]
+name = "current_liabilities"
+value = "2353.2"
+label = "Current liabilities"
+page = 115
+pdf_page = 115
+note = "First filed as 2351.2; restated in the Annual Report 2006, which reclassified certain comparatives (page 115)."
+
+[[line_items]]
+name = "current_borrowings"
+value = "329.6"
+label = "Bank and other interest bearing liabilities"
+page = 115
+pdf_page = 115
+note = "First filed as 327.6; restated in the Annual Report 2006, which reclassified certain comparatives (page 115)."
+
+[[line_items]]
+name = "non_current_borrowings"
+value = "14.9"
+label = "Bank liabilities"
+page = 115
+pdf_page = 115
+
+[[line_items]]
+name = "non_controlling_interests"
+value = "5.9"
+label = "Minority interest"
+page = 115
+pdf_page = 115
+
+[[line_items]]
+name = "total_equity"
+value = "1601.0"
+label = "Total equity"
+page = 115
+pdf_page = 115
+
+[[line_items]]
+name = "total_liabilities_and_equity"
+value = "4221.4"
+label = "Total liabilities and equity"
+page = 115
+pdf_page = 115
+
+[[line_items]]
+name = "shares_outstanding"
+value = "23426773"
+label = "Entitled to voting rights and dividend"
+page = 139
+pdf_page = 139
+figures_in = "units"
+share_basis_date = 2006-01-01
+note = "Printed in the 'Jan. 1, 2006' column of the share table: the count before the 1:5 split of 2 May 2006."
+
+[[line_items]]
+name = "shares_diluted"
+value = "110428350"
+label = "Adjusted weighted number of ordinary shares applicable to diluted earnings per share"
+page = 132
+pdf_page = 132
+figures_in = "units"
+note = "First filed as 22085670; restated in the Annual Report 2006 on the basis of the 1:5 share split of May 2006."
+
+[[line_items]]
+name = "shares_basic"
+value = "109736440"
+label = "Weighted average number of ordinary shares outstanding during the year"
+page = 132
+pdf_page = 132
+figures_in = "units"
+note = "First filed as 21947288; restated in the Annual Report 2006 on the basis of the 1:5 share split of May 2006."
+
+[[line_items]]
+name = "dividend_per_share"
+value = "1.10"
+label = "Dividends: the prior year's dividend, per share"
+page = 116
+pdf_page = 116
+figures_in = "units"
+note = "Printed beside the proposal as '(2006: CHF 1.10 per share amounting to CHF 128.9 million)'; first filed as 5.50, before the 1:5 share split of May 2006."
+
+[[line_items]]
+name = "goodwill_impairment"
+value = "24.8"
+label = "Impairment of goodwill and of other intangibles"
+page = 114
+pdf_page = 114
+note = "The Annual Report 2006 widens this line to goodwill and other intangibles; the figure is the 2005 goodwill impairment as first filed."
+
+[[line_items]]
+name = "intangible_capital_expenditure"
+value = "22.6"
+label = "– Intangibles"
+page = 117
+pdf_page = 117
+
+[[line_items]]
+name = "disposals_of_fixed_assets"
+value = "109.8"
+label = "Disposal of property, plant and equipment"
+page = 117
+pdf_page = 117
+
+[[line_items]]
+name = "investing_cash_flow"
+value = "-140.5"
+label = "Total cash flow from investing activities"
+page = 117
+pdf_page = 117
+
+[[line_items]]
+name = "borrowings_raised"
+value = "61.7"
+label = "Increase in interest bearing liabilities"
+page = 117
+pdf_page = 117
+
+[[line_items]]
+name = "borrowings_repaid"
+value = "22.5"
+label = "Decrease in interest bearing liabilities"
+page = 117
+pdf_page = 117
+
+[[line_items]]
+name = "lease_repayments"
+value = "0"
+not_printed = true
+page = 117
+pdf_page = 117
+note = "Before IFRS 16 (2019) any finance-lease repayment is inside the repayment of borrowings, not printed apart."
+
+[[line_items]]
+name = "share_repurchases"
+value = "0"
+not_printed = true
+page = 117
+pdf_page = 117
+
+[[line_items]]
+name = "dividends_to_minorities"
+value = "2.7"
+label = "Dividend paid to minority shareholders"
+page = 117
+pdf_page = 117
+
+[[line_items]]
+name = "acquisition_of_minorities"
+value = "0"
+not_printed = true
+page = 117
+pdf_page = 117
+
+[[line_items]]
+name = "financing_cash_flow"
+value = "436.4"
+label = "Total cash flow from financing activities"
+page = 117
+pdf_page = 117
+
+[[line_items]]
+name = "fx_effect_on_cash"
+value = "19.8"
+label = "Exchange difference on cash and cash equivalents"
+page = 117
+pdf_page = 117
+
+[[line_items]]
+name = "change_in_cash"
+value = "727.1"
+label = "Increase/(decrease) in cash and cash equivalents"
+page = 117
+pdf_page = 117
+
+[[line_items]]
+name = "capital_repayments_paid"
+value = "0"
+not_printed = true
+page = 117
+pdf_page = 117
+
+[[line_items]]
+name = "interest_paid_outside_operating"
+value = "17.5"
+label = "Interest paid"
+page = 117
+pdf_page = 117
+
+[[line_items]]
+name = "lease_interest_paid_outside_operating"
+value = "0"
+not_printed = true
+page = 117
+pdf_page = 117
+note = "Before IFRS 16 (2019) any interest on finance leases is inside 'Interest paid', not printed apart."

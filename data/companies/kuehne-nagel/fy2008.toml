@@ -1,0 +1,431 @@
+# kuehne-nagel — fy2008
+# Typed from the German annual report, the only FY2008 report the company publishes; labels
+# keep its German wording. Numbers printed "21.599" and "4,96" are held as 21599 and 4.96.
+
+company = "kuehne-nagel"
+period = { start = 2008-01-01, end = 2008-12-31, kind = "annual" }
+filed_at = 2009-03-15T10:19:34+01:00
+currency = "CHF"
+figures_in = "millions"
+source = { document = "annual report 2008", url = "https://a.storyblok.com/f/331466/x/cba462f839/company-investor-relations-annual-report-2008-german.pdf", sha256 = "e3fa423059bfe9b21c5a2c3794ddaaad8070f648264c14752573a2306f74a24d" }
+
+[[line_items]]
+name = "revenue"
+value = "17992"
+label = "Fakturierter Nettoumsatz"
+page = 82
+pdf_page = 82
+
+[[line_items]]
+name = "cost_of_sales"
+value = "11739"
+label = "Nettoaufwendungen für bezogene Leistungen"
+page = 82
+pdf_page = 82
+
+[[line_items]]
+name = "gross_profit"
+value = "6253"
+label = "Rohertrag"
+page = 82
+pdf_page = 82
+
+[[line_items]]
+name = "personnel_expenses"
+value = "3518"
+label = "Personalaufwendungen"
+page = 82
+pdf_page = 82
+
+[[line_items]]
+name = "other_operating_expenses"
+value = "1731"
+label = "Verkaufs-, allgemeine und administrative Aufwendungen"
+page = 82
+pdf_page = 82
+
+[[line_items]]
+name = "other_operating_income"
+value = "16"
+label = "Sonstige betriebliche Erträge (netto)"
+page = 82
+pdf_page = 82
+
+[[line_items]]
+name = "ebitda"
+value = "1020"
+label = "Betriebsgewinn (EBITDA)"
+page = 82
+pdf_page = 82
+
+[[line_items]]
+name = "ebit"
+value = "736"
+label = "Gewinn vor Zinsen und Steuern (EBIT)"
+page = 82
+pdf_page = 82
+
+[[line_items]]
+name = "goodwill_impairment"
+value = "6"
+label = "Impairmentverlust auf Goodwill"
+page = 82
+pdf_page = 82
+
+[[line_items]]
+name = "interest_income"
+value = "33"
+label = "Finanzerträge"
+page = 82
+pdf_page = 82
+
+[[line_items]]
+name = "interest_expense"
+value = "13"
+label = "Finanzaufwendungen"
+page = 82
+pdf_page = 82
+
+[[line_items]]
+name = "profit_before_tax"
+value = "764"
+label = "Gewinn vor Steuern (EBT)"
+page = 82
+pdf_page = 82
+
+[[line_items]]
+name = "income_tax_expense"
+value = "176"
+label = "Ertragssteuern"
+page = 82
+pdf_page = 82
+
+[[line_items]]
+name = "net_income"
+value = "588"
+label = "Reingewinn"
+page = 82
+pdf_page = 82
+
+[[line_items]]
+name = "net_income_attributable_to_owners"
+value = "585"
+label = "Aktionäre der Gesellschaft"
+page = 82
+pdf_page = 82
+
+[[line_items]]
+name = "net_income_attributable_to_minorities"
+value = "3"
+label = "Minderheitsanteile"
+page = 82
+pdf_page = 82
+
+[[line_items]]
+name = "eps_basic"
+value = "4.96"
+label = "Gewinn pro Aktie"
+page = 82
+pdf_page = 82
+figures_in = "units"
+
+[[line_items]]
+name = "eps_diluted"
+value = "4.95"
+label = "Verwässerter Gewinn pro Aktie"
+page = 82
+pdf_page = 82
+figures_in = "units"
+
+[[line_items]]
+name = "operating_cash_flow"
+value = "866"
+label = "Total Geldfluss aus Geschäftstätigkeit"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "capital_expenditure"
+value = "265"
+label = "— Sachanlagen"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "acquisitions"
+value = "15"
+label = "Erwerb von Tochtergesellschaften, netto (ohne flüssige Mittel)"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "divestments"
+value = "0"
+not_printed = true
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "dividends_paid"
+value = "519"
+label = "Dividendenausschüttung an Aktionäre der Gesellschaft"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "share_repurchases"
+value = "23"
+label = "Kauf eigener Aktien"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "share_issuance"
+value = "12"
+label = "Veräusserung eigener Aktien"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "cash_and_equivalents"
+value = "1039"
+label = "Flüssige Mittel"
+page = 83
+pdf_page = 83
+
+[[line_items]]
+name = "trade_receivables"
+value = "2143"
+label = "Forderungen aus Leistungen"
+page = 83
+pdf_page = 83
+
+[[line_items]]
+name = "current_assets"
+value = "3691"
+label = "Umlaufvermögen"
+page = 83
+pdf_page = 83
+
+[[line_items]]
+name = "goodwill"
+value = "540"
+label = "Goodwill"
+page = 83
+pdf_page = 83
+
+[[line_items]]
+name = "goodwill_acquired"
+value = "0"
+label = "Zugänge aus Erstkonsolidierung"
+page = 106
+pdf_page = 106
+note = "Printed as a dash."
+
+[[line_items]]
+name = "other_intangible_assets"
+value = "202"
+label = "Andere immaterielle Vermögenswerte"
+page = 83
+pdf_page = 83
+
+[[line_items]]
+name = "total_assets"
+value = "5555"
+label = "Total Aktiven"
+page = 83
+pdf_page = 83
+
+[[line_items]]
+name = "current_liabilities"
+value = "3059"
+label = "Kurzfristiges Fremdkapital"
+page = 83
+pdf_page = 83
+
+[[line_items]]
+name = "current_borrowings"
+value = "65"
+label = "Kurzfristige Bankverbindlichkeiten und kurzfristiges Finanzleasing"
+page = 83
+pdf_page = 83
+
+[[line_items]]
+name = "non_current_borrowings"
+value = "12"
+label = "Langfristige Bankverbindlichkeiten"
+page = 83
+pdf_page = 83
+
+[[line_items]]
+name = "non_controlling_interests"
+value = "9"
+label = "Minderheitsanteile"
+page = 83
+pdf_page = 83
+
+[[line_items]]
+name = "total_equity"
+value = "2073"
+label = "Eigenkapital"
+page = 83
+pdf_page = 83
+
+[[line_items]]
+name = "total_liabilities_and_equity"
+value = "5555"
+label = "Total Passiven"
+page = 83
+pdf_page = 83
+
+[[line_items]]
+name = "dividend_per_share"
+value = "2.30"
+label = "Antrag für die Dividendenzahlung, pro Aktie"
+page = 115
+pdf_page = 115
+figures_in = "units"
+note = "Printed as the row '2009 CHF 2,30 271', dated by year of payment; the extraordinary dividend of December 2008 is its own line."
+
+[[line_items]]
+name = "shares_outstanding"
+value = "118067761"
+label = "Stimm- und dividendenberechtigt"
+page = 114
+pdf_page = 114
+figures_in = "units"
+
+[[line_items]]
+name = "shares_diluted"
+value = "118077075"
+label = "Angepasste gewogene Anzahl der Namensaktien anwendbar für den verwässerten Gewinn pro Aktie"
+page = 103
+pdf_page = 103
+figures_in = "units"
+
+[[line_items]]
+name = "shares_basic"
+value = "117897171"
+label = "Gewogener Durchschnitt der Anzahl der Namensaktien für die Berechnung des Basisgewinns pro Aktie"
+page = 103
+pdf_page = 103
+figures_in = "units"
+
+[[line_items]]
+name = "special_dividend_per_share"
+value = "2.50"
+label = "Ausserordentliche Dividende"
+page = 115
+pdf_page = 115
+figures_in = "units"
+note = "Approved by the extraordinary general meeting of 9 December 2008 and paid in December 2008: 'eine ausserordentliche Dividende von CHF 2,50 pro Aktie (Total CHF 295 Mio.)'."
+
+[[line_items]]
+name = "intangible_capital_expenditure"
+value = "38"
+label = "— Immaterielle Vermögenswerte"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "disposals_of_fixed_assets"
+value = "52"
+label = "Desinvestitionen von Sachanlagen"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "investing_cash_flow"
+value = "82"
+label = "Total Geldfluss aus Investitionstätigkeit"
+page = 85
+pdf_page = 85
+note = "Includes 'Verkauf von zur Veräusserung gehaltenen Vermögenswerten 310', the sale of assets held for sale."
+
+[[line_items]]
+name = "borrowings_raised"
+value = "9"
+label = "Zunahme langfristiger Bankverbindlichkeiten"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "borrowings_repaid"
+value = "59"
+label = "Abnahme langfristiger Bankverbindlichkeiten"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "lease_repayments"
+value = "0"
+not_printed = true
+page = 85
+pdf_page = 85
+note = "Before IFRS 16 (2019) any finance-lease repayment is inside the repayment of borrowings, not printed apart."
+
+[[line_items]]
+name = "dividends_to_minorities"
+value = "2"
+label = "Dividendenausschüttungen an andere Gesellschafter"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "acquisition_of_minorities"
+value = "0"
+not_printed = true
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "financing_cash_flow"
+value = "-595"
+label = "Total Geldfluss aus Finanzierungstätigkeit"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "fx_effect_on_cash"
+value = "-147"
+label = "Währungsdifferenzen flüssige Mittel"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "change_in_cash"
+value = "206"
+label = "Zunahme/(Abnahme) flüssige Mittel"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "shares_repurchased"
+value = "244066"
+label = "eigene Aktien im Wert von CHF 23 Mio. (2007: CHF 54 Mio.) wurden erworben"
+page = 114
+pdf_page = 114
+figures_in = "units"
+note = "Own shares bought in the year, from the equity note: '244.066 (2007: 482.471) eigene Aktien im Wert von CHF 23 Mio. … wurden erworben'."
+
+[[line_items]]
+name = "capital_repayments_paid"
+value = "0"
+not_printed = true
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "interest_paid_outside_operating"
+value = "13"
+label = "Zinsaufwendungen"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "lease_interest_paid_outside_operating"
+value = "0"
+not_printed = true
+page = 85
+pdf_page = 85
+note = "Before IFRS 16 (2019) any interest on finance leases is inside 'Interest paid', not printed apart."

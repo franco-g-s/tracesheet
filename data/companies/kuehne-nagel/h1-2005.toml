@@ -1,0 +1,220 @@
+# kuehne-nagel — h1-2005
+
+company = "kuehne-nagel"
+period = { start = 2005-01-01, end = 2005-06-30, kind = "half_year" }
+filed_at = 2005-07-24T18:20:09+02:00
+currency = "CHF"
+figures_in = "millions"
+source = { document = "half year report 2005", url = "https://a.storyblok.com/f/331466/x/338fe252ff/company-investor-relations-half-year-2005-english.pdf", sha256 = "f4ce910249a25beea9b2e16b8c1e6f303711afa640dd2efff4aeea93d030e388" }
+
+[[line_items]]
+name = "revenue"
+value = "5066.0"
+label = "Net invoiced turnover"
+page = 2
+pdf_page = 2
+
+[[line_items]]
+name = "cost_of_sales"
+value = "3764.5"
+label = "Net expense for services from third parties"
+page = 2
+pdf_page = 2
+
+[[line_items]]
+name = "gross_profit"
+value = "1301.5"
+label = "Gross profit"
+page = 2
+pdf_page = 2
+
+[[line_items]]
+name = "personnel_expenses"
+value = "712.7"
+label = "Personnel expenses"
+page = 2
+pdf_page = 2
+
+[[line_items]]
+name = "other_operating_expenses"
+value = "332.4"
+label = "Selling, general and administrative expenses"
+page = 2
+pdf_page = 2
+
+[[line_items]]
+name = "other_operating_income"
+value = "3.1"
+label = "Other operating income"
+page = 2
+pdf_page = 2
+
+[[line_items]]
+name = "ebit"
+value = "186.5"
+label = "EBIT"
+page = 2
+pdf_page = 2
+
+[[line_items]]
+name = "goodwill_impairment"
+value = "24.7"
+label = "Impairment of goodwill"
+page = 2
+pdf_page = 2
+
+[[line_items]]
+name = "interest_income"
+value = "12.0"
+label = "Financial income"
+page = 2
+pdf_page = 2
+
+[[line_items]]
+name = "interest_expense"
+value = "12.3"
+label = "Financial expenses"
+page = 2
+pdf_page = 2
+
+[[line_items]]
+name = "profit_before_tax"
+value = "191.5"
+label = "Earnings before tax (EBT)"
+page = 2
+pdf_page = 2
+
+[[line_items]]
+name = "income_tax_expense"
+value = "61.5"
+label = "Income tax"
+page = 2
+pdf_page = 2
+
+[[line_items]]
+name = "net_income"
+value = "130.0"
+label = "Earnings for the period"
+page = 2
+pdf_page = 2
+
+[[line_items]]
+name = "net_income_attributable_to_owners"
+value = "128.3"
+label = "Equity holders of the parent"
+page = 2
+pdf_page = 2
+
+[[line_items]]
+name = "net_income_attributable_to_minorities"
+value = "1.7"
+label = "Minority interest"
+page = 2
+pdf_page = 2
+
+[[line_items]]
+name = "eps_basic"
+value = "5.935"
+label = "Basic earnings per share"
+page = 2
+pdf_page = 2
+figures_in = "units"
+
+[[line_items]]
+name = "eps_diluted"
+value = "5.896"
+label = "Diluted earnings per share"
+page = 2
+pdf_page = 2
+figures_in = "units"
+
+[[line_items]]
+name = "operating_cash_flow"
+value = "153.2"
+label = "Cash flow from operating activities"
+page = 4
+pdf_page = 4
+
+[[line_items]]
+name = "dividends_paid"
+value = "97.4"
+label = "Dividend paid"
+page = 4
+pdf_page = 4
+
+[[line_items]]
+name = "cash_and_equivalents"
+value = "429.9"
+label = "Cash and cash equivalents"
+page = 3
+pdf_page = 3
+
+[[line_items]]
+name = "trade_receivables"
+value = "1455.1"
+label = "Trade receivables"
+page = 3
+pdf_page = 3
+
+[[line_items]]
+name = "current_assets"
+value = "2244.7"
+label = "Current assets"
+page = 3
+pdf_page = 3
+
+[[line_items]]
+name = "goodwill"
+value = "130.3"
+label = "Goodwill"
+page = 3
+pdf_page = 3
+
+[[line_items]]
+name = "total_assets"
+value = "3219.3"
+label = "Total assets"
+page = 3
+pdf_page = 3
+
+[[line_items]]
+name = "current_liabilities"
+value = "2058.5"
+label = "Current liabilities"
+page = 3
+pdf_page = 3
+
+[[line_items]]
+name = "current_borrowings"
+value = "258.3"
+label = "Bank and other interest bearing liabilities"
+page = 3
+pdf_page = 3
+
+[[line_items]]
+name = "non_current_borrowings"
+value = "48.0"
+label = "Bank liabilities"
+page = 3
+pdf_page = 3
+
+[[line_items]]
+name = "non_controlling_interests"
+value = "8.7"
+label = "Minority interest"
+page = 3
+pdf_page = 3
+
+[[line_items]]
+name = "total_equity"
+value = "875.5"
+label = "Total equity"
+page = 3
+pdf_page = 3
+
+[[line_items]]
+name = "total_liabilities_and_equity"
+value = "3219.3"
+label = "Total liabilities and equity"
+page = 3
+pdf_page = 3

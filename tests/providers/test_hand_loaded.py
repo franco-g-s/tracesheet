@@ -144,3 +144,12 @@ def test_record_that_does_not_tie_is_refused_at_load(acme_root: Path, tmp_path: 
     path.write_text(text, encoding="utf-8")
     with pytest.raises(HandLoadedError, match="total_assets"):
         HandLoaded(root).financial_records(ACME)
+
+
+def test_a_stray_labels_file_is_read_as_a_filing_and_refused(
+    acme_root: Path, tmp_path: Path
+) -> None:
+    root = _copy(acme_root, tmp_path)
+    (root / "acme" / "labels.toml").write_text('revenue = ["Net sales"]\n', encoding="utf-8")
+    with pytest.raises(HandLoadedError, match=r"labels\.toml"):
+        HandLoaded(root).financial_records(ACME)

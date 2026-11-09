@@ -1,0 +1,442 @@
+# kuehne-nagel — fy2007-restated-2008
+# FY2007 as the FY2008 annual report (German, the only FY2008 report) shows it in its comparative column.
+# Geschäftsbericht 2008 p.82: '* Seit dem 1. Januar 2008 bucht die Gruppe alle versicherungsmathematischen Gewinne und Verluste
+# aus leistungsorientierten Vorsorgeplänen direkt im Eigenkapital. Diese Änderung in der Rechnungslegung wurde rückwirkend
+# angewendet und die Vergleichswerte wurden angepasst. Siehe Erläuterung 4.' (IAS 19: actuarial gains and losses on defined
+# benefit plans recognised directly in equity, applied retrospectively.) Labels keep the report's German wording.
+
+company = "kuehne-nagel"
+period = { start = 2007-01-01, end = 2007-12-31, kind = "annual" }
+filed_at = 2009-03-15T10:19:34+01:00
+currency = "CHF"
+figures_in = "millions"
+source = { document = "annual report 2008 (comparative column)", url = "https://a.storyblok.com/f/331466/x/cba462f839/company-investor-relations-annual-report-2008-german.pdf", sha256 = "e3fa423059bfe9b21c5a2c3794ddaaad8070f648264c14752573a2306f74a24d" }
+restates = "fy2007"
+
+[[line_items]]
+name = "revenue"
+value = "17120"
+label = "Fakturierter Nettoumsatz"
+page = 82
+pdf_page = 82
+
+[[line_items]]
+name = "cost_of_sales"
+value = "11106"
+label = "Nettoaufwendungen für bezogene Leistungen"
+page = 82
+pdf_page = 82
+
+[[line_items]]
+name = "gross_profit"
+value = "6014"
+label = "Rohertrag"
+page = 82
+pdf_page = 82
+
+[[line_items]]
+name = "personnel_expenses"
+value = "3396"
+label = "Personalaufwendungen"
+page = 82
+pdf_page = 82
+note = "First filed as 3403.9; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "other_operating_expenses"
+value = "1609"
+label = "Verkaufs-, allgemeine und administrative Aufwendungen"
+page = 82
+pdf_page = 82
+note = "First filed as 1608.5; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "other_operating_income"
+value = "10"
+label = "Sonstige betriebliche Erträge (netto)"
+page = 82
+pdf_page = 82
+
+[[line_items]]
+name = "ebitda"
+value = "1019"
+label = "Betriebsgewinn (EBITDA)"
+page = 82
+pdf_page = 82
+note = "First filed as 1011.8; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "ebit"
+value = "693"
+label = "Gewinn vor Zinsen und Steuern (EBIT)"
+page = 82
+pdf_page = 82
+note = "First filed as 685.6; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "goodwill_impairment"
+value = "31"
+label = "Impairmentverlust auf Goodwill"
+page = 82
+pdf_page = 82
+
+[[line_items]]
+name = "interest_income"
+value = "27"
+label = "Finanzerträge"
+page = 82
+pdf_page = 82
+
+[[line_items]]
+name = "interest_expense"
+value = "18"
+label = "Finanzaufwendungen"
+page = 82
+pdf_page = 82
+
+[[line_items]]
+name = "profit_before_tax"
+value = "708"
+label = "Gewinn vor Steuern (EBT)"
+page = 82
+pdf_page = 82
+note = "First filed as 700.1; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "income_tax_expense"
+value = "169"
+label = "Ertragssteuern"
+page = 82
+pdf_page = 82
+note = "First filed as 166.6; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "net_income"
+value = "539"
+label = "Reingewinn"
+page = 82
+pdf_page = 82
+note = "First filed as 533.5; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "net_income_attributable_to_owners"
+value = "536"
+label = "Aktionäre der Gesellschaft"
+page = 82
+pdf_page = 82
+note = "First filed as 531.2; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "net_income_attributable_to_minorities"
+value = "3"
+label = "Minderheitsanteile"
+page = 82
+pdf_page = 82
+note = "First filed as 2.3; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "eps_basic"
+value = "4.54"
+label = "Gewinn pro Aktie"
+page = 82
+pdf_page = 82
+figures_in = "units"
+note = "First filed as 4.50; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "eps_diluted"
+value = "4.52"
+label = "Verwässerter Gewinn pro Aktie"
+page = 82
+pdf_page = 82
+figures_in = "units"
+note = "First filed as 4.48; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "operating_cash_flow"
+value = "859"
+label = "Total Geldfluss aus Geschäftstätigkeit"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "capital_expenditure"
+value = "229"
+label = "— Sachanlagen"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "acquisitions"
+value = "165"
+label = "Erwerb von Tochtergesellschaften, netto (ohne flüssige Mittel)"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "divestments"
+value = "0"
+not_printed = true
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "dividends_paid"
+value = "177"
+label = "Dividendenausschüttung an Aktionäre der Gesellschaft"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "share_repurchases"
+value = "54"
+label = "Kauf eigener Aktien"
+page = 85
+pdf_page = 85
+note = "First filed as 54.5; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "share_issuance"
+value = "45"
+label = "Veräusserung eigener Aktien"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "cash_and_equivalents"
+value = "865"
+label = "Flüssige Mittel"
+page = 83
+pdf_page = 83
+
+[[line_items]]
+name = "trade_receivables"
+value = "2537"
+label = "Forderungen aus Leistungen"
+page = 83
+pdf_page = 83
+
+[[line_items]]
+name = "current_assets"
+value = "4319"
+label = "Umlaufvermögen"
+page = 83
+pdf_page = 83
+
+[[line_items]]
+name = "goodwill"
+value = "639"
+label = "Goodwill"
+page = 83
+pdf_page = 83
+
+[[line_items]]
+name = "goodwill_acquired"
+value = "113"
+label = "Zugänge aus Erstkonsolidierung"
+page = 107
+pdf_page = 107
+note = "2007 column of note 27, goodwill column; the FY2007 report prints 112.9."
+
+[[line_items]]
+name = "other_intangible_assets"
+value = "288"
+label = "Andere immaterielle Vermögenswerte"
+page = 83
+pdf_page = 83
+
+[[line_items]]
+name = "total_assets"
+value = "6438"
+label = "Total Aktiven"
+page = 83
+pdf_page = 83
+note = "First filed as 6438.7; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "current_liabilities"
+value = "3484"
+label = "Kurzfristiges Fremdkapital"
+page = 83
+pdf_page = 83
+note = "First filed as 3483.3; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "current_borrowings"
+value = "85"
+label = "Kurzfristige Bankverbindlichkeiten und kurzfristiges Finanzleasing"
+page = 83
+pdf_page = 83
+
+[[line_items]]
+name = "non_current_borrowings"
+value = "80"
+label = "Langfristige Bankverbindlichkeiten"
+page = 83
+pdf_page = 83
+
+[[line_items]]
+name = "non_controlling_interests"
+value = "9"
+label = "Minderheitsanteile"
+page = 83
+pdf_page = 83
+
+[[line_items]]
+name = "total_equity"
+value = "2367"
+label = "Eigenkapital"
+page = 83
+pdf_page = 83
+note = "First filed as 2365.1; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "total_liabilities_and_equity"
+value = "6438"
+label = "Total Passiven"
+page = 83
+pdf_page = 83
+note = "First filed as 6438.7; restated for IAS 19 (actuarial gains and losses on defined benefit plans recognised directly in equity, applied retrospectively)."
+
+[[line_items]]
+name = "shares_outstanding"
+value = "118005736"
+label = "Stimm- und dividendenberechtigt"
+page = 114
+pdf_page = 114
+figures_in = "units"
+
+[[line_items]]
+name = "shares_diluted"
+value = "118696378"
+label = "Angepasste gewogene Anzahl der Namensaktien anwendbar für den verwässerten Gewinn pro Aktie"
+page = 103
+pdf_page = 103
+figures_in = "units"
+
+[[line_items]]
+name = "shares_basic"
+value = "117982126"
+label = "Gewogener Durchschnitt der Anzahl der Namensaktien für die Berechnung des Basisgewinns pro Aktie"
+page = 103
+pdf_page = 103
+figures_in = "units"
+
+[[line_items]]
+name = "dividend_per_share"
+value = "1.90"
+label = "Dividends: the prior year's dividend, per share"
+page = 115
+pdf_page = 115
+figures_in = "units"
+note = "Printed beside the proposal as '(2008: Pro Aktie CHF 1,90 –Total CHF 224 Mio.)'."
+
+[[line_items]]
+name = "intangible_capital_expenditure"
+value = "26"
+label = "— Immaterielle Vermögenswerte"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "disposals_of_fixed_assets"
+value = "22"
+label = "Desinvestitionen von Sachanlagen"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "investing_cash_flow"
+value = "-366"
+label = "Total Geldfluss aus Investitionstätigkeit"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "borrowings_raised"
+value = "24"
+label = "Zunahme langfristiger Bankverbindlichkeiten"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "borrowings_repaid"
+value = "92"
+label = "Abnahme langfristiger Bankverbindlichkeiten"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "lease_repayments"
+value = "0"
+not_printed = true
+page = 85
+pdf_page = 85
+note = "Before IFRS 16 (2019) any finance-lease repayment is inside the repayment of borrowings, not printed apart."
+
+[[line_items]]
+name = "dividends_to_minorities"
+value = "2"
+label = "Dividendenausschüttungen an andere Gesellschafter"
+page = 85
+pdf_page = 85
+note = "The FY2008 report prints –2 for 2007, in whole millions; the FY2007 report printed –0.7."
+
+[[line_items]]
+name = "acquisition_of_minorities"
+value = "0"
+not_printed = true
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "financing_cash_flow"
+value = "-271"
+label = "Total Geldfluss aus Finanzierungstätigkeit"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "fx_effect_on_cash"
+value = "-10"
+label = "Währungsdifferenzen flüssige Mittel"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "change_in_cash"
+value = "212"
+label = "Zunahme/(Abnahme) flüssige Mittel"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "shares_repurchased"
+value = "482471"
+label = "eigene Aktien im Wert von CHF 23 Mio. (2007: CHF 54 Mio.) wurden erworben"
+page = 114
+pdf_page = 114
+figures_in = "units"
+note = "Printed '482.471' in the FY2008 equity note's comparative, with a point as the thousands separator."
+
+[[line_items]]
+name = "capital_repayments_paid"
+value = "0"
+not_printed = true
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "interest_paid_outside_operating"
+value = "15"
+label = "Zinsaufwendungen"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "lease_interest_paid_outside_operating"
+value = "0"
+not_printed = true
+page = 85
+pdf_page = 85
+note = "Before IFRS 16 (2019) any interest on finance leases is inside 'Interest paid', not printed apart."

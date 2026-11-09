@@ -1,0 +1,403 @@
+# kuehne-nagel — fy2009
+
+company = "kuehne-nagel"
+period = { start = 2009-01-01, end = 2009-12-31, kind = "annual" }
+filed_at = 2010-03-15T10:32:19+01:00
+currency = "CHF"
+figures_in = "millions"
+source = { document = "annual report 2009", url = "https://a.storyblok.com/f/331466/x/2ee2ab43da/company-investor-relations-annual-report-2009-english.pdf", sha256 = "edcf405bb785e1b82f3cc16f6ede37143d1d962f2f7a928f9d96cfb84f9708d9" }
+
+[[line_items]]
+name = "revenue"
+value = "14336"
+label = "Net invoiced turnover"
+page = 74
+pdf_page = 74
+
+[[line_items]]
+name = "cost_of_sales"
+value = "8473"
+label = "Net expenses for services from third parties"
+page = 74
+pdf_page = 74
+
+[[line_items]]
+name = "gross_profit"
+value = "5863"
+label = "Gross profit"
+page = 74
+pdf_page = 74
+
+[[line_items]]
+name = "personnel_expenses"
+value = "3341"
+label = "Personnel expenses"
+page = 74
+pdf_page = 74
+
+[[line_items]]
+name = "other_operating_expenses"
+value = "1618"
+label = "Selling, general and administrative expenses"
+page = 74
+pdf_page = 74
+
+[[line_items]]
+name = "other_operating_income"
+value = "-19"
+label = "Other operating income/expenses, net"
+page = 74
+pdf_page = 74
+
+[[line_items]]
+name = "ebitda"
+value = "885"
+label = "EBITDA"
+page = 74
+pdf_page = 74
+
+[[line_items]]
+name = "ebit"
+value = "594"
+label = "EBIT"
+page = 74
+pdf_page = 74
+
+[[line_items]]
+name = "goodwill_impairment"
+value = "0"
+label = "Impairment of goodwill"
+page = 74
+pdf_page = 74
+
+[[line_items]]
+name = "interest_income"
+value = "22"
+label = "Financial income"
+page = 74
+pdf_page = 74
+
+[[line_items]]
+name = "interest_expense"
+value = "12"
+label = "Financial expenses"
+page = 74
+pdf_page = 74
+
+[[line_items]]
+name = "profit_before_tax"
+value = "610"
+label = "Earnings before tax (EBT)"
+page = 74
+pdf_page = 74
+
+[[line_items]]
+name = "income_tax_expense"
+value = "139"
+label = "Income tax"
+page = 74
+pdf_page = 74
+
+[[line_items]]
+name = "net_income"
+value = "471"
+label = "Earnings for the year"
+page = 74
+pdf_page = 74
+
+[[line_items]]
+name = "net_income_attributable_to_owners"
+value = "467"
+label = "Equity holders of the parent company"
+page = 74
+pdf_page = 74
+
+[[line_items]]
+name = "eps_basic"
+value = "3.95"
+label = "Basic earnings per share"
+page = 74
+pdf_page = 74
+figures_in = "units"
+
+[[line_items]]
+name = "eps_diluted"
+value = "3.94"
+label = "Diluted earnings per share"
+page = 74
+pdf_page = 74
+figures_in = "units"
+
+[[line_items]]
+name = "operating_cash_flow"
+value = "836"
+label = "Total cash flow from operating activities"
+page = 78
+pdf_page = 78
+
+[[line_items]]
+name = "capital_expenditure"
+value = "267"
+label = "— Property, plant and equipment"
+page = 78
+pdf_page = 78
+
+[[line_items]]
+name = "acquisitions"
+value = "292"
+label = "Acquisition of subsidiaries, net of cash acquired"
+page = 78
+pdf_page = 78
+
+[[line_items]]
+name = "divestments"
+value = "0"
+not_printed = true
+page = 78
+pdf_page = 78
+
+[[line_items]]
+name = "dividends_paid"
+value = "272"
+label = "Dividend paid to equity holders of parent company"
+page = 78
+pdf_page = 78
+
+[[line_items]]
+name = "share_repurchases"
+value = "0"
+label = "Purchase of treasury shares"
+page = 78
+pdf_page = 78
+
+[[line_items]]
+name = "share_issuance"
+value = "25"
+label = "Disposal of treasury shares"
+page = 78
+pdf_page = 78
+
+[[line_items]]
+name = "cash_and_equivalents"
+value = "981"
+label = "Cash and cash equivalents"
+page = 76
+pdf_page = 76
+
+[[line_items]]
+name = "trade_receivables"
+value = "2004"
+label = "Trade receivables"
+page = 76
+pdf_page = 76
+
+[[line_items]]
+name = "current_assets"
+value = "3477"
+label = "Current assets"
+page = 76
+pdf_page = 76
+
+[[line_items]]
+name = "goodwill"
+value = "681"
+label = "Goodwill"
+page = 76
+pdf_page = 76
+
+[[line_items]]
+name = "goodwill_acquired"
+value = "139"
+label = "Addition through business combinations"
+page = 96
+pdf_page = 96
+note = "Goodwill column of note 27."
+
+[[line_items]]
+name = "other_intangible_assets"
+value = "273"
+label = "Other intangibles"
+page = 76
+pdf_page = 76
+
+[[line_items]]
+name = "total_assets"
+value = "5933"
+label = "Total assets"
+page = 76
+pdf_page = 76
+
+[[line_items]]
+name = "current_liabilities"
+value = "3008"
+label = "Current liabilities"
+page = 76
+pdf_page = 76
+
+[[line_items]]
+name = "current_borrowings"
+value = "55"
+label = "Bank and other interest-bearing liabilities"
+page = 76
+pdf_page = 76
+
+[[line_items]]
+name = "non_current_borrowings"
+value = "1"
+label = "Bank liabilities"
+page = 76
+pdf_page = 76
+
+[[line_items]]
+name = "non_controlling_interests"
+value = "10"
+label = "Minority interests"
+page = 76
+pdf_page = 76
+
+[[line_items]]
+name = "total_equity"
+value = "2290"
+label = "Total equity"
+page = 76
+pdf_page = 76
+
+[[line_items]]
+name = "total_liabilities_and_equity"
+value = "5933"
+label = "Total liabilities and equity"
+page = 76
+pdf_page = 76
+
+[[line_items]]
+name = "dividend_per_share"
+value = "2.30"
+label = "Proposed dividend payment, per share"
+page = 103
+pdf_page = 103
+figures_in = "units"
+note = "Printed as the row '2010 CHF 2.30 272', dated by year of payment."
+
+[[line_items]]
+name = "shares_outstanding"
+value = "118474249"
+label = "Entitled to voting rights and dividend"
+page = 102
+pdf_page = 102
+figures_in = "units"
+
+[[line_items]]
+name = "shares_diluted"
+value = "118384365"
+label = "Adjusted weighted number of ordinary shares applicable to diluted earnings per share"
+page = 93
+pdf_page = 93
+figures_in = "units"
+
+[[line_items]]
+name = "shares_basic"
+value = "118252271"
+label = "Weighted average number of ordinary shares outstanding during the year"
+page = 93
+pdf_page = 93
+figures_in = "units"
+
+[[line_items]]
+name = "intangible_capital_expenditure"
+value = "23"
+label = "— Other intangibles"
+page = 78
+pdf_page = 78
+
+[[line_items]]
+name = "disposals_of_fixed_assets"
+value = "40"
+label = "Disposal of property, plant and equipment"
+page = 78
+pdf_page = 78
+
+[[line_items]]
+name = "investing_cash_flow"
+value = "-519"
+label = "Total cash flow from investing activities"
+page = 78
+pdf_page = 78
+
+[[line_items]]
+name = "borrowings_raised"
+value = "14"
+label = "Proceeds of interest-bearing liabilities"
+page = 78
+pdf_page = 78
+
+[[line_items]]
+name = "borrowings_repaid"
+value = "124"
+label = "Repayment of interest-bearing liabilities"
+page = 78
+pdf_page = 78
+
+[[line_items]]
+name = "lease_repayments"
+value = "0"
+not_printed = true
+page = 78
+pdf_page = 78
+note = "Before IFRS 16 (2019) any finance-lease repayment is inside the repayment of borrowings, not printed apart."
+
+[[line_items]]
+name = "dividends_to_minorities"
+value = "2"
+label = "Dividend paid to minority shareholders"
+page = 78
+pdf_page = 78
+
+[[line_items]]
+name = "acquisition_of_minorities"
+value = "0"
+not_printed = true
+page = 78
+pdf_page = 78
+
+[[line_items]]
+name = "financing_cash_flow"
+value = "-371"
+label = "Total cash flow from financing activities"
+page = 78
+pdf_page = 78
+
+[[line_items]]
+name = "fx_effect_on_cash"
+value = "7"
+label = "Exchange difference on cash and cash equivalents"
+page = 78
+pdf_page = 78
+
+[[line_items]]
+name = "change_in_cash"
+value = "-47"
+label = "Increase/(decrease) in cash and cash equivalents"
+page = 78
+pdf_page = 78
+
+[[line_items]]
+name = "capital_repayments_paid"
+value = "0"
+not_printed = true
+page = 78
+pdf_page = 78
+
+[[line_items]]
+name = "interest_paid_outside_operating"
+value = "12"
+label = "Interest paid"
+page = 78
+pdf_page = 78
+
+[[line_items]]
+name = "lease_interest_paid_outside_operating"
+value = "0"
+not_printed = true
+page = 78
+pdf_page = 78
+note = "Before IFRS 16 (2019) any interest on finance leases is inside 'Interest paid', not printed apart."

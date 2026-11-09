@@ -1,0 +1,410 @@
+# kuehne-nagel — fy2007
+
+company = "kuehne-nagel"
+period = { start = 2007-01-01, end = 2007-12-31, kind = "annual" }
+filed_at = 2008-03-24T17:46:17+01:00
+currency = "CHF"
+figures_in = "millions"
+source = { document = "annual report 2007", url = "https://a.storyblok.com/f/331466/x/8019d50e65/company-investor-relations-annual-report-2007-english.pdf", sha256 = "9c3455530697cec73fb060c0198325dc2dd3eabe1feea09e9a720cdbeedeb109" }
+
+[[line_items]]
+name = "revenue"
+value = "17119.9"
+label = "Net invoiced turnover"
+page = 84
+pdf_page = 84
+
+[[line_items]]
+name = "cost_of_sales"
+value = "11106.1"
+label = "Net expenses for services from third parties"
+page = 84
+pdf_page = 84
+
+[[line_items]]
+name = "gross_profit"
+value = "6013.8"
+label = "Gross profit"
+page = 84
+pdf_page = 84
+
+[[line_items]]
+name = "personnel_expenses"
+value = "3403.9"
+label = "Personnel expenses"
+page = 84
+pdf_page = 84
+
+[[line_items]]
+name = "other_operating_expenses"
+value = "1608.5"
+label = "Selling, general and administrative expenses"
+page = 84
+pdf_page = 84
+
+[[line_items]]
+name = "other_operating_income"
+value = "10.4"
+label = "Other operating income, net"
+page = 84
+pdf_page = 84
+
+[[line_items]]
+name = "ebitda"
+value = "1011.8"
+label = "EBITDA"
+page = 84
+pdf_page = 84
+
+[[line_items]]
+name = "ebit"
+value = "685.6"
+label = "EBIT"
+page = 84
+pdf_page = 84
+
+[[line_items]]
+name = "goodwill_impairment"
+value = "31.0"
+label = "Impairment of goodwill"
+page = 84
+pdf_page = 84
+
+[[line_items]]
+name = "interest_income"
+value = "26.6"
+label = "Financial income"
+page = 84
+pdf_page = 84
+
+[[line_items]]
+name = "interest_expense"
+value = "18.0"
+label = "Financial expenses"
+page = 84
+pdf_page = 84
+
+[[line_items]]
+name = "profit_before_tax"
+value = "700.1"
+label = "Earnings before tax (EBT)"
+page = 84
+pdf_page = 84
+
+[[line_items]]
+name = "income_tax_expense"
+value = "166.6"
+label = "Income tax"
+page = 84
+pdf_page = 84
+
+[[line_items]]
+name = "net_income"
+value = "533.5"
+label = "Earnings for the year"
+page = 84
+pdf_page = 84
+
+[[line_items]]
+name = "net_income_attributable_to_owners"
+value = "531.2"
+label = "Equity holders of the parent company"
+page = 84
+pdf_page = 84
+
+[[line_items]]
+name = "net_income_attributable_to_minorities"
+value = "2.3"
+label = "Minority interest"
+page = 84
+pdf_page = 84
+
+[[line_items]]
+name = "eps_basic"
+value = "4.50"
+label = "Basic earnings per share"
+page = 84
+pdf_page = 84
+figures_in = "units"
+
+[[line_items]]
+name = "eps_diluted"
+value = "4.48"
+label = "Diluted earnings per share"
+page = 84
+pdf_page = 84
+figures_in = "units"
+
+[[line_items]]
+name = "operating_cash_flow"
+value = "858.8"
+label = "Total cash flow from operating activities"
+page = 87
+pdf_page = 87
+
+[[line_items]]
+name = "capital_expenditure"
+value = "228.7"
+label = "— Property, plant and equipment"
+page = 87
+pdf_page = 87
+
+[[line_items]]
+name = "acquisitions"
+value = "164.7"
+label = "Acquisition of subsidiaries, net of cash acquired"
+page = 87
+pdf_page = 87
+
+[[line_items]]
+name = "divestments"
+value = "0"
+not_printed = true
+page = 87
+pdf_page = 87
+
+[[line_items]]
+name = "dividends_paid"
+value = "176.8"
+label = "Dividend paid to shareholders of the company"
+page = 87
+pdf_page = 87
+
+[[line_items]]
+name = "share_repurchases"
+value = "54.5"
+label = "Purchase of treasury shares"
+page = 87
+pdf_page = 87
+
+[[line_items]]
+name = "share_issuance"
+value = "44.9"
+label = "Disposal of treasury shares"
+page = 87
+pdf_page = 87
+
+[[line_items]]
+name = "cash_and_equivalents"
+value = "865.4"
+label = "Cash and cash equivalents"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "trade_receivables"
+value = "2537.3"
+label = "Trade receivables"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "current_assets"
+value = "4318.7"
+label = "Current assets"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "goodwill"
+value = "638.9"
+label = "Goodwill"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "goodwill_acquired"
+value = "112.9"
+label = "Addition through business combinations"
+page = 107
+pdf_page = 107
+note = "Goodwill column of note 26: G.L. Kayser 50.5, Cordes & Simon 50.5, other small acquisitions 11.9."
+
+[[line_items]]
+name = "other_intangible_assets"
+value = "288.1"
+label = "Other intangibles"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "total_assets"
+value = "6438.7"
+label = "Total assets"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "current_liabilities"
+value = "3483.3"
+label = "Current liabilities"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "current_borrowings"
+value = "84.6"
+label = "Bank and other interest bearing liabilities"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "non_current_borrowings"
+value = "80.3"
+label = "Bank liabilities"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "non_controlling_interests"
+value = "9.2"
+label = "Minority interest"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "total_equity"
+value = "2365.1"
+label = "Total equity"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "total_liabilities_and_equity"
+value = "6438.7"
+label = "Total liabilities and equity"
+page = 85
+pdf_page = 85
+
+[[line_items]]
+name = "dividend_per_share"
+value = "1.90"
+label = "Proposed dividend payment, per share"
+page = 86
+pdf_page = 86
+figures_in = "units"
+note = "Printed as the row '2008 CHF 1.90 224.2', dated by year of payment."
+
+[[line_items]]
+name = "shares_outstanding"
+value = "118005736"
+label = "Entitled to voting rights and dividend"
+page = 113
+pdf_page = 113
+figures_in = "units"
+
+[[line_items]]
+name = "shares_diluted"
+value = "118696378"
+label = "Adjusted weighted number of ordinary shares applicable to diluted earnings per share"
+page = 104
+pdf_page = 104
+figures_in = "units"
+
+[[line_items]]
+name = "shares_basic"
+value = "117982126"
+label = "Weighted average number of ordinary shares outstanding during the year"
+page = 104
+pdf_page = 104
+figures_in = "units"
+
+[[line_items]]
+name = "intangible_capital_expenditure"
+value = "25.8"
+label = "— Other intangibles"
+page = 87
+pdf_page = 87
+
+[[line_items]]
+name = "disposals_of_fixed_assets"
+value = "21.5"
+label = "Disposal of property, plant and equipment"
+page = 87
+pdf_page = 87
+
+[[line_items]]
+name = "investing_cash_flow"
+value = "-366.1"
+label = "Total cash flow from investing activities"
+page = 87
+pdf_page = 87
+
+[[line_items]]
+name = "borrowings_raised"
+value = "23.8"
+label = "Proceeds of interest bearing liabilities"
+page = 87
+pdf_page = 87
+
+[[line_items]]
+name = "borrowings_repaid"
+value = "92.8"
+label = "Repayment of interest bearing liabilities"
+page = 87
+pdf_page = 87
+
+[[line_items]]
+name = "lease_repayments"
+value = "0"
+not_printed = true
+page = 87
+pdf_page = 87
+note = "Before IFRS 16 (2019) any finance-lease repayment is inside the repayment of borrowings, not printed apart."
+
+[[line_items]]
+name = "dividends_to_minorities"
+value = "0.7"
+label = "Dividend paid to minority shareholders"
+page = 87
+pdf_page = 87
+
+[[line_items]]
+name = "acquisition_of_minorities"
+value = "0"
+not_printed = true
+page = 87
+pdf_page = 87
+
+[[line_items]]
+name = "financing_cash_flow"
+value = "-271.3"
+label = "Total cash flow from financing activities"
+page = 87
+pdf_page = 87
+
+[[line_items]]
+name = "fx_effect_on_cash"
+value = "-10.0"
+label = "Exchange difference on cash and cash equivalents"
+page = 87
+pdf_page = 87
+
+[[line_items]]
+name = "change_in_cash"
+value = "211.4"
+label = "Increase/(decrease) in cash and cash equivalents"
+page = 87
+pdf_page = 87
+
+[[line_items]]
+name = "capital_repayments_paid"
+value = "0"
+not_printed = true
+page = 87
+pdf_page = 87
+
+[[line_items]]
+name = "interest_paid_outside_operating"
+value = "15.2"
+label = "Interest paid"
+page = 87
+pdf_page = 87
+
+[[line_items]]
+name = "lease_interest_paid_outside_operating"
+value = "0"
+not_printed = true
+page = 87
+pdf_page = 87
+note = "Before IFRS 16 (2019) any interest on finance leases is inside 'Interest paid', not printed apart."
