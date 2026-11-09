@@ -13,7 +13,7 @@ uv run ruff format --check .     # formatting (drop --check to apply)
 uv run mypy                      # types, strict
 uv run pytest                    # tests
 
-uv run tracesheet load kuehne-nagel      # check a company's filings tie out
+uv run tracesheet load kuehne-nagel      # check a company's filings tie out, actions apply
 uv run tracesheet render kuehne-nagel    # write examples/kuehne-nagel.html
 uv run tracesheet evaluate kuehne-nagel  # store an evaluation under data/evaluations/
 ```
