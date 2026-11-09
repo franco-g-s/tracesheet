@@ -199,14 +199,6 @@ page = 115
 pdf_page = 115
 
 [[line_items]]
-name = "goodwill_acquired"
-value = "462.3"
-label = "Addition through business combinations"
-page = 134
-pdf_page = 134
-note = "Goodwill column of note 25: ACR Group CHF 448.3 million and other companies CHF 14.0 million."
-
-[[line_items]]
 name = "other_intangible_assets"
 value = "329.5"
 label = "Other intangibles"

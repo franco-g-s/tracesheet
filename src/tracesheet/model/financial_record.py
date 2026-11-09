@@ -115,10 +115,6 @@ class LineItemName(StrEnum):
     TOTAL_LIABILITIES_AND_EQUITY = "total_liabilities_and_equity"
     NON_CONTROLLING_INTERESTS = "non_controlling_interests"
     RETAINED_EARNINGS = "retained_earnings"
-    GOODWILL_OFFSET_AGAINST_EQUITY = "goodwill_offset_against_equity"
-    GOODWILL_ACQUIRED = "goodwill_acquired"
-    """Goodwill added through acquisitions in the year, from the goodwill note. A movement,
-    kept with the balance it rolls forward."""
     # Shares
     SHARES_OUTSTANDING = "shares_outstanding"
     SHARES_BASIC = "shares_basic"
@@ -244,8 +240,6 @@ STATEMENT: dict[LineItemName, Statement] = {
     LineItemName.LEASE_LIABILITIES: Statement.BALANCE_SHEET,
     LineItemName.NON_CONTROLLING_INTERESTS: Statement.BALANCE_SHEET,
     LineItemName.RETAINED_EARNINGS: Statement.BALANCE_SHEET,
-    LineItemName.GOODWILL_OFFSET_AGAINST_EQUITY: Statement.BALANCE_SHEET,
-    LineItemName.GOODWILL_ACQUIRED: Statement.BALANCE_SHEET,
     LineItemName.SHARES_OUTSTANDING: Statement.SHARES,
     LineItemName.SHARES_BASIC: Statement.SHARES,
     LineItemName.SHARES_DILUTED: Statement.SHARES,
@@ -374,10 +368,6 @@ DEFINITION: dict[LineItemName, str] = {
     LineItemName.TOTAL_LIABILITIES_AND_EQUITY: "Total liabilities and equity",
     LineItemName.NON_CONTROLLING_INTERESTS: "Equity attributable to non-controlling interests",
     LineItemName.RETAINED_EARNINGS: "Retained earnings",
-    LineItemName.GOODWILL_OFFSET_AGAINST_EQUITY: "Goodwill offset directly against equity "
-    "(Swiss GAAP FER), from the notes",
-    LineItemName.GOODWILL_ACQUIRED: "Goodwill added through acquisitions in the year, from "
-    "the goodwill note's additions row where printed",
     # Shares
     LineItemName.SHARES_OUTSTANDING: "Shares outstanding at the period end, treasury shares "
     "excluded",

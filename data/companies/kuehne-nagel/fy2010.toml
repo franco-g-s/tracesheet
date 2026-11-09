@@ -199,14 +199,6 @@ page = 68
 pdf_page = 69
 
 [[line_items]]
-name = "goodwill_acquired"
-value = "0"
-label = "Addition through business combinations"
-page = 92
-pdf_page = 93
-note = "Printed as a dash."
-
-[[line_items]]
 name = "other_intangible_assets"
 value = "176"
 label = "Other intangibles"

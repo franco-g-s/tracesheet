@@ -192,14 +192,6 @@ page = 6
 pdf_page = 5
 
 [[line_items]]
-name = "goodwill_acquired"
-value = "0"
-label = "Additions"
-page = 38
-pdf_page = 37
-note = "The goodwill note prints no business-combinations row this year; its 'Additions' row prints a dash in the goodwill column."
-
-[[line_items]]
 name = "other_intangible_assets"
 value = "49"
 label = "Other intangibles"

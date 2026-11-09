@@ -213,14 +213,6 @@ page = 108
 pdf_page = 108
 
 [[line_items]]
-name = "goodwill_acquired"
-value = "36.6"
-label = "Additions through business combinations"
-page = 130
-pdf_page = 130
-note = "Goodwill column of note 25; its footnote attributes the figure to the Häring and Mönkemöller groups."
-
-[[line_items]]
 name = "other_intangible_assets"
 value = "70.0"
 label = "Other intangibles"

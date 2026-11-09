@@ -206,14 +206,6 @@ page = 6
 pdf_page = 5
 
 [[line_items]]
-name = "goodwill_acquired"
-value = "121"
-label = "Addition through business combinations"
-page = 30
-pdf_page = 29
-note = "Goodwill column of note 28."
-
-[[line_items]]
 name = "other_intangible_assets"
 value = "196"
 label = "Other intangibles"

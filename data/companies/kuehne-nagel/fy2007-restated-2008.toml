@@ -231,14 +231,6 @@ page = 83
 pdf_page = 83
 
 [[line_items]]
-name = "goodwill_acquired"
-value = "113"
-label = "Zugänge aus Erstkonsolidierung"
-page = 107
-pdf_page = 107
-note = "2007 column of note 27, goodwill column; the FY2007 report prints 112.9."
-
-[[line_items]]
 name = "other_intangible_assets"
 value = "288"
 label = "Andere immaterielle Vermögenswerte"

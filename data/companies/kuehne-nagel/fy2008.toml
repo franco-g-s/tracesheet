@@ -215,14 +215,6 @@ page = 83
 pdf_page = 83
 
 [[line_items]]
-name = "goodwill_acquired"
-value = "0"
-label = "Zugänge aus Erstkonsolidierung"
-page = 106
-pdf_page = 106
-note = "Printed as a dash."
-
-[[line_items]]
 name = "other_intangible_assets"
 value = "202"
 label = "Andere immaterielle Vermögenswerte"
