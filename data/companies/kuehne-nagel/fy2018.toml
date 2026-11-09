@@ -237,7 +237,7 @@ pdf_page = 6
 name = "non_current_lease_liabilities"
 value = "1"
 label = "non-current portion of finance lease obligations"
-page = 88
+page = 87
 pdf_page = 53
 note = "Note 36. The balance sheet shows it inside 'Other non-current liabilities', not as a line of its own."
 
