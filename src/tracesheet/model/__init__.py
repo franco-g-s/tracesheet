@@ -4,6 +4,7 @@ relationships between statement lines."""
 from tracesheet.model.base import Model
 from tracesheet.model.company import Company, Isin, Listing, ReportingStandard
 from tracesheet.model.dates import FiscalPeriod, MonthDay, PeriodKind
+from tracesheet.model.evaluation import SCHEMA_VERSION, Evaluation
 from tracesheet.model.financial_record import (
     COUNT_LINES,
     DEFINITION,
@@ -42,6 +43,7 @@ __all__ = [
     "DERIVED_ONLY",
     "PER_SHARE_LINES",
     "RELATIONSHIPS",
+    "SCHEMA_VERSION",
     "STATEMENT",
     "ActionDocument",
     "ActionKind",
@@ -53,6 +55,7 @@ __all__ = [
     "CorporateAction",
     "Currency",
     "CurrencyMismatchError",
+    "Evaluation",
     "ExchangeRate",
     "Filed",
     "FinancialRecord",

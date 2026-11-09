@@ -5,7 +5,15 @@ from pathlib import Path
 
 import pytest
 
-from tracesheet.model import ActionKind, CompanyId, Currency, LineItemName, Money, ShareCount
+from tracesheet.model import (
+    ActionKind,
+    CompanyId,
+    Currency,
+    LineItemName,
+    Money,
+    RecordId,
+    ShareCount,
+)
 from tracesheet.providers.hand_loaded import FiguresIn, HandLoaded, HandLoadedError
 
 ACME = CompanyId("acme")
@@ -153,3 +161,13 @@ def test_a_stray_labels_file_is_read_as_a_filing_and_refused(
     (root / "acme" / "labels.toml").write_text('revenue = ["Net sales"]\n', encoding="utf-8")
     with pytest.raises(HandLoadedError, match=r"labels\.toml"):
         HandLoaded(root).financial_records(ACME)
+
+
+def test_tolerance_is_one_unit_of_the_printed_scale(acme_root: Path, tmp_path: Path) -> None:
+    hl = HandLoaded(acme_root)
+    assert hl.tolerance(ACME, RecordId("fy2025")) == Money(
+        amount=Decimal(1_000_000), currency=Currency.CHF
+    )
+    root = _copy(acme_root, tmp_path)
+    _edit(root / "acme" / "fy2025.toml", 'figures_in = "millions"', 'figures_in = "thousands"')
+    assert HandLoaded(root).tolerance(ACME, RecordId("fy2025")).amount == Decimal(1_000)

@@ -148,6 +148,11 @@ class _RecordFile(_File):
     going_concern_emphasis: bool = False
 
 
+def _printed_unit(parsed: _RecordFile) -> Money:
+    """One unit of the scale a record's report prints in, in its currency."""
+    return Money(amount=_SCALE[parsed.figures_in], currency=parsed.currency)
+
+
 class _CompanyFile(_File):
     id: str
     name: str
@@ -313,6 +318,14 @@ class HandLoaded:
 
     # --- Internals ---
 
+    def tolerance(self, company: CompanyId, record: RecordId) -> Money:
+        """How far apart two of this record's figures may be and still tie: one unit of the
+        scale its report prints in, a million for a report in millions. Each printed line is
+        rounded on its own, so a total and the sum of its parts can differ by that much.
+        The same tolerance the loader ties every record out with."""
+        path = self._directory(company) / f"{record}.toml"
+        return _printed_unit(self._parse(_RecordFile, path))
+
     def _directory(self, company: CompanyId) -> Path:
         directory = self.root / company
         if not (directory / COMPANY_FILE).is_file():
@@ -367,9 +380,7 @@ class HandLoaded:
             )
         except ValidationError as error:
             raise HandLoadedError(path, _describe(error)) from error
-        failures = reconcile(
-            record, tolerance=Money(amount=_SCALE[parsed.figures_in], currency=parsed.currency)
-        )
+        failures = reconcile(record, tolerance=_printed_unit(parsed))
         if failures:
             raise HandLoadedError(path, "the figures do not tie: " + "; ".join(failures))
         return record

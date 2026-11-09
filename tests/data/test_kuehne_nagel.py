@@ -1,12 +1,14 @@
 """Kühne+Nagel, typed in from its annual and half-year reports: every year loads and ties out."""
 
-from datetime import date
+from datetime import UTC, date, datetime
 from decimal import Decimal
 from pathlib import Path
 
+from tracesheet.evaluate import evaluate
 from tracesheet.model import ActionKind, CompanyId, Currency, Money, PeriodKind
 from tracesheet.providers.hand_loaded import HandLoaded
 from tracesheet.providers.reconcile import reconcile
+from tracesheet.storage import Store
 
 ROOT = Path(__file__).parents[2] / "data" / "companies"
 KN = CompanyId("kuehne-nagel")
@@ -36,3 +38,11 @@ def test_the_2006_share_split_loads_from_its_registered_report() -> None:
     assert split.kind is ActionKind.SPLIT
     assert split.ex_date == date(2006, 5, 2)
     assert (split.new_shares, split.old_shares) == (5, 1)
+
+
+def test_the_full_evaluation_survives_storage(tmp_path: Path) -> None:
+    # Twenty-one years exercise what the small fixture cannot: growth over spans of years,
+    # calculated lines, restatements and the 2006 split, all through the store and back.
+    evaluation = evaluate(ROOT, KN, datetime(2026, 11, 9, tzinfo=UTC), None)
+    store = Store(tmp_path)
+    assert store.load(store.save(evaluation)) == evaluation

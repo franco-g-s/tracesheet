@@ -5,3 +5,4 @@ __pycache__/
 data/cache/
 data/raw/
 *.pdf
+data/evaluations/
