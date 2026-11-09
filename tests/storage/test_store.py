@@ -2,8 +2,10 @@
 
 import hashlib
 import json
+import os
 import re
 import stat
+import threading
 from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
 from pathlib import Path
@@ -333,4 +335,88 @@ def test_a_leftover_partial_file_does_not_block_a_save(
 
     assert store.save(evaluation) == manifest_id
     assert path.read_bytes() == content
-    assert not partial.exists()
+
+
+def test_no_temporary_file_is_left_behind(tmp_path: Path, evaluation: Evaluation) -> None:
+    Store(tmp_path).save(evaluation)
+    assert not [p for p in tmp_path.rglob("*") if p.is_file() and p.suffix != ".json"]
+
+
+def _save_concurrently(store: Store, evaluation: Evaluation, writers: int) -> list[str]:
+    """``writers`` threads, released together, each saving ``evaluation``. Their ids, or
+    the first error any of them hit."""
+    start = threading.Barrier(writers)
+    ids: list[str] = []
+    errors: list[Exception] = []
+
+    def save() -> None:
+        start.wait()
+        try:
+            ids.append(store.save(evaluation))
+        except Exception as error:
+            errors.append(error)
+
+    threads = [threading.Thread(target=save) for _ in range(writers)]
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join()
+    if errors:
+        raise errors[0]
+    return ids
+
+
+def test_concurrent_saves_of_one_evaluation_agree(tmp_path: Path, evaluation: Evaluation) -> None:
+    # Several writers racing for the same names: each either publishes a file or finds the
+    # identical one already there. None of them may fail or leave a partial file.
+    for attempt in range(5):
+        store = Store(tmp_path / str(attempt))
+        ids = _save_concurrently(store, evaluation, writers=8)
+        assert len(ids) == 8 and len(set(ids)) == 1
+        assert store.load(ids[0]) == evaluation
+        assert not [p for p in store.root.rglob("*") if p.is_file() and p.suffix != ".json"]
+
+
+def _race(monkeypatch: pytest.MonkeyPatch, content_of: Any) -> None:
+    """Make every publish lose a race: just before the link, another writer puts
+    ``content_of(the bytes being published)`` under the target name."""
+    real_link = os.link
+
+    def link(source: Any, target: Any) -> None:
+        Path(target).write_bytes(content_of(Path(source).read_bytes()))
+        real_link(source, target)
+
+    monkeypatch.setattr(os, "link", link)
+
+
+def test_losing_a_race_to_identical_content_is_fine(
+    tmp_path: Path, evaluation: Evaluation, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    _race(monkeypatch, lambda content: content)
+    store = Store(tmp_path)
+    manifest_id = store.save(evaluation)
+    monkeypatch.undo()
+    assert store.load(manifest_id) == evaluation
+
+
+def test_losing_a_race_to_other_content_is_refused(
+    tmp_path: Path, evaluation: Evaluation, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    _race(monkeypatch, lambda content: content + b" ")
+    with pytest.raises(StoreError, match="is ever overwritten"):
+        Store(tmp_path).save(evaluation)
+
+
+def test_a_node_file_with_an_extra_field_is_refused(tmp_path: Path, evaluation: Evaluation) -> None:
+    # The id is computed from the known fields only, so an added one would pass the hash
+    # check; the file must also be exactly what the store writes.
+    store = Store(tmp_path)
+    manifest_id = store.save(evaluation)
+    path = node_files(tmp_path)[0]
+    data = json.loads(path.read_text(encoding="utf-8"))
+    data["comment"] = "added by hand"
+    path.chmod(stat.S_IRUSR | stat.S_IWUSR)
+    path.write_text(json.dumps(data, sort_keys=True, ensure_ascii=False) + "\n", encoding="utf-8")
+
+    with pytest.raises(StoreError, match="re-encode"):
+        store.load(manifest_id)

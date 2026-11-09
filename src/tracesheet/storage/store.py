@@ -9,13 +9,16 @@ A node's name is its content id, so the same number is stored once however many
 evaluations use it. A manifest's name is the moment the evaluation was run (UTC, to the
 microsecond) and the first eight hex digits of the SHA-256 of its bytes. Nothing is ever
 updated or deleted: saving an evaluation again writes nothing new, and a file that exists
-with other content stops the save. Every load re-hashes what it reads.
+with other content stops the save, even when two saves race for it. Every load re-hashes
+what it reads and accepts a file only if it is byte for byte what the store writes.
 """
 
 import hashlib
 import json
+import os
 import re
 import stat
+import tempfile
 from datetime import UTC
 from pathlib import Path
 from typing import Any
@@ -132,7 +135,8 @@ class Store:
             msg = f"{node_id!r} is not a node id"
             raise StoreError(msg)
         path = self._node_path(node_id)
-        data = _parse_json(path, _read_bytes(path))
+        content = _read_bytes(path)
+        data = _parse_json(path, content)
         try:
             # Ids are hashes of content that includes the inputs' ids, so inputs cannot
             # lead back to the node that names them; this recursion always ends.
@@ -146,6 +150,9 @@ class Store:
         if node.id != node_id:
             msg = f"{path}: the content hashes to {node.id}, not {node_id}; it was altered"
             raise StoreError(msg)
+        if node_bytes(node) != content:
+            msg = f"{path}: does not re-encode to its own bytes; the store did not write it"
+            raise StoreError(msg)
         nodes[node_id] = node
         return node
 
@@ -158,19 +165,34 @@ class Store:
     @staticmethod
     def _write_once(path: Path, content: bytes) -> None:
         if path.exists():
-            if path.read_bytes() == content:
-                return
-            msg = f"{path}: already exists with other content; nothing here is ever overwritten"
-            raise StoreError(msg)
+            _same_or_refuse(path, content)
+            return
         path.parent.mkdir(parents=True, exist_ok=True)
-        # Written beside the target and renamed into place, so a crash never leaves a
-        # half-written file under a content name. One left by an earlier crash is
-        # read-only and incomplete; it is cleared first.
-        partial = path.with_name(f".{path.name}.partial")
-        partial.unlink(missing_ok=True)
-        partial.write_bytes(content)
-        partial.chmod(_READ_ONLY)
-        partial.replace(path)
+        # Written in full to a temporary file of its own beside the target, then published
+        # with a hard link, which fails if the name is already taken. A crash never leaves
+        # a half-written file under a content name, and two writers racing for one name
+        # never overwrite each other: the loser finds the winner's file and compares.
+        handle, temporary = tempfile.mkstemp(
+            dir=path.parent, prefix=f".{path.name}.", suffix=".partial"
+        )
+        partial = Path(temporary)
+        try:
+            with os.fdopen(handle, "wb") as file:
+                file.write(content)
+            partial.chmod(_READ_ONLY)
+            try:
+                os.link(partial, path)
+            except FileExistsError:
+                _same_or_refuse(path, content)
+        finally:
+            partial.unlink(missing_ok=True)
+
+
+def _same_or_refuse(path: Path, content: bytes) -> None:
+    """Accept a file already under ``path`` only if it holds exactly ``content``."""
+    if path.read_bytes() != content:
+        msg = f"{path}: already exists with other content; nothing here is ever overwritten"
+        raise StoreError(msg)
 
 
 def _check_company(company: CompanyId) -> None:
