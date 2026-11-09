@@ -15,7 +15,9 @@ copyright belongs to the publisher, and the publisher already hosts them.
   recorded in `documents.toml` by URL and SHA-256 and can be fetched again on demand, so
   "page 47" always refers to one identified file.
 - What is committed is typed in by hand: figures transcribed from public annual reports,
-  and closing prices in `data/prices.toml`, each with its source stated.
+  each with its document, page and label.
+- The repository holds no vendor datasets. The one exception is a single closing price in
+  `data/prices.toml`, used for the example's multiples and attributed to its source there.
 
 ## Consequences
 

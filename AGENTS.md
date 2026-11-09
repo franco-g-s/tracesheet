@@ -55,7 +55,8 @@ These are bug classes, not style preferences.
   [0002](docs/decisions/0002-immutable-evaluations.md).
 - **No vendor data or PDFs in git.** Fetched market data stays in `data/cache/`, documents in
   `data/raw/`; both are gitignored. Commit only figures typed in from public reports, with
-  their source. See [0004](docs/decisions/0004-no-vendor-data-in-git.md).
+  their source. The single attributed close in `data/prices.toml` is the one exception; do
+  not add vendor datasets. See [0004](docs/decisions/0004-no-vendor-data-in-git.md).
 - **Domicile, operating country and listing venue are separate fields.** Do not merge them.
 - **Tests first** for a behaviour change, and write fixtures fresh rather than copying real
   data into `tests/`.

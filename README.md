@@ -6,6 +6,9 @@ margin, a return on capital or a valuation multiple, and it opens the trail: the
 it was computed from, each naming the report, the printed page and the report's own label
 for the line.
 
+Tracesheet grew out of a private investment-research project; this is its public, method-free
+core.
+
 The sample sheet covers Kühne+Nagel from 2005 to 2025, built from 47 filings:
 [`examples/kuehne-nagel.html`](examples/kuehne-nagel.html), one self-contained file that
 opens offline.
@@ -109,6 +112,9 @@ pytest; CI runs all four on every pull request and every push to `main`. What co
 The figures are transcribed from Kühne+Nagel's public annual reports; not investment advice.
 Each filing records the URL and SHA-256 of the report it was read from, so any figure can be
 checked against the original.
+
+The repository holds no vendor datasets. The one exception is a single closing price, used
+for the example's multiples and attributed to its source in `data/prices.toml`.
 
 ## Licence
 
