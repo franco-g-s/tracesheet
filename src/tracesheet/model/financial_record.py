@@ -257,8 +257,8 @@ DEFINITION: dict[LineItemName, str] = {
     # Income statement. Costs and deductions are held as positive magnitudes; the
     # relationships (tracesheet.model.relationships) carry the signs.
     LineItemName.REVENUE: "Net sales (turnover) after rebates and other price reductions; "
-    "for a freight forwarder, "
-    "gross turnover including the freight passed through",
+    "where a business resells third-party services, the gross amount including "
+    "pass-through costs",
     LineItemName.GROSS_PROFIT: "Revenue less cost of sales",
     LineItemName.EBIT: "Operating profit: earnings before interest and taxes, after all "
     "depreciation, amortisation and impairment",
@@ -268,8 +268,8 @@ DEFINITION: dict[LineItemName, str] = {
     "goodwill: everything between EBITDA and EBIT",
     LineItemName.GOODWILL_IMPAIRMENT: "Impairment of goodwill alone; part of depreciation, "
     "amortisation and impairment",
-    LineItemName.COST_OF_SALES: "Costs of producing what was sold (by function); for a "
-    "forwarder, services bought from third parties",
+    LineItemName.COST_OF_SALES: "Costs of producing what was sold (by function); "
+    "where a business resells third-party services, the purchased services passed through",
     LineItemName.MATERIAL_COSTS: "Materials and merchandise, including third-party services "
     "(income statement by nature)",
     LineItemName.CHANGE_IN_INVENTORIES: "Change in inventories of finished goods and work in "
