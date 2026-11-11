@@ -3,6 +3,8 @@ name = "tracesheet"
 version = "0.1.0"
 description = "Traceable company evaluation sheets built from annual-report figures."
 requires-python = ">=3.12"
+license = "AGPL-3.0-only"
+authors = [{ name = "Franco Gómez Schumacher" }]
 dependencies = [
     "jinja2>=3",
     "pydantic>=2",
