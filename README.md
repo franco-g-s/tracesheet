@@ -118,4 +118,10 @@ for the example's multiples and attributed to its source in `data/prices.toml`.
 
 ## Licence
 
-MIT. See [LICENSE](LICENSE).
+[AGPL-3.0](LICENSE) © 2026 Franco Gómez Schumacher. You may use, study, change and share it.
+If you distribute a modified version, or run one as a network service, you must publish your
+changes under the same licence.
+
+Want to use it in a closed-source or commercial product without those obligations? A separate
+commercial licence is available: get in touch through
+[franco.international](https://franco.international).
