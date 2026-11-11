@@ -140,4 +140,6 @@ def test_the_shipped_price_file() -> None:
     assert observation is not None
     assert observation.date == date(2026, 10, 22)
     assert observation.close == Money.parse("224.10", Currency.CHF)
-    assert observation.source == "SIX Swiss Exchange close, retrieved via EODHD on 2026-10-23"
+    assert (
+        observation.source == "SIX Swiss Exchange close, read from stockanalysis.com on 2026-11-11"
+    )
