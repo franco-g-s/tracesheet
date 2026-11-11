@@ -6,4 +6,4 @@ company = "kuehne-nagel"
 date = 2026-10-22
 close = "224.10"
 currency = "CHF"
-source = "SIX Swiss Exchange close, retrieved via EODHD on 2026-10-23"
+source = "SIX Swiss Exchange close, read from stockanalysis.com on 2026-11-11"

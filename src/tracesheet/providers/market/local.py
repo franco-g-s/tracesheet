@@ -7,7 +7,7 @@ One ``[[price]]`` table per close::
     date = 2026-10-22
     close = "224.10"
     currency = "CHF"
-    source = "SIX Swiss Exchange close, retrieved via EODHD on 2026-10-23"
+    source = "SIX Swiss Exchange close, read from stockanalysis.com on 2026-11-11"
 
 The close is written in quotes, as text, so it is read as an exact decimal and never as a
 float. ``source`` says where the number was read; it travels with the price into every
